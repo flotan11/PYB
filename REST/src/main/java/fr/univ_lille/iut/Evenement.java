@@ -9,13 +9,17 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author youdelice
  */
 public class Evenement {
+     private int id = 0;
+     private int idUser;
      private String titre;
      private String description;
      private int nbParieur;
      private int nbParieurMin;
      private int miseMin;
 
-    public Evenement(String titre, String description, int nbParieur, int nbParieurMin, int miseMin) {
+    public Evenement(int idUser,int id,String titre, String description, int nbParieur, int nbParieurMin, int miseMin) {
+        this.id = id ++;
+        this.idUser = idUser;
         this.titre = titre;
         this.description = description;
         this.nbParieur = nbParieur;
