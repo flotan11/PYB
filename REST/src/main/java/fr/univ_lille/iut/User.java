@@ -8,17 +8,17 @@ public class User {
     private int id = 0;
     private String login;
     private String mdp;
-    private String addesse;
+    private String adresse;
     private int codePostal;
     private String ville;
     private String mail;
     private int age;
 
-    public User(String login, String mpd, String addesse, int codePostal, String ville, String mail, int age) {
+    public User(String login, String mpd, String adresse, int codePostal, String ville, String mail, int age) {
         id = nbUser ++;
         this.login = login;
         this.mdp = mpd;
-        this.addesse = addesse;
+        this.adresse = adresse;
         this.codePostal = codePostal;
         this.ville = ville;
         this.mail = mail;
@@ -43,15 +43,15 @@ public class User {
         this.mail = mail;
     }
 
-    public String getAddesse() {
-        return addesse;
+    public String getAdresse() {
+        return adresse;
     }
 
     public int getAge() {
         return age;
     }
 
-    public int getCodePostale() {
+    public int getCodePostal() {
         return codePostal;
     }
    
@@ -68,15 +68,15 @@ public class User {
         return ville;
     }
 
-    public void setAddesse(String addesse) {
-        this.addesse = addesse;
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
     }
 
     public void setAge(int age) {
         this.age = age;
     }
 
-    public void setCodePostale(int codePostal) {
+    public void setCodePostal(int codePostal) {
         this.codePostal = codePostal;
     }
 
