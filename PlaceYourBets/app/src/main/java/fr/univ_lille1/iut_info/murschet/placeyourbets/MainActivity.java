@@ -39,4 +39,28 @@ public class MainActivity extends AppCompatActivity {
     public void doConnect(View view){
         setContentView(R.layout.menu);
     }
+
+    public void doInscription(View view){
+        setContentView(R.layout.inscription);
+    }
+
+    public void doInscrire(View view){
+        setContentView(R.layout.menu);
+    }
+
+    public void doDisconnect(View view){
+        setContentView(R.layout.menu);
+    }
+
+    public void goProfil(View view){
+        setContentView(R.layout.profil);
+    }
+
+    public void goListePari(View view){
+        setContentView(R.layout.listepari);
+    }
+
+    public void goPari(View view){
+        setContentView(R.layout.pari);
+    }
 }

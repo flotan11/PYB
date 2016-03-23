@@ -1,6 +1,8 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<link rel="stylesheet" type ="text/css" href="css/styles.css"/>
+		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<title>Inscription</title>
 		<script type="text/javascript">
 			function verifInscription() {
@@ -20,6 +22,48 @@
 		<h1>Inscription</h1>
 	</header>
 	<body>
+		<div class="navbar-wrapper">
+		      <div class="container">
+
+		        <nav class="navbar navbar-inverse navbar-static-top">
+		          <div class="container">
+		            <div class="navbar-header">
+		              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+		                <span class="sr-only">Toggle navigation</span>
+		                <span class="icon-bar"></span>
+		                <span class="icon-bar"></span>
+		                <span class="icon-bar"></span>
+		              </button>
+		              <a class="navbar-brand" href="accueil.html">Place Your Bets</a>
+		            </div>
+		            <div id="navbar" class="navbar-collapse collapse">
+		              <ul class="nav navbar-nav">
+		                <li class="active"><a href="accueil.html">Accueil</a></li>
+		                <li><a href="inscription.html">Inscription</a></li>
+		                <li class="dropdown">
+		                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Jouer<span class="caret"></span></a>
+		                  <ul class="dropdown-menu">
+		                    <li><a href="#">Créer un pari</a></li>
+		                    <li><a href="betlist.html">Mes paris</a></li>
+		                    <li><a href="#">Tous les paris en cours</a></li>
+		                  </ul>
+		                </li>
+		                <li><a href="betlist.html">Mes paris</a></li>
+		                <li class="dropdown">
+		                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mes informations<span class="caret"></span></a>
+		                  <ul class="dropdown-menu">
+		                    <li><a href="#">Profil</a></li>
+		                    <li><a href="informations.html">Statistiques</a></li>
+		                    <li><a href="#">Deconnexion</a></li>
+		                  </ul>
+		                </li>
+		              </ul>
+		            </div>
+		          </div>
+		        </nav>
+
+		     	 </div>
+		    	</div>
 		<ul>
 			<li><a href="accueil.html">Accueil</a></li>
 			<li><a href="menu.html">Menu</a></li>
@@ -34,5 +78,15 @@
             <li><input type="number" placeholder="Téléphone (optionnel-conseillé)" id="numTel"></li>
             <li><button id="boutonValider" onclick="verifInscription()">Valider</button></li>
 		</ul>
+		 <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="js/holder.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
 	</body>
 </html>
