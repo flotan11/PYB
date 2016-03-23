@@ -1,14 +1,11 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Informations</title>
-		<script src='jquery-2.1.3.js'></script>
-
-	</head>
-	<header>
-		<h1>Bienvenue sur Place Your Bets</h1>
+		<title>Tous les paris</title>
 		<link rel="stylesheet" type ="text/css" href="css/styles.css"/>
 		<link href="css/bootstrap.min.css" rel="stylesheet">
+	</head>
+	<header>
 	</header>
 	<body>
 		<div class="navbar-wrapper">
@@ -27,9 +24,9 @@
 		            </div>
 		            <div id="navbar" class="navbar-collapse collapse">
 		              <ul class="nav navbar-nav">
-		                <li class="active"><a href="accueil.html">Accueil</a></li>
+		                <li><a href="accueil.html">Accueil</a></li>
 		                <li><a href="inscription.html">Inscription</a></li>
-		                <li class="dropdown">
+		                <li class="active" class="dropdown">
 		                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Jouer<span class="caret"></span></a>
 		                  <ul class="dropdown-menu">
 		                    <li><a href="create_bet.html">Créer un pari</a></li>
@@ -38,7 +35,7 @@
 		                  </ul>
 		                </li>
 		                <li><a href="betlist.html">Mes paris</a></li>
-		                <li class="active" class="dropdown">
+		                <li class="dropdown">
 		                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mes informations<span class="caret"></span></a>
 		                  <ul class="dropdown-menu">
 		                    <li><a href="profil.html">Profil</a></li>
@@ -56,27 +53,6 @@
 
 		     	 </div>
 		    	</div>
-		<div class="nav">
-			<ul>
-				<li><a href="accueil.html">Accueil</a></li>
-				<li><a href="inscription.html">Inscription</a></li>
-				<li><a href="menu.html">Menu</a></li>
-				<li><a href="betlist.html">Liste des paris</a></li>
-				<li><a href="informations.html">Informations</a></li>
-			</ul>
-		</div>
-		<div id="stats">
-			<h3>Statistiques</h3>
-			<ul>
-				<li>Paris gagnés : 0</li>
-				<li>Paris perdus : 0</li>
-				<li>Argent gagné : 0€</li>
-				<li>Argent perdu : 0€</li>
-				<li>Balance : 0€</li>
-			</ul>
-		</div>
-		<input type="submit" id="disconnect" value="Se déconnecter"/>
-		<br><input type="submit" id="delete" value="Supprimer son compte"/></br>
 		 <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
