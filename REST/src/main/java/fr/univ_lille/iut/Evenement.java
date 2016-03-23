@@ -9,7 +9,8 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author youdelice
  */
 public class Evenement {
-     private int id = 0;
+     private int id;
+     public static int nbEvenement;
      private int idUser;
      private String titre;
      private String description;
@@ -17,7 +18,8 @@ public class Evenement {
      private int nbParieurMin;
      private int miseMin;
 
-    public Evenement(int idUser,int id,String titre, String description, int nbParieur, int nbParieurMin, int miseMin) {
+    public Evenement(int idUser,String titre, String description, int nbParieur, int nbParieurMin, int miseMin) {
+        this();
         this.id = id ++;
         this.idUser = idUser;
         this.titre = titre;
@@ -26,6 +28,12 @@ public class Evenement {
         this.nbParieurMin = nbParieurMin;
         this.miseMin = miseMin;
     }
+
+    public Evenement() {
+        this.id = ++nbEvenement;
+    }
+    
+    
 
     public int getId() {
         return id;
