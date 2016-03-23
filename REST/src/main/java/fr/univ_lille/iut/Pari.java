@@ -8,7 +8,7 @@ package fr.univ_lille.iut;
  *
  * @author youdelice
  */
-public class Parie {
+public class Pari {
     
     private int idUser;
     private int idEvenement;
