@@ -14,7 +14,7 @@ public class Pari {
     private int idEvenement;
     private double valeur;
 
-    public Parie(int idUser, int idEvenement, double valeur) {
+    public Pari(int idUser, int idEvenement, double valeur) {
         this.idUser = idUser;
         this.idEvenement = idEvenement;
         this.valeur = valeur;
