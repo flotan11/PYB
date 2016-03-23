@@ -10,28 +10,29 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlRootElement
 public class InfoUser {
+
     private int idUser;
     private double solde;
-    private int pariePerdu;
-    private int parieGagner;
+    private int parisPerdus;
+    private int parisGagnes;
 
-    public InfoUser(int idUser, double solde, int pariePerdu, int parieGagner) {
+    public InfoUser(int idUser, double solde, int parisPerdus, int parisGagnes) {
         this.idUser = idUser;
         this.solde = solde;
-        this.pariePerdu = pariePerdu;
-        this.parieGagner = parieGagner;
+        this.parisPerdus = parisPerdus;
+        this.parisGagnes = parisGagnes;
     }
 
     public int getIdUser() {
         return idUser;
     }
 
-    public int getParieGagner() {
-        return parieGagner;
+    public int getParisGagnes() {
+        return parisGagnes;
     }
 
-    public int getPariePerdu() {
-        return pariePerdu;
+    public int getParisPerdus() {
+        return parisPerdus;
     }
 
     public double getSolde() {
@@ -42,12 +43,12 @@ public class InfoUser {
         this.idUser = idUser;
     }
 
-    public void setParieGagner(int parieGagner) {
-        this.parieGagner = parieGagner;
+    public void setParisGagnes(int parisGagnes) {
+        this.parisGagnes = parisGagnes;
     }
 
-    public void setPariePerdu(int pariePerdu) {
-        this.pariePerdu = pariePerdu;
+    public void setParisPerdus(int parisPerdus) {
+        this.parisPerdus = parisPerdus;
     }
 
     public void setSolde(double solde) {

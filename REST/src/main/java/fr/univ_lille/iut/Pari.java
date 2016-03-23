@@ -17,11 +17,11 @@ public class Pari {
     private double valeur;
     private Date datef;
 
-    public Pari(int idUser, int idEvenement, double valeur,Date datef) {
+    public Pari(int idUser, int idEvenement, double valeur, Date datef) {
         this.idUser = idUser;
         this.idEvenement = idEvenement;
         this.valeur = valeur;
-        this.datef=datef;
+        this.datef = datef;
     }
 
     public int getIdEvenement() {
@@ -53,7 +53,7 @@ public class Pari {
     }
     
     public void setDate(Date datef){
-        this.datef=datef;
+        this.datef = datef;
     }
     
 }

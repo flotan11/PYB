@@ -4,7 +4,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class User {
-    private static int nbUser;
+
+    private static int nbUsers;
     private int id;
     
     private String nom;
@@ -33,7 +34,7 @@ public class User {
     }
 
     public User() {
-    	this.id = ++nbUser;
+    	this.id = ++nbUsers;
     }
     
     public String getNom() { return nom; }
@@ -46,62 +47,28 @@ public class User {
     public void setLogin(String login) { this.login = login; }
 
     public String getMdp() { return mdp; }
+    public void setMdp(String mdp) { this.mdp = mdp; }
+
+    public String getAdresse() { return adresse; }
+    public void setAdresse(String adresse) { this.adresse = adresse; }
+
+    public int getCodePostal() { return codePostal; }
+    public void setCodePostal(int codePostal) { this.codePostal = codePostal; }
+
+    public String getVille() { return ville; }
+    public void setVille(String ville) { this.ville = ville; }
     
-    public String getMail() {
-        return mail;
-    }
+    public String getMail() { return mail; }
+    public void setMail(String mail) { this.mail = mail; }
 
-    public String getAdresse() {
-        return adresse;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public int getCodePostal() {
-        return codePostal;
-    }
-    
-    public int getId() {
-        return id;
-    }
-
-
-    public String getVille() {
-        return ville;
-    }
-
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
-    }
-    
-    public void setId(int id) {
-    	
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public void setCodePostal(int codePostal) {
-        this.codePostal = codePostal;
-    }
-
-    public void setMdp(String mdp) {
-        this.mdp = mdp;
-    }
-
-    public void setVille(String ville) {
-        this.ville = ville;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
+    public int getAge() { return age; }
+    public void setAge(int age) { this.age = age; }
     
     public String getMobile() { return mobile; }
     public void setMobile(String mobile) { this.mobile = mobile; }
+    
+    public int getId() { return id; }
+    public void setId(int id) {}
 
     public boolean equals(Object u) {
         return login.equals(((User) u).login) || mail.equals(((User) u).mail);

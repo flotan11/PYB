@@ -10,27 +10,29 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlRootElement
 public class Evenement {
+
+     public static int nbEvenements;
      private int id;
-     public static int nbEvenement;
+     
      private int idUser;
      private String titre;
      private String description;
-     private int nbParieur;
-     private int nbParieurMin;
+     private int nbParieurs;
+     private int nbParieursMin;
      private int miseMin;
 
-    public Evenement(int idUser,String titre, String description, int nbParieur, int nbParieurMin, int miseMin) {
+    public Evenement(int idUser, String titre, String description, int nbParieurs, int nbParieursMin, int miseMin) {
         this();
         this.idUser = idUser;
         this.titre = titre;
         this.description = description;
-        this.nbParieur = nbParieur;
-        this.nbParieurMin = nbParieurMin;
+        this.nbParieurs = nbParieurs;
+        this.nbParieursMin = nbParieursMin;
         this.miseMin = miseMin;
     }
 
     public Evenement() {
-        this.id = ++nbEvenement;
+        this.id = ++nbEvenements;
     }
     
     public int getId() {
@@ -57,12 +59,12 @@ public class Evenement {
         return miseMin;
     }
 
-    public int getNbParieur() {
-        return nbParieur;
+    public int getNbParieurs() {
+        return nbParieurs;
     }
 
-    public int getNbParieurMin() {
-        return nbParieurMin;
+    public int getNbParieusrMin() {
+        return nbParieursMin;
     }
 
     public String getTitre() {
@@ -77,12 +79,12 @@ public class Evenement {
         this.miseMin = miseMin;
     }
 
-    public void setNbParieur(int nbParieur) {
-        this.nbParieur = nbParieur;
+    public void setNbParieurs(int nbParieurs) {
+        this.nbParieurs = nbParieurs;
     }
 
-    public void setNbParieurMin(int nbParieurMin) {
-        this.nbParieurMin = nbParieurMin;
+    public void setNbParieursMin(int nbParieursMin) {
+        this.nbParieursMin = nbParieursMin;
     }
 
     public void setTitre(String titre) {
