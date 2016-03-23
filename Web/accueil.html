@@ -2,6 +2,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Accueil</title>
+		<!-- <script type="text/javascript"></script> -->
 	</head>
 	<header>
 		<h1>Bienvenue sur Place Your Bets</h1>
@@ -14,5 +15,43 @@
 			<li><a href="betlist.html">Liste des paris</a></li>
 			<li><a href="informations.html">Informations</a></li>
 		</ul>
+		<div id="connect">
+			<br>Déjà un compte ? Connectez-vous !</br>
+			<input type="text" placeholder="identifiant" id="id"/>
+			<input type="password" value="motdepasse" id="mdp"/>
+			<input type="submit" value="Ok" id="submit"/>
+			<br>Pas de compte ? Pas de panique, <a href="inscription.html">inscrivez-vous</a> !</br>
+			<br><a href="">Mot de passe oublié</a></br> <!-- to redirect somewhere -->
+		</div>
+
+		<!-- NB ====> Ce code nécessite la présence du serveur pour être traité <=====
+		<script type="text/javascript">
+
+			var id = document.getElementById("id");
+			var mdp = document.getElementById("mdp");
+			$('submit').click(function(event){
+				$.ajax({
+					data:{
+						id = id;
+						mdp = mdp;
+					},
+					type: "GET",
+					datatype: "json",
+
+					success: function(json){
+						console.log("Identificatin réussie");
+					},
+					error: function(xhr, status, errorThrown){
+						console.log("Error : "+errorThrown):
+						console.log("Status : "+status);
+						console.log(xhr);
+					},
+					complete: function(xhr, status){
+						console.log("The request is completed");
+					}
+				});
+			});
+		</script>
+		-->
 	</body>
 </html>
