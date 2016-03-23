@@ -4,7 +4,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class User {
-    public static int nbUser;
+    private static int nbUser;
     private int id;
     private String login;
     private String mdp;
