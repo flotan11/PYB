@@ -10,14 +10,14 @@
 			function verifInscription() {
 				if (mdpVerif.value == mdp.value && mailVerif.value== mail.value) {
 					if (nom.value.length >= 2 && prenom.value.length >= 2 && mdp.value.length >= 6) {
-						$("#divSuccess").show();
+
 					} else {
 						console.log("Etape 2 pas bon (vérif taille nom prenom et mdp");
-						$("#divError").show();
+						
 					}
 				} else {
 					console.log("Etape 1 pas bon (vérif mdp-mdpverif et mail-mailverif");
-						$("#divError").show();
+						
 				}
 			}
 		</script>
@@ -68,22 +68,37 @@
 		    <div class="container">
 
       			<form class="form-signin">
-       				<h2 class="form-signin-heading">Inscrivez vous !</h2>
+       				<<h2 class="form-signin-heading">Inscrivez vous</h2>
        				<label for="inputName" class="sr-only">Nom</label>
-       				<input type="text" id="nom" class="form-control" placeholder="Nom">
+       				<input type="text" id="nom" class="form-control" placeholder="Nom" required>
        				<label for="inputName" class="sr-only">Prénom</label>
-       				<input type="text" id="prenom" class="form-control" placeholder="Prénom">
+       				<input type="text" id="prenom" class="form-control" placeholder="Prénom"required>
+
+       				<label for="inputName" class="sr-only">Pseudo</label>
+       				<input type="text" id="login" class="form-control" placeholder="Pseudo"required>
+
+       				<label for="inputDate" class="sr-only">Date de naissance</label>
+       				<input type="date" id="birthday" class="form-control" placeholder="Date de naissance"required>
+
+       				<label for="inputAdresse" class="sr-only">Adresse</label>
+       				<input type="text" id="adresse" class="form-control" placeholder="Adresse"required>
+
+       				<label for="inputVille" class="sr-only">Ville</label>
+       				<input type="text" id="ville" class="form-control" placeholder="Ville"required>
+
+       				<label for="inputCP" class="sr-only">Code postal</label>
+       				<input type="text" id="codePostal" class="form-control" placeholder="Code postal"required>
 
         			<label for="inputEmail" class="sr-only">Adresse e-mail</label>
-        			<input type="email" id="mail" class="form-control" placeholder="Adresse e-mail">
+        			<input type="email" id="mail" class="form-control" placeholder="Adresse e-mail"required>
         			<label for="inputEmail" class="sr-only">Vérification e-mail</label>
-        			<input type="email" id="mailVerif" class="form-control" placeholder="Confirmation du mail">
+        			<input type="email" id="mailVerif" class="form-control" placeholder="Confirmation du mail"required>
 
 			        <label for="inputPassword" class="sr-only">Mot de passe</label>
-			        <input type="password" id="mdp" class="form-control" placeholder="Mot de passe">
+			        <input type="password" id="mdp" class="form-control" placeholder="Mot de passe"required>
 			      	
 			      	<label for="inputPassword" class="sr-only">Vérification</label>
-			        <input type="password" id="mdpVerif" class="form-control" placeholder="Confirmation mot de passe">
+			        <input type="password" id="mdpVerif" class="form-control" placeholder="Confirmation mot de passe"required>
 
 			        <label for="inputTel" class="sr-only">Téléphone</label>
 			        <input type="tel" id="numTel" class="form-control" placeholder="Téléphone (optionnel - conseillé)">
@@ -91,41 +106,9 @@
 
 			        <button class="btn btn-lg btn-primary btn-block" onclick ="verifInscription()">Inscription</button>
 			     </form>
-			        <div class="alert alert-success" role="alert" id="divSuccess">
-					 <strong>
-		       		 Bien joué !
-		    		</strong>
-		    		 Votre inscription a fonctionné, veuillez confirmer votre mail
-					</div>
-
-					<div class="alert alert-danger" role="alert" id="divError">
-					 <strong>
-		       		 Attention ! 
-		    		</strong>
-		    		 Votre inscription n'a pas fonctionné !
-		    		</div>
 
     </div> <!-- /container -->
-    <!--
-			<li><a href="accueil.html">Accueil</a></li>
-			<li><a href="menu.html">Menu</a></li>
-			<li><a href="betlist.html">Liste des paris</a></li>
-			<li><a href="informations.html">Informations</a></li>
-			<li><input type="text" placeholder="Nom" id ="nom"></li>
-			<li><input type="text" placeholder="Prenom" id ="prenom"></li>
-			<li><input type="email" placeholder="Adresse e-mail" id ="mail"></li>
-			<li><input type="email" placeholder="Verification de l'adresse e-mail" id ="mailVerif"></li>
-            <li><input type="password" placeholder="Mot-de-passe" id ="mdp"></li>
-            <li><input type="password" placeholder="Verification du mot de passe" id ="mdpVerif"></li>
-            <li><input type="number" placeholder="Téléphone (optionnel-conseillé)" id="numTel"></li>
-            <li><button id="boutonValider" onclick="verifInscription()">Valider</button></li>
- -->
-	<script>
-		if (nom.value.length == 0) {
-			$("#divSuccess").hide();
-			$("#divError").hide();
-		}
-	</script>
+
 		 <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
