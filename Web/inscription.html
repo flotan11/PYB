@@ -10,7 +10,7 @@
 			function verifInscription() {
 				if (mdpVerif.value == mdp.value && mailVerif.value== mail.value) {
 					if (nom.value.length >= 2 && prenom.value.length >= 2 && mdp.value.length >= 6) {
-
+						envoyerInscription();
 					} else {
 						console.log("Etape 2 pas bon (vérif taille nom prenom et mdp");
 						
@@ -19,6 +19,30 @@
 					console.log("Etape 1 pas bon (vérif mdp-mdpverif et mail-mailverif");
 						
 				}
+			}
+
+			function envoyerInscription() {
+				var ageCalculate = 20;
+				$.ajax({
+					url:"http://172.18.49.106:8080/data/users",
+					type:"POST",
+					dataType :"json",
+					data: {
+						nom: $("#nom").val(),
+						prenom: $("#prenom").val(),
+						login: $("#login").val(),
+						mdp: $("#mdp").val(),
+						adresse: $("#adresse").val(),
+						codePostal: $("#codePostal").val(),
+						ville: $("#ville").val(),
+						mail: $("#mail").val(),
+						age: ageCalculate,
+						mobile: $("#numTel").val()
+					},
+					success: function(json) {
+						alert("ça marche");
+					}
+				});
 			}
 		</script>
 	</head>
@@ -75,7 +99,7 @@
        				<input type="text" id="prenom" class="form-control" placeholder="Prénom"required>
 
        				<label for="inputName" class="sr-only">Pseudo</label>
-       				<input type="text" id="login" class="form-control" placeholder="Pseudo"required>
+       				<input type="text" id="login" class="form-control" placeholder="Pseudonyme"required>
 
        				<label for="inputDate" class="sr-only">Date de naissance</label>
        				<input type="date" id="birthday" class="form-control" placeholder="Date de naissance"required>
