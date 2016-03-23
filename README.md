@@ -1,6 +1,7 @@
 Projet AGILE 22/03/2016 Semestre 4
 
-Le projet Place Your Bets serait une plateforme de paris personnalisés en ligne.
-Cette plateforme sera disponible sur un site web et sur une application android (les informations étant échanger par le serveur à l'aide de liaisons SQL).
+Le projet Place Your Bets est une plateforme de paris personnalisÃ©s en ligne.
+Cette plateforme sera disponible sur un site web et sur une application Android (les informations Ã©tant Ã©changÃ©es par le serveur Ã  l'aide de liaisons SQL).
 
-Youdelice --> Lambert Clément
+Youdelice --> Lambert ClÃ©ment
+KC07 --> Kirscher Cyrille
