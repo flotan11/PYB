@@ -8,6 +8,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  * @author youdelice
  */
+@XmlRootElement
 public class Evenement {
      private int id;
      public static int nbEvenement;
@@ -20,7 +21,6 @@ public class Evenement {
 
     public Evenement(int idUser,String titre, String description, int nbParieur, int nbParieurMin, int miseMin) {
         this();
-        this.id = id ++;
         this.idUser = idUser;
         this.titre = titre;
         this.description = description;
@@ -33,8 +33,6 @@ public class Evenement {
         this.id = ++nbEvenement;
     }
     
-    
-
     public int getId() {
         return id;
     }

@@ -3,11 +3,12 @@
  * and open the template in the editor.
  */
 package fr.univ_lille.iut;
-
+import javax.xml.bind.annotation.XmlRootElement;
 /**
  *
  * @author youdelice
  */
+@XmlRootElement
 public class Pari {
     
     private int idUser;
