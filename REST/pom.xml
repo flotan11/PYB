@@ -4,13 +4,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>fr.univ_lille.iut</groupId>
-    <artifactId>first-rest-app</artifactId>
+    <artifactId>pyb-rest-server</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>first-rest-app</name>
+    <name>pyb-rest-server</name>
 
     <build>
-        <finalName>first-rest-app</finalName>
+        <finalName>pyb-rest-server</finalName>
         <plugins>
 	    <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
