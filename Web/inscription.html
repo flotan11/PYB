@@ -2,17 +2,37 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Inscription</title>
+		<script type="text/javascript">
+			function verifInscription() {
+				if (mdpVerif.value == mdp.value && mailVerif.value== mail.value) {
+					if (nom.value.length >= 2 && prenom.value.length >= 2 && mdp.value.length >= 6) {
+						console.log("C'est bon");
+					} else {
+						console.log("Etape 2 pas bon (vérif taille nom prenom et mdp");
+					}
+				} else {
+					console.log("Etape 1 pas bon (vérif mdp-mdpverif et mail-mailverif");
+				}
+			}
+		</script>
 	</head>
 	<header>
-		<h1>Bienvenue sur Place Your Bets</h1>
+		<h1>Inscription</h1>
 	</header>
 	<body>
 		<ul>
 			<li><a href="accueil.html">Accueil</a></li>
-			<li><a href="inscription.html">Inscription</a></li>
 			<li><a href="menu.html">Menu</a></li>
 			<li><a href="betlist.html">Liste des paris</a></li>
 			<li><a href="informations.html">Informations</a></li>
+			<li><input type="text" placeholder="Nom" id ="nom"></li>
+			<li><input type="text" placeholder="Prenom" id ="prenom"></li>
+			<li><input type="email" placeholder="Adresse e-mail" id ="mail"></li>
+			<li><input type="email" placeholder="Verification de l'adresse e-mail" id ="mailVerif"></li>
+            <li><input type="password" placeholder="Mot-de-passe" id ="mdp"></li>
+            <li><input type="password" placeholder="Verification du mot de passe" id ="mdpVerif"></li>
+            <li><input type="number" placeholder="Téléphone (optionnel-conseillé)" id="numTel"></li>
+            <li><button id="boutonValider" onclick="verifInscription()">Valider</button></li>
 		</ul>
 	</body>
 </html>
