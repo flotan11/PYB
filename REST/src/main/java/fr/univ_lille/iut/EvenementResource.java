@@ -31,7 +31,7 @@ import java.util.HashMap;
 public class EvenementResource {
     // Pour l'instant, on se contentera d'une variable statique
     // pour conserver l'état
-    private static Map<String, Evenement> evenement = new HashMap<>();
+    private static Map<String, Evenement> evenements = new HashMap<>();
 
     // L'annotation @Context permet de récupérer des informations sur
     // le contexte d'exécution de la ressource.
@@ -57,17 +57,17 @@ public class EvenementResource {
      * L'en-tête contient un champs Location avec l'URI de la nouvelle ressource
      */
     @POST
-    public Response createEvenement(Evenement evenements) {
+    public Response createEvenement(Evenement evenement) {
         // Si l'utilisateur existe déjà, renvoyer 409
-        if ( evenement.containsKey(evenements.getTitre()) ) {
+        if ( evenements.containsKey(evenement.getTitre()) ) {
             return Response.status(Response.Status.CONFLICT).build();
         }
         else {
-            evenement.put(evenements.getTitre(), evenements);
+            evenements.put(evenement.getTitre(), evenement);
 
             // On renvoie 201 et l'instance de la ressource dans le Header
             // HTTP 'Location'
-            URI instanceURI = uriInfo.getAbsolutePathBuilder().path(evenements.getTitre()).build();
+            URI instanceURI = uriInfo.getAbsolutePathBuilder().path(evenement.getTitre()).build();
             return Response.created(instanceURI).build();
         }
     }
@@ -78,7 +78,7 @@ public class EvenementResource {
      */
     @GET
     public List<Evenement> getEvenement() {
-        return new ArrayList<Evenement>(evenement.values());
+        return new ArrayList<Evenement>(evenements.values());
     }
 
     /** 
@@ -91,11 +91,11 @@ public class EvenementResource {
     @Produces("application/json,application/xml")
     public Evenement getEvenement(@PathParam("titre") String titre) {
         // Si l'utilisateur est inconnu, on renvoie 404
-        if (  ! evenement.containsKey(titre) ) {
+        if (  ! evenements.containsKey(titre) ) {
             throw new NotFoundException();
         }
         else {
-            return evenement.get(titre);
+            return evenements.get(titre);
         }
     }
 
@@ -103,11 +103,11 @@ public class EvenementResource {
     @Path("{titre}")
     public Response deleteEvenement(@PathParam("titre") String titre) {
         // Si l'utilisateur est inconnu, on renvoie 404
-        if (  ! evenement.containsKey(titre) ) {
+        if (  ! evenements.containsKey(titre) ) {
             throw new NotFoundException();
         }
         else {
-            evenement.remove(titre);
+            evenements.remove(titre);
             return Response.status(Response.Status.NO_CONTENT).build();
         }
     }
@@ -121,13 +121,13 @@ public class EvenementResource {
      */
     @PUT
     @Path("{titre}")
-        public Response modifyEvenement(@PathParam("titre") String titre, Evenement evenements) {
+        public Response modifyEvenement(@PathParam("titre") String titre, Evenement evenement) {
         // Si l'utilisateur est inconnu, on renvoie 404
-        if (  ! evenement.containsKey(evenements.getTitre()) ) {
+        if (  ! evenements.containsKey(evenement.getTitre()) ) {
             throw new NotFoundException();
         }
         else {
-            evenement.put(evenements.getTitre(), evenements);
+            evenements.put(evenement.getTitre(), evenement);
             return Response.status(Response.Status.NO_CONTENT).build();
         }
     }
@@ -146,11 +146,11 @@ public class EvenementResource {
     @Consumes("application/x-www-form-urlencoded")
         public Response createEvenement(@FormParam("titre") String titre, @FormParam("idUser") int idUser, @FormParam("description") String description, @FormParam("nbParieur") int nbParieur, @FormParam("miseMin") int miseMin, @FormParam("nbParieurMin") int nbParieurMin) {
         // Si l'utilisateur existe déjà, renvoyer 409
-        if ( evenement.containsKey(titre) ) {
+        if ( evenements.containsKey(titre) ) {
             return Response.status(Response.Status.CONFLICT).build();
         }
         else {
-            evenement.put(titre, new Evenement(idUser,titre, description, nbParieur, nbParieurMin, miseMin));
+            evenements.put(titre, new Evenement(idUser,titre, description, nbParieur, nbParieurMin, miseMin));
 
             // On renvoie 201 et l'instance de la ressource dans le Header HTTP 'Location'
             URI instanceURI = uriInfo.getAbsolutePathBuilder().path(titre).build();

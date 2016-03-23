@@ -1,11 +1,12 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Mes paris</title>
+		<title>Profil</title>
 		<link rel="stylesheet" type ="text/css" href="css/styles.css"/>
 		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<link href="css/betlist.css" rel="stylesheet">
 	</head>
+	<header>
+	</header>
 	<body>
 		<div class="navbar-wrapper">
 		      <div class="container">
@@ -30,17 +31,20 @@
 		                  <ul class="dropdown-menu">
 		                    <li><a href="#">Créer un pari</a></li>
 		                    <li><a href="betlist.html">Mes paris</a></li>
-		                    <li><a href="#">Tous les paris en cours</a></li>
+		                    <li><a href="allbets.html">Tous les paris en cours</a></li>
 		                  </ul>
 		                </li>
-		                <li class="active"><a href="betlist.html">Mes paris</a></li>
-		                <li class="dropdown">
+		                <li><a href="betlist.html">Mes paris</a></li>
+		                <li class="active" class="dropdown">
 		                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mes informations<span class="caret"></span></a>
 		                  <ul class="dropdown-menu">
-		                    <li><a href="#">Profil</a></li>
+		                    <li><a href="profil.html">Profil</a></li>
 		                    <li><a href="informations.html">Statistiques</a></li>
 		                    <li><a href="#">Deconnexion</a></li>
 		                  </ul>
+		                </li>
+		                <li class="status">
+		                	<a>Vous n'êtes pas connecté</a>
 		                </li>
 		              </ul>
 		            </div>
@@ -49,49 +53,6 @@
 
 		     	 </div>
 		    	</div>
-
-		    	<div class="col-md-6">
-			    <table class="table table-bordered">
-			        <thead>
-			            <tr>
-			                <th>Nom du pari</th>
-			                <th>Valeur mise en jeu</th>
-			                <th>Réponse</th>
-			                <th>Côte du pari</th>
-			                <th>Date de fin du pari</th>
-			            </tr>
-			        </thead>
-			        <tbody>
-			            <tr>
-			                <td>Match LOSC - PSG</td>
-			                <td>10 €</td>
-			                <td>PSG</td>
-			                <td>1.95</td>
-			                <td>01/04/2016</td>
-			            </tr>
-			            <tr>
-			                <td>Nicolas Sarkozy ré-élu président en 2017</td>
-			                <td>4€</td>
-			                <td>Oui</td>
-			                <td>6.02</td>
-			                <td>01/05/2017</td>
-			            </tr>
-			            <tr>
-			                <td>Michel Sardou va-t-il sortir un album cet année 2016</td>
-			                <td>6€</td>
-			                <td>Non</td>
-			                <td>1.2</td>
-			                <td>01/01/2017</td>
-			            </tr>
-			            <tr>
-			                <td>Va-t-on finir notre projet agile</td>
-			                <td>100€</td>
-			                <td>Oui</td>
-			                <td>1.4</td>
-			                <td>31/03/2016</td>
-			            </tr>
-			        </tbody>
-			    </table>
 		 <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
