@@ -67,6 +67,20 @@
 
 		     	 </div>
 		    	</div>
+
+		    	<!-- fin navbar -->
+		    	<div id="creation_pari_title" onclick="afficherCreation()" class="featurette-divider">CREATION DE PARI</div>
+		    	<div id="creation_pari">
+					Cette div permet de créer un pari.
+				</div>
+				<div id="liste_pari_title" onclick="afficherListePari()"class="featurette-divider">LISTE DES PARIS</div>
+				<div id="liste_pari">
+					Cette div affiche tous les paris
+				</div>
+				<div id="mes_paris_title" onclick="afficherMesParis()"class="featurette-divider">MES PARIS</div>
+				<div id="mes_paris">
+					Cette div affiche tous mes paris
+				</div>
 <!--		<ul>
 			<li><a href="accueil.html">Accueil</a></li>
 			<li><a href="inscription.html">Inscription</a></li>
@@ -74,9 +88,7 @@
 			<li><a href="betlist.html">Liste des paris</a></li>
 			<li><a href="informations.html">Informations</a></li>
 			<div id="creation_pari_title" onclick="afficherCreation()">CREATION DE PARI</div>
-			<div id="creation_pari">
-				Cette div permet de créer un pari.
-			</div>
+
 			<div id="liste_pari_title" onclick="afficherListePari()">LISTE DES PARIS</div>
 			<div id="liste_pari">
 			Cette div affiche tous les paris
@@ -86,16 +98,18 @@
 			Cette div affiche tous mes paris
 			</div>
 
-			<script>
-			window.onload = cacherDiv();
-			function cacherDiv() {
-				$("#creation_pari").hide();
-				$("#liste_pari").hide();
-				$("#mes_paris").hide();
-			}
-			</script>
+
 		</ul> -->
 
+
+	<script>
+		window.onload = cacherDiv();
+		function cacherDiv() {
+			$("#creation_pari").hide();
+			$("#liste_pari").hide();
+			$("#mes_paris").hide();
+		}
+	</script>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
