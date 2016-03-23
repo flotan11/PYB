@@ -67,7 +67,7 @@ public class InfoUserResource {
 
             // On renvoie 201 et l'instance de la ressource dans le Header
             // HTTP 'Location'
-            URI instanceURI = uriInfo.getAbsolutePathBuilder().path(infoUser.getIdUser()).build();
+            URI instanceURI = uriInfo.getAbsolutePathBuilder().path(String.valueOf(infoUser.getIdUser())).build();
             return Response.created(instanceURI).build();
         }
     }
@@ -121,7 +121,7 @@ public class InfoUserResource {
      */
     @PUT
     @Path("{idUser}")
-        public Response modifyInfoUser(@PathParam("IdUser") Interger idUser, InfoUser infoUser) {
+        public Response modifyInfoUser(@PathParam("IdUser") int idUser, InfoUser infoUser) {
         // Si l'utilisateur est inconnu, on renvoie 404
         if (  ! infoUsers.containsKey(infoUser.getIdUser()) ) {
             throw new NotFoundException();
@@ -144,16 +144,16 @@ public class InfoUserResource {
      */
     @POST
     @Consumes("application/x-www-form-urlencoded")
-        public Response createInfoUser(@FormParam("IdUser") Interger idUser, @FormParam("Solde") Double solde, @FormParam("PariPerdu") String pariPerdu, @FormParam("PariGagner") String pariGagner) {
+        public Response createInfoUser(@FormParam("idUser") int idUser, @FormParam("solde") double solde, @FormParam("parisPerdus") int parisPerdus, @FormParam("parisGagnes") int parisGagnes) {
         // Si l'utilisateur existe déjà, renvoyer 409
         if ( infoUsers.containsKey(idUser) ) {
             return Response.status(Response.Status.CONFLICT).build();
         }
         else {
-            infoUsers.put(idUser, new User(idUser, solde, pariGagner, pariPerdu));
+            infoUsers.put(idUser, new InfoUser(idUser, solde, parisPerdus, parisGagnes));
 
             // On renvoie 201 et l'instance de la ressource dans le Header HTTP 'Location'
-            URI instanceURI = uriInfo.getAbsolutePathBuilder().path(idUser).build();
+            URI instanceURI = uriInfo.getAbsolutePathBuilder().path(String.valueOf(idUser)).build();
             return Response.created(instanceURI).build();
         }
     }
