@@ -4,14 +4,24 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class User {
+    private int id = 0;
     private String login;
-    private String name;
+    private String mdp;
+    private String addesse;
+    private int codePostale;
+    private String ville;
     private String mail;
+    private int age;
 
-    public User(String login, String name, String mail) {
+    public User(int id, String login, String mpd, String addesse, int codePostale, String ville, String mail, int age) {
+        this.id = id ++;
         this.login = login;
-        this.name = name;
+        this.mdp = mpd;
+        this.addesse = addesse;
+        this.codePostale = codePostale;
+        this.ville = ville;
         this.mail = mail;
+        this.age = age;
     }
 
     public User() {}
@@ -24,14 +34,6 @@ public class User {
         this.login = login;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getMail() {
         return mail;
     }
@@ -40,11 +42,59 @@ public class User {
         this.mail = mail;
     }
 
+    public String getAddesse() {
+        return addesse;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public int getCodePostale() {
+        return codePostale;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getMdp() {
+        return mdp;
+    }
+
+    public String getVille() {
+        return ville;
+    }
+
+    public void setAddesse(String addesse) {
+        this.addesse = addesse;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setCodePostale(int codePostale) {
+        this.codePostale = codePostale;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setMdp(String mdp) {
+        this.mdp = mdp;
+    }
+
+    public void setVille(String ville) {
+        this.ville = ville;
+    }
+
     public boolean equals(Object u) {
-        return name.equals(((User) u).login) || name.equals(((User) u).name) || mail.equals(((User) u).mail);
+        return login.equals(((User) u).login) || mail.equals(((User) u).mail);
     }
 
     public String toString() {
-        return login + " " + name + " " + mail;
+        return login + " " + login + " " + mail;
     }
 }
