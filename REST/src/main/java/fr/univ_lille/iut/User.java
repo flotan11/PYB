@@ -4,21 +4,22 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class User {
+    private static int nbUser;
     private int id = 0;
     private String login;
     private String mdp;
     private String addesse;
-    private int codePostale;
+    private int codePostal;
     private String ville;
     private String mail;
     private int age;
 
-    public User(int id, String login, String mpd, String addesse, int codePostale, String ville, String mail, int age) {
-        this.id = id ++;
+    public User(String login, String mpd, String addesse, int codePostal, String ville, String mail, int age) {
+        id = nbUser ++;
         this.login = login;
         this.mdp = mpd;
         this.addesse = addesse;
-        this.codePostale = codePostale;
+        this.codePostal = codePostal;
         this.ville = ville;
         this.mail = mail;
         this.age = age;
@@ -51,8 +52,9 @@ public class User {
     }
 
     public int getCodePostale() {
-        return codePostale;
+        return codePostal;
     }
+   
 
     public int getId() {
         return id;
@@ -74,8 +76,8 @@ public class User {
         this.age = age;
     }
 
-    public void setCodePostale(int codePostale) {
-        this.codePostale = codePostale;
+    public void setCodePostale(int codePostal) {
+        this.codePostal = codePostal;
     }
 
     public void setId(int id) {
