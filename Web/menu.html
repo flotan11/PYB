@@ -6,13 +6,56 @@
 	<header>
 		<h1>Bienvenue sur Place Your Bets</h1>
 	</header>
-	<body>
+	<body>	<script src="jquery-2.1.3.js"></script>
+			<script>
+			function afficherCreation() {
+				$("#creation_pari").show();
+				$("#liste_pari").hide();
+				$("#mes_paris").hide();
+			}
+
+			function afficherListePari() {
+				$("#liste_pari").show();			
+				$("#creation_pari").hide();
+				$("#mes_paris").hide();
+			}
+
+			function afficherMesParis() {
+				$("#creation_pari").hide();
+				$("#liste_pari").hide();
+				$("#mes_paris").show();
+
+			}
+
+
+		</script>
 		<ul>
 			<li><a href="accueil.html">Accueil</a></li>
 			<li><a href="inscription.html">Inscription</a></li>
 			<li><a href="menu.html">Menu</a></li>
 			<li><a href="betlist.html">Liste des paris</a></li>
 			<li><a href="informations.html">Informations</a></li>
+			<div id="creation_pari_title" onclick="afficherCreation()">CREATION DE PARI</div>
+			<div id="creation_pari">
+				Cette div permet de créer un pari.
+			</div>
+			<div id="liste_pari_title" onclick="afficherListePari()">LISTE DES PARIS</div>
+			<div id="liste_pari">
+			Cette div affiche tous les paris
+			</div>
+			<div id="mes_paris_title" onclick="afficherMesParis()">MES PARIS</div>
+			<div id="mes_paris">
+			Cette div affiche tous mes paris
+			</div>
+
+			<script>
+			window.onload = cacherDiv();
+			function cacherDiv() {
+				$("#creation_pari").hide();
+				$("#liste_pari").hide();
+				$("#mes_paris").hide();
+			}
+			</script>
 		</ul>
 	</body>
 </html>
