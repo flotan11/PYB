@@ -144,13 +144,13 @@ public class UserResource {
      */
     @POST
     @Consumes("application/x-www-form-urlencoded")
-        public Response createUser(@FormParam("login") String login, @FormParam("mdp") String mdp, @FormParam("adresse") String adresse, @FormParam("cp") int cp, @FormParam("ville") String ville, @FormParam("mail") String mail, @FormParam("age") int age) {
+        public Response createUser(@FormParam("login") String login, @FormParam("mdp") String mdp, @FormParam("adresse") String adresse, @FormParam("codePostal") int codePostal, @FormParam("ville") String ville, @FormParam("mail") String mail, @FormParam("age") int age) {
         // Si l'utilisateur existe déjà, renvoyer 409
         if ( users.containsKey(login) ) {
             return Response.status(Response.Status.CONFLICT).build();
         }
         else {
-            users.put(login, new User(login, mdp, adresse, cp, ville, mail, age));
+            users.put(login, new User(login, mdp, adresse, codePostal, ville, mail, age));
 
             // On renvoie 201 et l'instance de la ressource dans le Header HTTP 'Location'
             URI instanceURI = uriInfo.getAbsolutePathBuilder().path(login).build();
