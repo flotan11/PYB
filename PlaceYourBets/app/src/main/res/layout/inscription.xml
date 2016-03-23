@@ -64,14 +64,14 @@
         android:layout_height="wrap_content"
         android:text="@string/Inscrire"
         android:id="@+id/button"
-        android:onClick="doConnect"
+        android:onClick="doInscrire"
         android:layout_below="@+id/button5"
         android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
+        android:text="@string/PièceIdentité"
         android:id="@+id/button5"
         android:layout_below="@+id/editText2"
         android:layout_alignLeft="@+id/editText2"
