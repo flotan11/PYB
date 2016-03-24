@@ -28,7 +28,7 @@ import java.util.HashMap;
  * Ressource User (accessible avec le chemin "/bets")
  */
 @Path("bets")
-public class PariRessource {
+public class PariResource {
     // Pour l'instant, on se contentera d'une variable statique
     // pour conserver l'état
     private Map<Integer, Pari> paris = new HashMap<>();
@@ -44,7 +44,7 @@ public class PariRessource {
     /**
      * Une ressource doit avoir un contructeur (éventuellement sans arguments)
      */
-    public PariRessource() {
+    public PariResource() {
     }
 
     /**
