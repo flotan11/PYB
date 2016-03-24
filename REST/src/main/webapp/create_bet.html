@@ -4,7 +4,7 @@
 		<title>Créer un pari</title>
 		<link rel="stylesheet" type ="text/css" href="css/styles.css"/>
 		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<link href="stylesheet" type ="text/css" href="css/connexion.css"/>
+		<link rel="stylesheet" type ="text/css" href="css/create_bet.css"/>
 	</head>
 	<header>
 	</header>
@@ -27,10 +27,10 @@
 		              <ul class="nav navbar-nav">
 		                <li><a href="accueil.html">Accueil</a></li>
 		                <li><a href="inscription.html">Inscription</a></li>
-		                <li class="active" class="dropdown">
+		                <li class="dropdown">
 		                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Jouer<span class="caret"></span></a>
 		                  <ul class="dropdown-menu">
-		                    <li><a href="create_bet.html">Créer un pari</a></li>
+		                    <li><a href="#">Créer un pari</a></li>
 		                    <li><a href="betlist.html">Mes paris</a></li>
 		                    <li><a href="allbets.html">Tous les paris en cours</a></li>
 		                  </ul>
@@ -57,14 +57,30 @@
 
 		    	<div class="container">
 
-      <form class="form-signin">
-        <h2 class="form-signin-heading">Créer votre propre pari !</h2>
-        <label for="nomPari" class="sr-only">Nome du pari</label>
-        <input type="text" id="nomPari" class="form-control" placeholder="Nom du pari" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="number" id="Nombre de réponses" class="form-control" placeholder="2" required>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Connexion</button>
-      </form>
+		        <<h2 class="form-signin-heading" id="titleHTML">Créer votre propre pari !</h2>
+		      <form class="form-signin">
+		        <label for="nomPari" class="sr-only">Nom du pari</label>
+		        <input type="text" id="nomPari" class="form-control" placeholder="Nom du pari" required autofocus>
+		        <label for="inputString" class="sr-only">Description</label>
+		        <input type="text" id="descriptionPari" class="form-control" placeholder="Description" required>
+
+		        <label for="nbParieursMinimum" class="sr-only">Nombre de parieurs minimums</label>
+		        <input type="number" id="nbParieursMini" class ="form-control" placeholder="Nombre minimums de participants (au moins 2)" required>
+
+		        <label for="miseMini" class="sr-only">Mise minimum par participant</label>
+		        <input type="number" id="miseMini" class ="form-control" placeholder="Mise minimum par participant" required>
+
+		        <label for="dateFin" class="sr-only">Date de fin du pari</label>
+		        <input type="date" id="dateFin" class="form-control" placeholder="Date de fin du pari" required>
+
+		        <div class="checkbox">
+		          <label>
+		            <input type="checkbox" value="remember-me"> Pari privé
+		          </label>
+		        </div>
+
+		        <button class="btn btn-lg btn-primary btn-block" type="submit">Demander validation !</button>
+		      </form>
 
     </div>
 		 <!-- Bootstrap core JavaScript

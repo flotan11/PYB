@@ -18,7 +18,7 @@ public class UserDB {
 		try {
 			dao.createUserTable();
 		} catch (Exception e) {
-			System.out.println("Table déjà là !");
+			System.out.println("Table deja la !");
 		}
 	}
 	
