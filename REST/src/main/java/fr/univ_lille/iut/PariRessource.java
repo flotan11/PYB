@@ -28,7 +28,7 @@ import java.util.HashMap;
  * Ressource User (accessible avec le chemin "/users")
  */
 @Path("paris")
-public class PariResource {
+class PariResource {
     // Pour l'instant, on se contentera d'une variable statique
     // pour conserver l'état
     private Map<Integer,Integer> map = new HashMap<>();
@@ -70,7 +70,7 @@ public class PariResource {
             
             // On renvoie 201 et l'instance de la ressource dans le Header
             // HTTP 'Location'
-            URI instanceURI = uriInfo.getAbsolutePathBuilder().path(pari.getIdUser()).build();
+            URI instanceURI = uriInfo.getAbsolutePathBuilder().path("").build();
             return Response.created(instanceURI).build();
         }
     }
@@ -157,7 +157,7 @@ public class PariResource {
             paris.put(map, new Pari(idUser,idEvenement,valeur));
 
             // On renvoie 201 et l'instance de la ressource dans le Header HTTP 'Location'
-            URI instanceURI = uriInfo.getAbsolutePathBuilder().path(login).build();
+            URI instanceURI = uriInfo.getAbsolutePathBuilder().path("").build();
             return Response.created(instanceURI).build();
         }
     }
