@@ -5,10 +5,7 @@
 package fr.univ_lille.iut;
 import java.sql.Date;
 import javax.xml.bind.annotation.XmlRootElement;
-/**
- *
- * @author youdelice
- */
+
 @XmlRootElement
 public class Evenement {
 
@@ -23,9 +20,9 @@ public class Evenement {
      private int nbParieursMin;
      private int miseMin;
      private Date datef;
-     private boolean priver;
+     private boolean prive;
 
-    public Evenement(int idUser, String titre, String description, int nbParieurs, int nbParieursMin, int miseMin, int cote, Date datef, boolean priver) {
+    public Evenement(int idUser, String titre, String description, int nbParieurs, int nbParieursMin, int miseMin, int cote, Date datef, boolean prive) {
         this();
         this.idUser = idUser;
         this.titre = titre;
@@ -35,7 +32,7 @@ public class Evenement {
         this.miseMin = miseMin;
         this.cote = cote;
         this.datef = datef;
-        this.priver = priver;
+        this.prive = prive;
     }
     
     public boolean getPriver(){
@@ -46,86 +43,36 @@ public class Evenement {
         this.id = ++nbEvenements;
     }
 
-    public Date getDatef() {
-        return datef;
-    }
-
-    public int getCote() {
-        return cote;
-    }
+    public static int getNbEvenements() { return nbEvenements; }
     
-    public int getId() {
-        return id;
-    }
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    public int getIdUser() { return idUser; }
+    public void setIdUser(int idUser) { this.idUser = idUser; }
 
-    public int getIdUser() {
-        return idUser;
-    }
+    public String getTitre() { return titre; }
+    public void setTitre(String titre) { this.titre = titre; }
 
-    public static int getNbEvenements() {
-        return nbEvenements;
-    }
-
-    public void setPriver(boolean priver) {
-        this.priver = priver;
-    }
+    public int getCote() { return cote; }
+    public void setCote(int cote) { this.cote = cote; }
     
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
 
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
-    }
+    public int getNbParieurs() { return nbParieurs; }
+    public void setNbParieurs(int nbParieurs) { this.nbParieurs = nbParieurs; }
 
-    public String getDescription() {
-        return description;
-    }
+    public int getNbParieursMin() { return nbParieursMin; }
+    public void setNbParieursMin(int nbParieursMin) { this.nbParieursMin = nbParieursMin; }
 
-    public int getMiseMin() {
-        return miseMin;
-    }
+    public int getMiseMin() { return miseMin; }
+    public void setMiseMin(int miseMin) { this.miseMin = miseMin; }
 
-    public int getNbParieurs() {
-        return nbParieurs;
-    }
-
-    public int getNbParieursMin() {
-        return nbParieursMin;
-    }
-
-    public String getTitre() {
-        return titre;
-    }
+    public Date getDatef() { return datef; }
+    public void setDatef(Date datef) { this.datef = datef; }
+	
+	public boolean getPrive() { return prive; }
+    public void setPrive(boolean prive) { this.prive = prive; }
     
-    public void setCote(int cote) {
-        this.cote = cote;
-    }
-
-    public void setDatef(Date datef) {
-        this.datef = datef;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setMiseMin(int miseMin) {
-        this.miseMin = miseMin;
-    }
-
-    public void setNbParieurs(int nbParieurs) {
-        this.nbParieurs = nbParieurs;
-    }
-
-    public void setNbParieursMin(int nbParieursMin) {
-        this.nbParieursMin = nbParieursMin;
-    }
-
-    public void setTitre(String titre) {
-        this.titre = titre;
-    }
-     
-     
 }

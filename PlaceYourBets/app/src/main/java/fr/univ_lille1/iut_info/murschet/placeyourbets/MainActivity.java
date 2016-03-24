@@ -57,20 +57,9 @@ public class MainActivity extends AppCompatActivity {
         TextView Login = (TextView) findViewById(R.id.LoginAccueil) ;
         TextView Mdp = (TextView) findViewById(R.id.MdpAccueil) ;
         map.put(Login.toString(),Mdp.toString());
-
-        Request req = new PostRequest(url,map);
         TextView tv = (TextView) findViewById(R.id.Presentation) ;
-        JSONElement response = req.getResponse();
-        if (response == null){
-            try {
-                Log.d("test",response.getJSONObject().getJSONObject("headers").getString("Test"));
+        setContentView(R.layout.menu);
 
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }else {
-            setContentView(R.layout.menu);
-        }
     }
 
     public void doInscription(View view){
