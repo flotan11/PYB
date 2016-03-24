@@ -27,11 +27,12 @@ import java.util.HashMap;
 /**
  * Ressource User (accessible avec le chemin "/users")
  */
-@Path("evenement")
-public class EvenementResource {
+@Path("paris")
+public class PariResource {
     // Pour l'instant, on se contentera d'une variable statique
     // pour conserver l'état
-    private static Map<String, Evenement> evenements = new HashMap<>();
+    private Map<Integer,Integer> map = new HashMap<>();
+    private static Map<Map<Integer,Integer> , Pari> paris = new HashMap<>();
 
     // L'annotation @Context permet de récupérer des informations sur
     // le contexte d'exécution de la ressource.
@@ -39,11 +40,12 @@ public class EvenementResource {
     // ce qui nous permettra de manipuler les URI de manière générique.
     @Context
     public UriInfo uriInfo;
+   
 
     /**
      * Une ressource doit avoir un contructeur (éventuellement sans arguments)
      */
-    public EvenementResource() {
+    public PariResource() {
     }
 
     /**
@@ -57,17 +59,18 @@ public class EvenementResource {
      * L'en-tête contient un champs Location avec l'URI de la nouvelle ressource
      */
     @POST
-    public Response createEvenement(Evenement evenement) {
+    public Response createPari(Pari pari) {
         // Si l'utilisateur existe déjà, renvoyer 409
-        if ( evenements.containsKey(evenement.getTitre()) ) {
+        
+        if ( map.containsKey(pari.getIdUser()) && map.containsKey(pari.getIdEvenement()) ) {
             return Response.status(Response.Status.CONFLICT).build();
         }
         else {
-            evenements.put(evenement.getTitre(), evenement);
-
+            
+            
             // On renvoie 201 et l'instance de la ressource dans le Header
             // HTTP 'Location'
-            URI instanceURI = uriInfo.getAbsolutePathBuilder().path(evenement.getTitre()).build();
+            URI instanceURI = uriInfo.getAbsolutePathBuilder().path(pari.getIdUser()).build();
             return Response.created(instanceURI).build();
         }
     }
@@ -77,8 +80,8 @@ public class EvenementResource {
      * @return Une liste d'utilisateurs
      */
     @GET
-    public List<Evenement> getEvenement() {
-        return new ArrayList<Evenement>(evenements.values());
+    public List<Pari> getPari() {
+        return new ArrayList<Pari>(paris.values());
     }
 
     /** 
@@ -87,27 +90,28 @@ public class EvenementResource {
      * @return Une instance de User
      */
     @GET
-    @Path("{titre}")
+    @Path("{pari}")
     @Produces("application/json,application/xml")
-    public Evenement getEvenement(@PathParam("titre") String titre) {
+    public Pari getPari(@PathParam("idUser") int idUser,@PathParam("idEvenement") int idEvenement) {
         // Si l'utilisateur est inconnu, on renvoie 404
-        if (  ! evenements.containsKey(titre) ) {
+        if (  ! map.containsKey(idUser) && ! map.containsValue(idUser) ) {
             throw new NotFoundException();
         }
         else {
-            return evenements.get(titre);
+            return paris.get(map);
         }
     }
 
     @DELETE
-    @Path("{titre}")
-    public Response deleteEvenement(@PathParam("titre") String titre) {
+    @Path("{pari}")
+    public Response deletePari(@PathParam("login") int idUser,@PathParam("idEvenement") int idEvenement) {
         // Si l'utilisateur est inconnu, on renvoie 404
-        if (  ! evenements.containsKey(titre) ) {
+        if (  ! map.containsKey(idUser) && ! map.containsValue(idUser)  ) {
             throw new NotFoundException();
         }
         else {
-            evenements.remove(titre);
+           
+            
             return Response.status(Response.Status.NO_CONTENT).build();
         }
     }
@@ -120,14 +124,14 @@ public class EvenementResource {
      * @return Un code de retour HTTP dans un objet Response
      */
     @PUT
-    @Path("{titre}")
-        public Response modifyEvenement(@PathParam("titre") String titre, Evenement evenement) {
+    @Path("{login}")
+        public Response modifyUser(@PathParam("login") int idUser,@PathParam("idEvenement") int idEvenement, Pari pari) {
         // Si l'utilisateur est inconnu, on renvoie 404
-        if (  ! evenements.containsKey(evenement.getTitre()) ) {
+        if (  !map.containsKey(idUser) && ! map.containsValue(idUser)  ) {
             throw new NotFoundException();
         }
         else {
-            evenements.put(evenement.getTitre(), evenement);
+            
             return Response.status(Response.Status.NO_CONTENT).build();
         }
     }
@@ -144,16 +148,17 @@ public class EvenementResource {
      */
     @POST
     @Consumes("application/x-www-form-urlencoded")
-        public Response createEvenement(@FormParam("titre") String titre, @FormParam("idUser") int idUser, @FormParam("description") String description, @FormParam("nbParieur") int nbParieur, @FormParam("miseMin") int miseMin, @FormParam("nbParieurMin") int nbParieurMin, @FormParam("cote") int cote, @FormParam("datef") Date datef) {
+    int idUser, int idEvenement, double valeur
+        public Response createUser(@FormParam("idUser") int idUser, @FormParam("idEvenement") int idEvenement, @FormParam("valeur") double valeur) {
         // Si l'utilisateur existe déjà, renvoyer 409
-        if ( evenements.containsKey(titre) ) {
+        if ( paris.containsKey(login) ) {
             return Response.status(Response.Status.CONFLICT).build();
         }
         else {
-            evenements.put(titre, new Evenement(idUser,titre, description, nbParieur, nbParieurMin, miseMin, cote, datef));
+            paris.put(login, new Pari(idUser,idEvenement,valeur));
 
             // On renvoie 201 et l'instance de la ressource dans le Header HTTP 'Location'
-            URI instanceURI = uriInfo.getAbsolutePathBuilder().path(titre).build();
+            URI instanceURI = uriInfo.getAbsolutePathBuilder().path(login).build();
             return Response.created(instanceURI).build();
         }
     }

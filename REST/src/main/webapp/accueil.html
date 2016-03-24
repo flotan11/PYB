@@ -66,8 +66,26 @@
         <input type="text" id="inputIdentifiant" class="form-control" placeholder="Identifiant" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Connexion</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" onClick="envoyerConnexion()">Connexion</button>
       </form>
+      
+      <script type="text/javascript">
+      	function envoyer_connection(){
+      		$.ajax({
+					url:"data/users",
+					type:"GET",
+					dataType :"json",
+				
+					success: function(json) {
+						$.each(json, function(login, mdp)){
+							if(login === $("#inputIdentifiant") && mdp === $("#inputPassword")){
+								$(".status").text("Bonjour "+ users.prenom);
+							}
+						}
+					}
+				});
+      	}
+      </script>
 
     </div>
 		<!-- NB ====> Ce code nécessite la présence du serveur pour être traité <=====
