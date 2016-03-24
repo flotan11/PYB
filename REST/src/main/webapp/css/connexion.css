@@ -9,6 +9,10 @@ body {
   padding: 15px;
   margin: 0 auto;
 }
+
+#titleHTML {
+  max-width: 600px;
+}
 .form-signin .form-signin-heading,
 .form-signin .checkbox {
   margin-bottom: 10px;
