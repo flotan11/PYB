@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 package fr.univ_lille.iut;
+import java.sql.Date;
 import javax.xml.bind.annotation.XmlRootElement;
 /**
  *
@@ -16,12 +17,14 @@ public class Evenement {
      
      private int idUser;
      private String titre;
+     private int cote;
      private String description;
      private int nbParieurs;
      private int nbParieursMin;
      private int miseMin;
+     private Date datef;
 
-    public Evenement(int idUser, String titre, String description, int nbParieurs, int nbParieursMin, int miseMin) {
+    public Evenement(int idUser, String titre, String description, int nbParieurs, int nbParieursMin, int miseMin, int cote, Date datef) {
         this();
         this.idUser = idUser;
         this.titre = titre;
@@ -29,10 +32,20 @@ public class Evenement {
         this.nbParieurs = nbParieurs;
         this.nbParieursMin = nbParieursMin;
         this.miseMin = miseMin;
+        this.cote = cote;
+        this.datef = datef;
     }
 
     public Evenement() {
         this.id = ++nbEvenements;
+    }
+
+    public Date getDatef() {
+        return datef;
+    }
+
+    public int getCote() {
+        return cote;
     }
     
     public int getId() {
@@ -63,12 +76,20 @@ public class Evenement {
         return nbParieurs;
     }
 
-    public int getNbParieusrMin() {
+    public int getNbParieursMin() {
         return nbParieursMin;
     }
 
     public String getTitre() {
         return titre;
+    }
+    
+    public void setCote(int cote) {
+        this.cote = cote;
+    }
+
+    public void setDatef(Date datef) {
+        this.datef = datef;
     }
 
     public void setDescription(String description) {
