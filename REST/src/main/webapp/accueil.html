@@ -7,6 +7,29 @@
 		<link rel="stylesheet" type="text/css" href="css/styles.css"/>
 		<link rel="stylesheet" type="text/css" href="css/connexion.css"/>
 		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<script type="text/javascript">
+      	function envoyer_connexion(){
+      		var inputLog = $("#inputIdentifiant").val();
+      		console.log("input log :" + inputLog);
+      		var inputMdp = $("#inputPassword").val();
+      		console.log("input mdp :" + inputMdp);
+      		$.ajax({
+					url:"data/users",
+					type:"GET",
+					dataType :"json",
+				
+					success: function(json) {
+						for (var i = 0; i < json.length; i++) {
+							if (json[i].login == inputLog && json[i].mdp == inputMdp) {
+								console.log("succes de json");
+								document.getElementById("status").innerHTML = "Connecté - "+ inputLog;
+							}
+						}
+					}
+				});
+      	}
+
+      </script>
 	</head>
 	<header>
 		<!--<h1>Bienvenue sur Place Your Bets</h1> -->
@@ -44,10 +67,11 @@
 		                  <ul class="dropdown-menu">
 		                    <li><a href="profil.html">Profil</a></li>
 		                    <li><a href="informations.html">Statistiques</a></li>
+		                    <li><a href="solde.html">Recharger solde</a></li>
 		                    <li><a href="#">Deconnexion</a></li>
 		                  </ul>
 		                </li>
-		                <li class="status">
+		                <li id="status">
 		                	<a>Vous n'êtes pas connecté</a>
 		                </li>
 		              </ul>
@@ -66,26 +90,10 @@
         <input type="text" id="inputIdentifiant" class="form-control" placeholder="Identifiant" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
-        <button class="btn btn-lg btn-primary btn-block" type="submit" onClick="envoyer_connexion()">Connexion</button>
+        <button class="btn btn-lg btn-primary btn-block" onClick="envoyer_connexion()">Connexion</button>
       </form>
       
-      <script type="text/javascript">
-      	function envoyer_connection(){
-      		$.ajax({
-					url:"data/users",
-					type:"GET",
-					dataType :"json",
-				
-					success: function(json) {
-						$.each(json, function(login, mdp)){
-							if(login === $("#inputIdentifiant") && mdp === $("#inputPassword")){
-								$(".status").text("Bonjour "+ users.prenom);
-							}
-						}
-					}
-				});
-      	}
-      </script>
+
 
     </div>
 		<!-- NB ====> Ce code nécessite la présence du serveur pour être traité <=====
