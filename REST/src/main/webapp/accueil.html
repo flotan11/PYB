@@ -10,20 +10,16 @@
 		<script type="text/javascript">
       	function envoyer_connexion(){
       		var inputLog = $("#inputIdentifiant").val();
-      		console.log("input log :" + inputLog);
       		var inputMdp = $("#inputPassword").val();
-      		console.log("input mdp :" + inputMdp);
       		$.ajax({
-					url:"data/users",
+					url:"data/users/" + inputLog,
 					type:"GET",
-					dataType :"json",
-				
+					dataType :"json",				
 					success: function(json) {
-						for (var i = 0; i < json.length; i++) {
-							if (json[i].login == inputLog && json[i].mdp == inputMdp) {
-								console.log("succes de json");
-								document.getElementById("status").innerHTML = "Connecté - "+ inputLog;
-							}
+						if (json.mdp == inputMdp) {
+							alert("User ok");
+						} else {
+							alert("Login ou mot de passe faux");
 						}
 					}
 				});
