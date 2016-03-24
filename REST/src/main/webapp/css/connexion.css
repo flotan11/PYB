@@ -43,7 +43,6 @@ body {
   border-top-right-radius: 0;
 }
 
-a .status{
-  position: relative;
-  margin-right: 10px;
+.status{
+  margin-left: 455px;
 }
