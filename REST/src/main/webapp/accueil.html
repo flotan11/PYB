@@ -90,43 +90,19 @@
         <input type="text" id="inputIdentifiant" class="form-control" placeholder="Identifiant" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
-        <button class="btn btn-lg btn-primary btn-block" onClick="envoyer_connexion()">Connexion</button>
+        <button id="submit-button" class="btn btn-lg btn-primary btn-block" onClick="envoyer_connexion()">Connexion</button>
       </form>
       
 
 
     </div>
-		<!-- NB ====> Ce code nécessite la présence du serveur pour être traité <=====
-		<script type="text/javascript">
-
-			var id = document.getElementById("id");
-			var mdp = document.getElementById("mdp");
-			$('submit').click(function(event){
-				$.ajax({
-					data:{
-						id = id;
-						mdp = mdp;
-					},
-					type: "GET",
-					datatype: "json",
-
-					success: function(json){
-						console.log("Identificatin réussie");
-					},
-					error: function(xhr, status, errorThrown){
-						console.log("Error : "+errorThrown):
-						console.log("Status : "+status);
-						console.log(xhr);
-					},
-					complete: function(xhr, status){
-						console.log("The request is completed");
-					}
-				});
-			});
-		</script>
-		-->
-		 <!-- Bootstrap core JavaScript
-    ================================================== -->
+    <script>
+$(document).ready(function() {
+  $("#submit-button").on('click',function(event) {
+    event.preventDefault();
+  });
+});
+	</script>
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>

@@ -73,8 +73,4 @@ public class User {
     public boolean equals(Object u) {
         return login.equals(((User) u).login) || mail.equals(((User) u).mail);
     }
-
-    public String toString() {
-        return login + " " + mail;
-    }
 }

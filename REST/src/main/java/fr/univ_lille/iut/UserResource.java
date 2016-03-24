@@ -36,16 +36,13 @@ public class UserResource {
     /**
      * Méthode de création d'un utilisateur qui prend en charge les requêtes
      * HTTP POST
-     * La méthode renvoie l'URI de la nouvelle instance en cas de succès
      *
      * @param  user Instance d'utilisateur à créer
-     * @return Response le corps de la réponse est vide, le code de retour HTTP
-     * est fixé à 201 si la création est faite.
-     * L'en-tête contient un champs Location avec l'URI de la nouvelle ressource
+     * @return User le nouvel utilisateur créé
      */
     @POST
     public User createUser(User user) {
-        // Si l'utilisateur existe déjà, renvoyer 409
+        // Si l'utilisateur existe déjà, renvoyer null
         if ( users.containsKey(user.getLogin()) ) {
             return null;
         }

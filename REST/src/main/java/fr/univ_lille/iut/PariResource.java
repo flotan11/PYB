@@ -32,51 +32,29 @@ public class PariResource {
     // Pour l'instant, on se contentera d'une variable statique
     // pour conserver l'état
     private Map<Integer, Pari> paris = new HashMap<>();
-
-    // L'annotation @Context permet de récupérer des informations sur
-    // le contexte d'exécution de la ressource.
-    // Ici, on récupère les informations concernant l'URI de la requête HTTP,
-    // ce qui nous permettra de manipuler les URI de manière générique.
-    @Context
-    public UriInfo uriInfo;
-   
-
+    
     /**
-     * Une ressource doit avoir un contructeur (éventuellement sans arguments)
-     */
-    public PariResource() {
-    }
-
-    /**
-     * Méthode de création d'un utilisateur qui prend en charge les requêtes
+     * Méthode de création d'un pari qui prend en charge les requêtes
      * HTTP POST
-     * La méthode renvoie l'URI de la nouvelle instance en cas de succès
      *
      * @param  user Instance d'utilisateur à créer
-     * @return Response le corps de la réponse est vide, le code de retour HTTP
-     * est fixé à 201 si la création est faite.
-     * L'en-tête contient un champs Location avec l'URI de la nouvelle ressource
+     * @return Pari le nouveau pari
      */
     @POST
-    public Response createPari(Pari pari) {
+    public Pari createPari(Pari pari) {
         // Si l'utilisateur existe déjà, renvoyer 409
-        int idPari = pari.getIdUser()*100000 + pari.getIdEvenement();
-        if ( paris.containsKey(idPari) ) {
-            return Response.status(Response.Status.CONFLICT).build();
+        if ( paris.containsKey(pari.getIdPari()) ) {
+            return null;
         }
         else {
-            
-            
-            // On renvoie 201 et l'instance de la ressource dans le Header
-            // HTTP 'Location'
-            URI instanceURI = uriInfo.getAbsolutePathBuilder().path(String.valueOf(idPari)).build();
-            return Response.created(instanceURI).build();
+            paris.put(pari.getIdPari(), pari);
+            return pari;
         }
     }
 
     /**
      * Methode prenant en charge les requêtes HTTP GET.
-     * @return Une liste d'utilisateurs
+     * @return Une liste de paris
      */
     @GET
     public List<Pari> getParis() {
@@ -84,17 +62,16 @@ public class PariResource {
     }
 
     /** 
-     * Méthode prenant en charge les requêtes HTTP GET sur /users/{login}
+     * Méthode prenant en charge les requêtes HTTP GET sur /bets
      *
      * @return Une instance de User
      */
     @GET
     @Path("{idPari}")
     @Produces("application/json, application/xml")
-    public Pari getPari(@PathParam("idUser") int idUser,@PathParam("idEvenement") int idEvenement) {
-        // Si l'utilisateur est inconnu, on renvoie 404
-        int idPari = idUser*100000 + idEvenement;
-        if (  ! paris.containsKey(idPari) ) {
+    public Pari getPari(@PathParam("idPari") int idPari) {
+        // Si le pari est inconnu, on renvoie 404
+        if ( ! paris.containsKey(idPari) ) {
             throw new NotFoundException();
         }
         else {
@@ -104,9 +81,8 @@ public class PariResource {
 
     @DELETE
     @Path("{idPari}")
-    public Response deletePari(@PathParam("idUser") int idUser, @PathParam("idEvenement") int idEvenement) {
+    public Response deletePari(@PathParam("idPari") int idPari) {
         // Si l'utilisateur est inconnu, on renvoie 404
-        int idPari = idUser*100000 + idEvenement;
         if ( ! paris.containsKey(idPari) ) {
             throw new NotFoundException();
         }
@@ -119,15 +95,14 @@ public class PariResource {
     /** 
      * Méthode prenant en charge les requêtes HTTP PUT sur /users/{login}
      *
-     * @param login le login de l'utilisateur à modifier
-     * @param user l'entité correspondant à la nouvelle instance
+     * @param idPari l'id du pari à modifier
+     * @param pari l'entité correspondant à la nouvelle instance
      * @return Un code de retour HTTP dans un objet Response
      */
     @PUT
     @Path("{idPari}")
-        public Response modifyUser(@PathParam("idUser") int idUser, @PathParam("idEvenement") int idEvenement, Pari pari) {
+        public Response modifyUser(@PathParam("idPari") int idPari, Pari pari) {
         // Si l'utilisateur est inconnu, on renvoie 404
-        int idPari = idUser*100000 + idEvenement;
         if ( ! paris.containsKey(idPari) ) {
             throw new NotFoundException();
         }
@@ -149,18 +124,16 @@ public class PariResource {
      */
     @POST
     @Consumes("application/x-www-form-urlencoded")
-        public Response createUser(@FormParam("idUser") int idUser, @FormParam("idEvenement") int idEvenement, @FormParam("valeur") double valeur) {
-        // Si l'utilisateur existe déjà, renvoyer 409
+        public Pari createUser(@FormParam("idUser") int idUser, @FormParam("idEvenement") int idEvenement, @FormParam("valeur") double valeur) {
+        // Si le pari existe déjà, renvoyer null
         int idPari = idUser*100000 + idEvenement;
         if ( paris.containsKey(idPari) ) {
-            return Response.status(Response.Status.CONFLICT).build();
+            return null;
         }
         else {
-            paris.put(idPari, new Pari(idUser, idEvenement, valeur));
-
-            // On renvoie 201 et l'instance de la ressource dans le Header HTTP 'Location'
-            URI instanceURI = uriInfo.getAbsolutePathBuilder().path(String.valueOf(idPari)).build();
-            return Response.created(instanceURI).build();
+        	Pari nouveau = new Pari(idUser, idEvenement, valeur);
+            paris.put(idPari, nouveau);
+            return nouveau;
         }
     }
 }

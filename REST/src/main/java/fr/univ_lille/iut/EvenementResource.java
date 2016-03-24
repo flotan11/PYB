@@ -34,48 +34,28 @@ public class EvenementResource {
     // pour conserver l'état
     private static Map<String, Evenement> evenements = new HashMap<>();
 
-    // L'annotation @Context permet de récupérer des informations sur
-    // le contexte d'exécution de la ressource.
-    // Ici, on récupère les informations concernant l'URI de la requête HTTP,
-    // ce qui nous permettra de manipuler les URI de manière générique.
-    @Context
-    public UriInfo uriInfo;
-
     /**
-     * Une ressource doit avoir un contructeur (éventuellement sans arguments)
-     */
-    public EvenementResource() {
-    }
-
-    /**
-     * Méthode de création d'un utilisateur qui prend en charge les requêtes
+     * Méthode de création d'un événement qui prend en charge les requêtes
      * HTTP POST
-     * La méthode renvoie l'URI de la nouvelle instance en cas de succès
      *
      * @param  user Instance d'utilisateur à créer
-     * @return Response le corps de la réponse est vide, le code de retour HTTP
-     * est fixé à 201 si la création est faite.
-     * L'en-tête contient un champs Location avec l'URI de la nouvelle ressource
+     * @return Evenement le nouvel evenement
      */
     @POST
-    public Response createEvenement(Evenement evenement) {
-        // Si l'utilisateur existe déjà, renvoyer 409
+    public Evenement createEvenement(Evenement evenement) {
+        // Si l'evenement existe déjà, renvoyer null
         if ( evenements.containsKey(evenement.getTitre()) ) {
-            return Response.status(Response.Status.CONFLICT).build();
+            return null;
         }
         else {
             evenements.put(evenement.getTitre(), evenement);
-
-            // On renvoie 201 et l'instance de la ressource dans le Header
-            // HTTP 'Location'
-            URI instanceURI = uriInfo.getAbsolutePathBuilder().path(evenement.getTitre()).build();
-            return Response.created(instanceURI).build();
+            return evenement;
         }
     }
 
     /**
      * Methode prenant en charge les requêtes HTTP GET.
-     * @return Une liste d'utilisateurs
+     * @return Une liste d'evenements
      */
     @GET
     public List<Evenement> getEvenement() {
@@ -85,14 +65,14 @@ public class EvenementResource {
     /** 
      * Méthode prenant en charge les requêtes HTTP GET sur /users/{login}
      *
-     * @return Une instance de User
+     * @return Une instance de Evenement
      */
     @GET
     @Path("{titre}")
-    @Produces("application/json,application/xml")
+    @Produces("application/json, application/xml")
     public Evenement getEvenement(@PathParam("titre") String titre) {
-        // Si l'utilisateur est inconnu, on renvoie 404
-        if (  ! evenements.containsKey(titre) ) {
+        // Si l'evenement est inconnu, on renvoie 404
+        if ( ! evenements.containsKey(titre) ) {
             throw new NotFoundException();
         }
         else {
@@ -103,7 +83,7 @@ public class EvenementResource {
     @DELETE
     @Path("{titre}")
     public Response deleteEvenement(@PathParam("titre") String titre) {
-        // Si l'utilisateur est inconnu, on renvoie 404
+        // Si l'evenement est inconnu, on renvoie 404
         if (  ! evenements.containsKey(titre) ) {
             throw new NotFoundException();
         }
@@ -116,15 +96,14 @@ public class EvenementResource {
     /** 
      * Méthode prenant en charge les requêtes HTTP PUT sur /users/{login}
      *
-     * @param login le login de l'utilisateur à modifier
-     * @param user l'entité correspondant à la nouvelle instance
+     * @param titre le titre de l'evenement à modifier
      * @return Un code de retour HTTP dans un objet Response
      */
     @PUT
     @Path("{titre}")
         public Response modifyEvenement(@PathParam("titre") String titre, Evenement evenement) {
         // Si l'utilisateur est inconnu, on renvoie 404
-        if (  ! evenements.containsKey(evenement.getTitre()) ) {
+        if ( ! evenements.containsKey(evenement.getTitre()) ) {
             throw new NotFoundException();
         }
         else {
@@ -137,25 +116,28 @@ public class EvenementResource {
      * Méthode de création d'un utilisateur qui prend en charge les requêtes HTTP POST au format application/x-www-form-urlencoded
      * La méthode renvoie l'URI de la nouvelle instance en cas de succès
      *
-     * @param login login de l'utilisateur
-     * @param name nom de l'utilisateur
-     * @param mail le mail de l'utilisateur
-     * @return Response le corps de la réponse est vide, le code de retour HTTP est fixé à 201 si la création est faite
-     *         L'en-tête contient un champs Location avec l'URI de la nouvelle ressource
+     * @param titre titre de l'evenement
+     * @param idUser nom de l'utilisateur createur de l'evenement
+     * @param description la description de l'evenement
+     * @param nbParieurs le nombre de parieurs
+     * @param miseMin la mise minimale obligatoire pour pouvoir participer
+     * @param nbParieursMin le nombre minimum de parieurs
+     * @param cote la cote de l'evenement
+     * @param datef la date limite pour parier sur l'evenement
+     * @param prive la visibilite de l'evenement
+     * @return Evenement le nouvel evenement
      */
     @POST
     @Consumes("application/x-www-form-urlencoded")
-        public Response createEvenement(@FormParam("titre") String titre, @FormParam("idUser") int idUser, @FormParam("description") String description, @FormParam("nbParieur") int nbParieur, @FormParam("miseMin") int miseMin, @FormParam("nbParieurMin") int nbParieurMin, @FormParam("cote") int cote, @FormParam("datef") Date datef, @FormParam("priver") Boolean priver) {
+        public Evenement createEvenement(@FormParam("titre") String titre, @FormParam("idUser") int idUser, @FormParam("description") String description, @FormParam("nbParieurs") int nbParieurs, @FormParam("miseMin") int miseMin, @FormParam("nbParieursMin") int nbParieursMin, @FormParam("cote") int cote, @FormParam("datef") Date datef, @FormParam("prive") boolean prive) {
         // Si l'utilisateur existe déjà, renvoyer 409
         if ( evenements.containsKey(titre) ) {
-            return Response.status(Response.Status.CONFLICT).build();
+            return null;
         }
         else {
-            evenements.put(titre, new Evenement(idUser,titre, description, nbParieur, nbParieurMin, miseMin, cote, datef,priver));
-
-            // On renvoie 201 et l'instance de la ressource dans le Header HTTP 'Location'
-            URI instanceURI = uriInfo.getAbsolutePathBuilder().path(titre).build();
-            return Response.created(instanceURI).build();
+        	Evenement nouveau = new Evenement(idUser, titre, description, nbParieurs, nbParieursMin, miseMin, cote, datef, prive);
+            evenements.put(titre, nouveau);
+            return nouveau;
         }
     }
 }
