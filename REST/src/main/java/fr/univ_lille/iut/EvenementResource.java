@@ -26,9 +26,9 @@ import java.util.HashMap;
 import java.sql.Date;
 
 /**
- * Ressource User (accessible avec le chemin "/users")
+ * Ressource User (accessible avec le chemin "/events")
  */
-@Path("evenement")
+@Path("events")
 public class EvenementResource {
     // Pour l'instant, on se contentera d'une variable statique
     // pour conserver l'état

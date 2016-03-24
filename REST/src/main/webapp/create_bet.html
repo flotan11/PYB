@@ -41,6 +41,7 @@
 		                  <ul class="dropdown-menu">
 		                    <li><a href="profil.html">Profil</a></li>
 		                    <li><a href="informations.html">Statistiques</a></li>
+		                    <li><a href="solde.html">Recharger solde</a></li>
 		                    <li><a href="#">Deconnexion</a></li>
 		                  </ul>
 		                </li>
@@ -58,30 +59,41 @@
 		    	<div class="container">
 
 		        <<h2 class="form-signin-heading" id="titleHTML">Créer votre propre pari !</h2>
+		        
 		      <form class="form-signin">
-		        <label for="nomPari" class="sr-only">Nom du pari</label>
-		        <input type="text" id="nomPari" class="form-control" placeholder="Nom du pari" required autofocus>
-		        <label for="inputString" class="sr-only">Description</label>
-		        <input type="text" id="descriptionPari" class="form-control" placeholder="Description" required>
+		      	<table>
+		      	<div class="flottants">
+		      		<tr><td>
+			      	<div class="flottant" id="signin">
+			        <label for="nomPari" class="sr-only">Nom du pari</label>
+			        <input type="text" id="nomPari" class="form-control" placeholder="Nom du pari" required autofocus>
 
-		        <label for="nbParieursMinimum" class="sr-only">Nombre de parieurs minimums</label>
-		        <input type="number" id="nbParieursMini" class ="form-control" placeholder="Nombre minimums de participants (au moins 2)" required>
+			        <label for="nbParieursMinimum" class="sr-only">Nombre de parieurs minimums</label>
+			        <input type="number" id="nbParieursMini" class ="form-control" placeholder="Nombre minimums de participants (au moins 2)" required>
 
-		        <label for="miseMini" class="sr-only">Mise minimum par participant</label>
-		        <input type="number" id="miseMini" class ="form-control" placeholder="Mise minimum par participant" required>
+			        <label for="miseMini" class="sr-only">Mise minimum par participant</label>
+			        <input type="number" id="miseMini" class ="form-control" placeholder="Mise minimum par participant" required>
 
-		        <label for="dateFin" class="sr-only">Date de fin du pari</label>
-		        <input type="date" id="dateFin" class="form-control" placeholder="Date de fin du pari" required>
-
-		        <div class="checkbox">
+			        <label for="dateFin" class="sr-only">Date de fin du pari</label>
+			        <input type="date" id="dateFin" class="form-control" placeholder="Date de fin du pari" required>
+			    	</div>
+			    </td>
+			    <td id ="tdDescription">
+			       <div class="flottant" id="creerPari">
+			      	<label for="inputString" class="sr-only">Description</label>
+			        <input type="text" id="descriptionPari" class="form-control" placeholder="Description" required>
+			    	</div>
+				</div>
+			</td>
+			</tr>
+			</table>
+		    <div class="checkbox">
 		          <label>
 		            <input type="checkbox" value="remember-me"> Pari privé
 		          </label>
-		        </div>
-
+		    </div>
 		        <button class="btn btn-lg btn-primary btn-block" type="submit">Demander validation !</button>
 		      </form>
-
     </div>
 		 <!-- Bootstrap core JavaScript
     ================================================== -->

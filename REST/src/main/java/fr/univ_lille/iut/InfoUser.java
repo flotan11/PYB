@@ -15,15 +15,15 @@ public class InfoUser {
     private double solde;
     private int parisPerdus;
     private int parisGagnes;
-    private int argentGagner;
-    private int argentPerdu;
+    private double argentGagne;
+    private double argentPerdu;
 
-    public InfoUser(int idUser, double solde, int parisPerdus, int parisGagnes, int argentGagner, int argentPerdu) {
+    public InfoUser(int idUser, double solde, int parisPerdus, int parisGagnes, double argentGagne, double argentPerdu) {
         this.idUser = idUser;
         this.solde = solde;
         this.parisPerdus = parisPerdus;
         this.parisGagnes = parisGagnes;
-        this.argentGagner = argentGagner;
+        this.argentGagne = argentGagne;
         this.argentPerdu = argentPerdu;
     }
 
@@ -43,16 +43,14 @@ public class InfoUser {
         return solde;
     }
 
-    public int getArgentGagner() {
-        return argentGagner;
+    public double getArgentGagne() {
+        return argentGagne;
     }
 
-    public int getArgentPerdu() {
+    public double getArgentPerdu() {
         return argentPerdu;
     }
-    
-    
-
+	
     public void setIdUser(int idUser) {
         this.idUser = idUser;
     }
@@ -65,11 +63,11 @@ public class InfoUser {
         this.parisPerdus = parisPerdus;
     }
 
-    public void setArgentGagner(int argentGagner) {
-        this.argentGagner = argentGagner;
+    public void setArgentGagne(double argentGagne) {
+        this.argentGagne = argentGagne;
     }
 
-    public void setArgentPerdu(int argentPerdu) {
+    public void setArgentPerdu(double argentPerdu) {
         this.argentPerdu = argentPerdu;
     }
 

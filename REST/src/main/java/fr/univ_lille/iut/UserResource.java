@@ -33,19 +33,6 @@ public class UserResource {
     // pour conserver l'état
     private static Map<String, User> users = new HashMap<>();
 
-    // L'annotation @Context permet de récupérer des informations sur
-    // le contexte d'exécution de la ressource.
-    // Ici, on récupère les informations concernant l'URI de la requête HTTP,
-    // ce qui nous permettra de manipuler les URI de manière générique.
-    @Context
-    public UriInfo uriInfo;
-
-    /**
-     * Une ressource doit avoir un contructeur (éventuellement sans arguments)
-     */
-    public UserResource() {
-    }
-
     /**
      * Méthode de création d'un utilisateur qui prend en charge les requêtes
      * HTTP POST
@@ -57,18 +44,14 @@ public class UserResource {
      * L'en-tête contient un champs Location avec l'URI de la nouvelle ressource
      */
     @POST
-    public Response createUser(User user) {
+    public User createUser(User user) {
         // Si l'utilisateur existe déjà, renvoyer 409
         if ( users.containsKey(user.getLogin()) ) {
-            return Response.status(Response.Status.CONFLICT).build();
+            return null;
         }
         else {
             users.put(user.getLogin(), user);
-
-            // On renvoie 201 et l'instance de la ressource dans le Header
-            // HTTP 'Location'
-            URI instanceURI = uriInfo.getAbsolutePathBuilder().path(user.getLogin()).build();
-            return Response.created(instanceURI).build();
+            return user;
         }
     }
 
@@ -88,10 +71,10 @@ public class UserResource {
      */
     @GET
     @Path("{login}")
-    @Produces("application/json,application/xml")
+    @Produces("application/json, application/xml")
     public User getUser(@PathParam("login") String login) {
         // Si l'utilisateur est inconnu, on renvoie 404
-        if (  ! users.containsKey(login) ) {
+        if ( ! users.containsKey(login) ) {
             throw new NotFoundException();
         }
         else {
@@ -144,17 +127,15 @@ public class UserResource {
      */
     @POST
     @Consumes("application/x-www-form-urlencoded")
-        public Response createUser(@FormParam("nom") String nom, @FormParam("prenom") String prenom, @FormParam("login") String login, @FormParam("mdp") String mdp, @FormParam("adresse") String adresse, @FormParam("codePostal") int codePostal, @FormParam("ville") String ville, @FormParam("mail") String mail, @FormParam("age") int age, @FormParam("mobile") String mobile) {
-        // Si l'utilisateur existe déjà, renvoyer 409
+        public User createUser(@FormParam("nom") String nom, @FormParam("prenom") String prenom, @FormParam("login") String login, @FormParam("mdp") String mdp, @FormParam("adresse") String adresse, @FormParam("codePostal") int codePostal, @FormParam("ville") String ville, @FormParam("mail") String mail, @FormParam("age") int age, @FormParam("mobile") String mobile) {
+        // Si l'utilisateur existe déjà, renvoyer NULL
         if ( users.containsKey(login) ) {
-            return Response.status(Response.Status.CONFLICT).build();
+            return null;
         }
         else {
-            users.put(login, new User(nom, prenom, login, mdp, adresse, codePostal, ville, mail, age, mobile));
-
-            // On renvoie 201 et l'instance de la ressource dans le Header HTTP 'Location'
-            URI instanceURI = uriInfo.getAbsolutePathBuilder().path(login).build();
-            return Response.created(instanceURI).build();
+        	User nouveau = new User(nom, prenom, login, mdp, adresse, codePostal, ville, mail, age, mobile);
+            users.put(login, nouveau);
+            return nouveau;
         }
     }
 }

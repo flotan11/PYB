@@ -25,7 +25,7 @@ import java.util.Map;
 import java.util.HashMap;
 
 /**
- * Ressource User (accessible avec le chemin "/users")
+ * Ressource User (accessible avec le chemin "/users/{login}/info")
  */
 @Path("infoUser")
 public class InfoUserResource {
@@ -101,7 +101,7 @@ public class InfoUserResource {
 
     @DELETE
     @Path("{idUser}")
-    public Response deleteInfoUser(@PathParam("IdUser") Integer idUser) {
+    public Response deleteInfoUser(@PathParam("idUser") Integer idUser) {
         // Si l'utilisateur est inconnu, on renvoie 404
         if (  ! infoUsers.containsKey(idUser) ) {
             throw new NotFoundException();
@@ -121,7 +121,7 @@ public class InfoUserResource {
      */
     @PUT
     @Path("{idUser}")
-        public Response modifyInfoUser(@PathParam("IdUser") int idUser, InfoUser infoUser) {
+        public Response modifyInfoUser(@PathParam("idUser") int idUser, InfoUser infoUser) {
         // Si l'utilisateur est inconnu, on renvoie 404
         if (  ! infoUsers.containsKey(infoUser.getIdUser()) ) {
             throw new NotFoundException();
@@ -144,13 +144,13 @@ public class InfoUserResource {
      */
     @POST
     @Consumes("application/x-www-form-urlencoded")
-        public Response createInfoUser(@FormParam("idUser") int idUser, @FormParam("solde") double solde, @FormParam("parisPerdus") int parisPerdus, @FormParam("parisGagnes") int parisGagnes, @FormParam("argentGagner") int argentGagner, @FormParam("argentPerdu") int argentPerdu) {
+        public Response createInfoUser(@FormParam("idUser") int idUser, @FormParam("solde") double solde, @FormParam("parisPerdus") int parisPerdus, @FormParam("parisGagnes") int parisGagnes, @FormParam("argentGagne") double argentGagne, @FormParam("argentPerdu") double argentPerdu) {
         // Si l'utilisateur existe déjà, renvoyer 409
         if ( infoUsers.containsKey(idUser) ) {
             return Response.status(Response.Status.CONFLICT).build();
         }
         else {
-            infoUsers.put(idUser, new InfoUser(idUser, solde, parisPerdus, parisGagnes, argentGagner, argentPerdu));
+            infoUsers.put(idUser, new InfoUser(idUser, solde, parisPerdus, parisGagnes, argentGagne, argentPerdu));
 
             // On renvoie 201 et l'instance de la ressource dans le Header HTTP 'Location'
             URI instanceURI = uriInfo.getAbsolutePathBuilder().path(String.valueOf(idUser)).build();
