@@ -40,7 +40,7 @@
 						mobile: $("#numTel").val()
 					},
 					success: function(json) {
-						alert("ça marche");
+						console.log("ça marche");
 					}
 				});
 			}
@@ -48,19 +48,18 @@
 	</head>
 		<body>
 		<div class="navbar-wrapper">
-		      <div class="container">
-
-		        <nav class="navbar navbar-inverse navbar-static-top">
-		          <div class="container">
-		            <div class="navbar-header">
-		              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-		                <span class="sr-only">Toggle navigation</span>
-		                <span class="icon-bar"></span>
-		                <span class="icon-bar"></span>
-		                <span class="icon-bar"></span>
-		              </button>
+		    <div class="container">
+		      	<nav class="navbar navbar-inverse navbar-static-top">
+		          	<div class="container">
+		            	<div class="navbar-header">
+			              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+			                <span class="sr-only">Toggle navigation</span>
+			                <span class="icon-bar"></span>
+			                <span class="icon-bar"></span>
+			                <span class="icon-bar"></span>
+			              </button>
 		              <a class="navbar-brand" href="accueil.html">Place Your Bets</a>
-		            </div>
+		            	</div>
 		            <div id="navbar" class="navbar-collapse collapse">
 		              <ul class="nav navbar-nav">
 		                <li><a href="accueil.html">Accueil</a></li>
@@ -88,13 +87,15 @@
 		        </nav>
 
 		     	 </div>
-		    	</div>
+		    </div>
 		    <div class="container">
 
       			<form class="form-signin">
        				<h2 class="form-signin-heading">Inscrivez vous</h2>
+       				
        				<label for="inputName" class="sr-only">Nom</label>
        				<input type="text" id="nom" class="form-control" placeholder="Nom" required>
+
        				<label for="inputName" class="sr-only">Prénom</label>
        				<input type="text" id="prenom" class="form-control" placeholder="Prénom"required>
 
@@ -115,6 +116,7 @@
 
         			<label for="inputEmail" class="sr-only">Adresse e-mail</label>
         			<input type="email" id="mail" class="form-control" placeholder="Adresse e-mail"required>
+
         			<label for="inputEmail" class="sr-only">Vérification e-mail</label>
         			<input type="email" id="mailVerif" class="form-control" placeholder="Confirmation du mail"required>
 
@@ -128,7 +130,7 @@
 			        <input type="tel" id="numTel" class="form-control" placeholder="Téléphone (optionnel - conseillé)">
 
 
-			        <button class="btn btn-lg btn-primary btn-block" onclick ="verifInscription()">Inscription</button>
+			        <button class="btn btn-lg btn-primary btn-block" onclick="verifInscription()">Inscription</button>
 			     </form>
 
     </div> <!-- /container -->
