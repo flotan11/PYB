@@ -5,46 +5,32 @@
 package fr.univ_lille.iut;
 import java.sql.Date;
 import javax.xml.bind.annotation.XmlRootElement;
-/**
- *
- * @author youdelice
- */
+
 @XmlRootElement
 public class Pari {
     
+    private int idPari;
     private int idUser;
-    private int idEvenement;
+    private int idEvent;
     private double valeur;
     
-
-    public Pari(int idUser, int idEvenement, double valeur) {
+    public Pari(int idUser, int idEvent, double valeur) {
+    	idPari = 100000*idUser + idEvent;
         this.idUser = idUser;
-        this.idEvenement = idEvenement;
+        this.idEvent = idEvent;
         this.valeur = valeur;
     }
+    
+    public int getIdPari() { return idPari; }
+    public void setIdPari(int idPari) { this.idPari = idPari; }
 
-    public int getIdEvenement() {
-        return idEvenement;
-    }
+    public int getIdUser() { return idUser; }
+    public void setIdUser(int idUser) { this.idUser = idUser; }
 
-    public int getIdUser() {
-        return idUser;
-    }
+    public int getIdEvent() { return idEvent; }
+    public void setIdEvent(int idEvent) { this.idEvent = idEvent; }
 
-    public double getValeur() {
-        return valeur;
-    }
-
-    public void setIdEvenement(int idEvenement) {
-        this.idEvenement = idEvenement;
-    }
-
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
-    }
-
-    public void setValeur(double valeur) {
-        this.valeur = valeur;
-    }
+    public double getValeur() { return valeur; }
+    public void setValeur(double valeur) { this.valeur = valeur; }
 
 }
