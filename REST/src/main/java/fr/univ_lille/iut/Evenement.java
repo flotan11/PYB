@@ -34,6 +34,10 @@ public class Evenement {
         this.datef = datef;
         this.prive = prive;
     }
+    
+    public boolean getPriver(){
+        return priver;
+    }
 
     public Evenement() {
         this.id = ++nbEvenements;
