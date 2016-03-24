@@ -144,13 +144,13 @@ public class InfoUserResource {
      */
     @POST
     @Consumes("application/x-www-form-urlencoded")
-        public Response createInfoUser(@FormParam("idUser") int idUser, @FormParam("solde") double solde, @FormParam("parisPerdus") int parisPerdus, @FormParam("parisGagnes") int parisGagnes) {
+        public Response createInfoUser(@FormParam("idUser") int idUser, @FormParam("solde") double solde, @FormParam("parisPerdus") int parisPerdus, @FormParam("parisGagnes") int parisGagnes, @FormParam("argentGagner") int argentGagner, @FormParam("argentPerdu") int argentPerdu) {
         // Si l'utilisateur existe déjà, renvoyer 409
         if ( infoUsers.containsKey(idUser) ) {
             return Response.status(Response.Status.CONFLICT).build();
         }
         else {
-            infoUsers.put(idUser, new InfoUser(idUser, solde, parisPerdus, parisGagnes));
+            infoUsers.put(idUser, new InfoUser(idUser, solde, parisPerdus, parisGagnes, argentGagner, argentPerdu));
 
             // On renvoie 201 et l'instance de la ressource dans le Header HTTP 'Location'
             URI instanceURI = uriInfo.getAbsolutePathBuilder().path(String.valueOf(idUser)).build();
