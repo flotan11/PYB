@@ -148,14 +148,13 @@ public class PariResource {
      */
     @POST
     @Consumes("application/x-www-form-urlencoded")
-    int idUser, int idEvenement, double valeur
         public Response createUser(@FormParam("idUser") int idUser, @FormParam("idEvenement") int idEvenement, @FormParam("valeur") double valeur) {
         // Si l'utilisateur existe déjà, renvoyer 409
-        if ( paris.containsKey(login) ) {
+        if ( paris.containsKey(idUser) ) {
             return Response.status(Response.Status.CONFLICT).build();
         }
         else {
-            paris.put(login, new Pari(idUser,idEvenement,valeur));
+            paris.put(map, new Pari(idUser,idEvenement,valeur));
 
             // On renvoie 201 et l'instance de la ressource dans le Header HTTP 'Location'
             URI instanceURI = uriInfo.getAbsolutePathBuilder().path(login).build();
