@@ -22,4 +22,82 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@+id/Pari"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="32dp"
+        android:weightSum="1"
+        android:id="@+id/linearLayout3">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="284dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.03">
+
+            <EditText
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/editText"
+                android:hint="@string/NomPari" />
+
+            <EditText
+                android:layout_width="377dp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/editText2"
+                android:hint="@string/NombreMinParticipant" />
+
+            <EditText
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/editText15"
+                android:hint="@string/MiseMinPari" />
+
+            <EditText
+                android:layout_width="359dp"
+                android:layout_height="wrap_content"
+                android:inputType="date"
+                android:ems="10"
+                android:id="@+id/editText16"
+                android:hint="@string/date" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/PariPrivé"
+        android:id="@+id/checkBox"
+        android:layout_above="@+id/button10"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ValidationPari"
+        android:id="@+id/button10"
+        android:layout_above="@+id/RetourMenu"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="169dp"
+        android:id="@+id/editText17"
+        android:hint="@string/descriptionPari"
+        android:layout_above="@+id/checkBox"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

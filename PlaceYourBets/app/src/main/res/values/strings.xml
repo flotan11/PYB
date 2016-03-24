@@ -28,7 +28,7 @@
     <string name="Pays">Pays</string>
 
     <string name="PageProfil">Profil</string>
-    <string name="PagePari">Pari</string>
+    <string name="PagePari">CréationPari</string>
     <string name="PageListePari">Liste des paris</string>
 
     <string name="InfoPerso">Informations Personnelles</string>
@@ -40,5 +40,13 @@
 
     <string name="Suivant">Suivant</string>
     <string name="Retourarriere">Retour</string>
+
+    <string name="NomPari">Nom du pari</string>
+    <string name="NombreMinParticipant">Nombre minimum de participants</string>
+    <string name="MiseMinPari">Mise minimum par participants</string>
+    <string name="date">jj/mm/aaaa</string>
+    <string name="descriptionPari">Description</string>
+    <string name="PariPrivé">Pari privé</string>
+    <string name="ValidationPari">Valider</string>
 
 </resources>
