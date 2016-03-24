@@ -145,13 +145,13 @@ public class EvenementResource {
      */
     @POST
     @Consumes("application/x-www-form-urlencoded")
-        public Response createEvenement(@FormParam("titre") String titre, @FormParam("idUser") int idUser, @FormParam("description") String description, @FormParam("nbParieur") int nbParieur, @FormParam("miseMin") int miseMin, @FormParam("nbParieurMin") int nbParieurMin, @FormParam("cote") int cote, @FormParam("datef") Date datef) {
+        public Response createEvenement(@FormParam("titre") String titre, @FormParam("idUser") int idUser, @FormParam("description") String description, @FormParam("nbParieur") int nbParieur, @FormParam("miseMin") int miseMin, @FormParam("nbParieurMin") int nbParieurMin, @FormParam("cote") int cote, @FormParam("datef") Date datef, @FormParam("priver") Boolean priver) {
         // Si l'utilisateur existe déjà, renvoyer 409
         if ( evenements.containsKey(titre) ) {
             return Response.status(Response.Status.CONFLICT).build();
         }
         else {
-            evenements.put(titre, new Evenement(idUser,titre, description, nbParieur, nbParieurMin, miseMin, cote, datef));
+            evenements.put(titre, new Evenement(idUser,titre, description, nbParieur, nbParieurMin, miseMin, cote, datef,priver));
 
             // On renvoie 201 et l'instance de la ressource dans le Header HTTP 'Location'
             URI instanceURI = uriInfo.getAbsolutePathBuilder().path(titre).build();

@@ -1,13 +1,29 @@
 package fr.univ_lille1.iut_info.murschet.placeyourbets;
 
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
+
+import com.frenchcomputerguy.rest.GetRequest;
+import com.frenchcomputerguy.rest.PostRequest;
+import com.frenchcomputerguy.rest.Request;
+import com.frenchcomputerguy.utils.JSONElement;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
-
+    String url = "localhost:8080/data/users";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,19 +53,39 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void doConnect(View view){
-        setContentView(R.layout.menu);
+        Map<String,String> map = new HashMap<>();
+        TextView Login = (TextView) findViewById(R.id.LoginAccueil) ;
+        TextView Mdp = (TextView) findViewById(R.id.MdpAccueil) ;
+        map.put(Login.toString(),Mdp.toString());
+
+        Request req = new PostRequest(url,map);
+        TextView tv = (TextView) findViewById(R.id.Presentation) ;
+        JSONElement response = req.getResponse();
+        if (response == null){
+            try {
+                Log.d("test",response.getJSONObject().getJSONObject("headers").getString("Test"));
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }else {
+            setContentView(R.layout.menu);
+        }
     }
 
     public void doInscription(View view){
+
         setContentView(R.layout.inscription);
     }
 
     public void doInscrire(View view){
-        setContentView(R.layout.menu);
+
+
+        setContentView(R.layout.accueil);
     }
 
     public void doDisconnect(View view){
-        setContentView(R.layout.menu);
+        setContentView(R.layout.accueil);
     }
 
     public void goProfil(View view){
@@ -62,5 +98,15 @@ public class MainActivity extends AppCompatActivity {
 
     public void goPari(View view){
         setContentView(R.layout.pari);
+    }
+
+    public void goMenu(View view){
+        setContentView(R.layout.menu);
+    }
+
+    public void goSuivant(View view){ setContentView(R.layout.infosperso);}
+
+    public void doRetour(View view){
+        setContentView(R.layout.inscription);
     }
 }

@@ -25,14 +25,13 @@ import java.util.Map;
 import java.util.HashMap;
 
 /**
- * Ressource User (accessible avec le chemin "/users")
+ * Ressource User (accessible avec le chemin "/bets")
  */
-@Path("paris")
-class PariResource {
+@Path("bets")
+public class PariRessource {
     // Pour l'instant, on se contentera d'une variable statique
     // pour conserver l'état
-    private Map<Integer,Integer> map = new HashMap<>();
-    private static Map<Map<Integer,Integer> , Pari> paris = new HashMap<>();
+    private Map<Integer, Pari> paris = new HashMap<>();
 
     // L'annotation @Context permet de récupérer des informations sur
     // le contexte d'exécution de la ressource.
@@ -45,7 +44,7 @@ class PariResource {
     /**
      * Une ressource doit avoir un contructeur (éventuellement sans arguments)
      */
-    public PariResource() {
+    public PariRessource() {
     }
 
     /**
@@ -61,8 +60,8 @@ class PariResource {
     @POST
     public Response createPari(Pari pari) {
         // Si l'utilisateur existe déjà, renvoyer 409
-        
-        if ( map.containsKey(pari.getIdUser()) && map.containsKey(pari.getIdEvenement()) ) {
+        int idPari = pari.getIdUser()*100000 + pari.getIdEvenement();
+        if ( paris.containsKey(idPari) ) {
             return Response.status(Response.Status.CONFLICT).build();
         }
         else {
@@ -70,7 +69,7 @@ class PariResource {
             
             // On renvoie 201 et l'instance de la ressource dans le Header
             // HTTP 'Location'
-            URI instanceURI = uriInfo.getAbsolutePathBuilder().path("").build();
+            URI instanceURI = uriInfo.getAbsolutePathBuilder().path(String.valueOf(idPari)).build();
             return Response.created(instanceURI).build();
         }
     }
@@ -80,7 +79,7 @@ class PariResource {
      * @return Une liste d'utilisateurs
      */
     @GET
-    public List<Pari> getPari() {
+    public List<Pari> getParis() {
         return new ArrayList<Pari>(paris.values());
     }
 
@@ -90,28 +89,29 @@ class PariResource {
      * @return Une instance de User
      */
     @GET
-    @Path("{pari}")
-    @Produces("application/json,application/xml")
+    @Path("{idPari}")
+    @Produces("application/json, application/xml")
     public Pari getPari(@PathParam("idUser") int idUser,@PathParam("idEvenement") int idEvenement) {
         // Si l'utilisateur est inconnu, on renvoie 404
-        if (  ! map.containsKey(idUser) && ! map.containsValue(idUser) ) {
+        int idPari = idUser*100000 + idEvenement;
+        if (  ! paris.containsKey(idPari) ) {
             throw new NotFoundException();
         }
         else {
-            return paris.get(map);
+            return paris.get(idPari);
         }
     }
 
     @DELETE
-    @Path("{pari}")
-    public Response deletePari(@PathParam("login") int idUser,@PathParam("idEvenement") int idEvenement) {
+    @Path("{idPari}")
+    public Response deletePari(@PathParam("idUser") int idUser, @PathParam("idEvenement") int idEvenement) {
         // Si l'utilisateur est inconnu, on renvoie 404
-        if (  ! map.containsKey(idUser) && ! map.containsValue(idUser)  ) {
+        int idPari = idUser*100000 + idEvenement;
+        if ( ! paris.containsKey(idPari) ) {
             throw new NotFoundException();
         }
         else {
-           
-            
+            paris.remove(idPari);
             return Response.status(Response.Status.NO_CONTENT).build();
         }
     }
@@ -124,14 +124,15 @@ class PariResource {
      * @return Un code de retour HTTP dans un objet Response
      */
     @PUT
-    @Path("{login}")
-        public Response modifyUser(@PathParam("login") int idUser,@PathParam("idEvenement") int idEvenement, Pari pari) {
+    @Path("{idPari}")
+        public Response modifyUser(@PathParam("idUser") int idUser, @PathParam("idEvenement") int idEvenement, Pari pari) {
         // Si l'utilisateur est inconnu, on renvoie 404
-        if (  !map.containsKey(idUser) && ! map.containsValue(idUser)  ) {
+        int idPari = idUser*100000 + idEvenement;
+        if ( ! paris.containsKey(idPari) ) {
             throw new NotFoundException();
         }
         else {
-            
+            paris.put(idPari, pari);
             return Response.status(Response.Status.NO_CONTENT).build();
         }
     }
@@ -150,14 +151,15 @@ class PariResource {
     @Consumes("application/x-www-form-urlencoded")
         public Response createUser(@FormParam("idUser") int idUser, @FormParam("idEvenement") int idEvenement, @FormParam("valeur") double valeur) {
         // Si l'utilisateur existe déjà, renvoyer 409
-        if ( paris.containsKey(idUser) ) {
+        int idPari = idUser*100000 + idEvenement;
+        if ( paris.containsKey(idPari) ) {
             return Response.status(Response.Status.CONFLICT).build();
         }
         else {
-            paris.put(map, new Pari(idUser,idEvenement,valeur));
+            paris.put(idPari, new Pari(idUser, idEvenement, valeur));
 
             // On renvoie 201 et l'instance de la ressource dans le Header HTTP 'Location'
-            URI instanceURI = uriInfo.getAbsolutePathBuilder().path("").build();
+            URI instanceURI = uriInfo.getAbsolutePathBuilder().path(String.valueOf(idPari)).build();
             return Response.created(instanceURI).build();
         }
     }

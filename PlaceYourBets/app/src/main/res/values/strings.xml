@@ -5,6 +5,7 @@
     <string name="Bienvenue">Bienvenue sur Place Your Bets !</string>
     <string name="Login">Identifiant</string>
     <string name="Password">Mot de passe</string>
+    <string name="PassConfirm">Confirmation mot de passe</string>
     <string name="Connexion">Connexion</string>
     <string name="Presentation"> La première plateforme de paris personalisé en ligne</string>
 
@@ -16,9 +17,28 @@
     <string name="action_settings">Settings</string>
 
     <string name="Inscription">Inscription</string>
-    <string name="Inscrire">S\'inscrire</string>
+    <string name="Inscrire">Valider</string>
     <string name="PièceIdentité">Ajouter une pièce d\'identité</string>
+    <string name="Age">Age</string>
+    <string name="Adresse">Adresse</string>
+    <string name="Adressemail">Mail</string>
+    <string name="Mailconfirm">Confirmation du mail</string>
+    <string name="CodePostal">CP</string>
+    <string name="Ville">Ville</string>
+    <string name="Pays">Pays</string>
 
+    <string name="PageProfil">Profil</string>
+    <string name="PagePari">Pari</string>
+    <string name="PageListePari">Liste des paris</string>
 
+    <string name="InfoPerso">Informations Personnelles</string>
+
+    <string name="RetourMenu">Retour au menu</string>
+    <string name="Annuler">Annuler</string>
+    <string name="Prenom">Prénom</string>
+    <string name="Nom">Nom</string>
+
+    <string name="Suivant">Suivant</string>
+    <string name="Retourarriere">Retour</string>
 
 </resources>

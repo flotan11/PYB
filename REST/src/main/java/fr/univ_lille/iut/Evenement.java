@@ -23,8 +23,9 @@ public class Evenement {
      private int nbParieursMin;
      private int miseMin;
      private Date datef;
+     private boolean priver;
 
-    public Evenement(int idUser, String titre, String description, int nbParieurs, int nbParieursMin, int miseMin, int cote, Date datef) {
+    public Evenement(int idUser, String titre, String description, int nbParieurs, int nbParieursMin, int miseMin, int cote, Date datef, boolean priver) {
         this();
         this.idUser = idUser;
         this.titre = titre;
@@ -34,6 +35,7 @@ public class Evenement {
         this.miseMin = miseMin;
         this.cote = cote;
         this.datef = datef;
+        this.priver = priver;
     }
 
     public Evenement() {
@@ -59,6 +61,15 @@ public class Evenement {
     public int getIdUser() {
         return idUser;
     }
+
+    public static int getNbEvenements() {
+        return nbEvenements;
+    }
+
+    public void setPriver(boolean priver) {
+        this.priver = priver;
+    }
+    
 
     public void setIdUser(int idUser) {
         this.idUser = idUser;
