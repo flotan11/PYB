@@ -40,6 +40,20 @@ public class User implements Principal {
         this.lastName = lastName;
         this.login = login;
     }
+    
+    public User(int id, String firstName, String lastName, String login, String address, String postalCode, String location, String email, int age, String mobile, String password) {
+    	this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.login = login;
+        this.address = address;
+        this.postalCode = postalCode;
+        this.location = location;
+        this.email = email;
+        this.age = age;
+        this.mobile = mobile;
+        setPassword(password);
+    }
 
     public User() {
     }

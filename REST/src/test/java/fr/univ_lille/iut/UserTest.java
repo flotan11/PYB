@@ -1,4 +1,4 @@
-package fr.univ_lille.iut;
+package fr.univ_lille.iut.api;
 
 import javax.ws.rs.core.Application;
 import javax.ws.rs.client.Entity;
@@ -37,7 +37,7 @@ public class UserTest extends JerseyTest {
      */
     @Test
     public void test_A_GetEmptyListofUsers() {
-        List<User> list = target("/users").request().get(new GenericType<List<User>>(){});
+        List<User> list = target("/v1/user").request().get(new GenericType<List<User>>(){});
         assertTrue(list.isEmpty());
     }
 
@@ -46,19 +46,19 @@ public class UserTest extends JerseyTest {
      */
     @Test
     public void test_B_CreateUser() {
-        User user = new User("jsteed", "Steed", "jsteed@mi5.uk");
+        User user = new User(1, "John", "Deer", "jodee");
         // Conversion de l'instance de User au format JSON pour l'envoi
         Entity<User> userEntity = Entity.entity(user, MediaType.APPLICATION_JSON);
 
         // Envoi de la requête HTTP POST pour la création de l'utilisateur
-        Response response = target("/users").request().post(userEntity);
+        Response response = target("/v1/user").request().post(userEntity);
 
         // Vérification du code de retour HTTP
         assertEquals(201, response.getStatus());
 
         // Vérification que la création renvoie bien l'URI de la nouvelle instance dans le header HTTP 'Location'
         // ici : http://localhost:8080/users/jsteed
-        URI uriAttendue = target("/users").path(user.getLogin()).getUri();
+        URI uriAttendue = target("/v1/user").path(user.getLogin()).getUri();
         assertTrue(uriAttendue.equals(response.getLocation()));
     }
 
@@ -69,10 +69,10 @@ public class UserTest extends JerseyTest {
      */
     @Test
     public void test_C_CreateSameUser() {
-        User user = new User("jsteed", "Steed", "jsteed@mi5.uk");
+        User user = new User(1, "John", "Deer", "jodee");
         Entity<User> userEntity = Entity.entity(user, MediaType.APPLICATION_JSON);
 
-        int same = target("/users").request().post(userEntity).getStatus();
+        int same = target("/v1/users").request().post(userEntity).getStatus();
         assertEquals(409, same);
     }
 
@@ -81,12 +81,12 @@ public class UserTest extends JerseyTest {
      */
     @Test
     public void test_D_GetTwoUsers() {
-        User user = new User("epeel", "Peel", "epeel@mi5.uk");
+        User user = new User(2 ,"Marilyn", "Peel", "mapee");
         Entity<User> userEntity = Entity.entity(user, MediaType.APPLICATION_JSON);
 
-        target("/users").request().post(userEntity);
+        target("/v1/user").request().post(userEntity);
 
-        List<User> list = target("/users").request().get(new GenericType<List<User>>(){});
+        List<User> list = target("/v1/user").request().get(new GenericType<List<User>>(){});
         assertEquals(2, list.size());
     }
 
@@ -95,9 +95,9 @@ public class UserTest extends JerseyTest {
      */
     @Test
     public void test_E_GetOneUser() {
-	User user = new User("jsteed", "Steed", "jsteed@mi5.uk");
+        User user = new User(1, "John", "Deer", "jodee");
 
-	User result = target("/users").path("jsteed").request().get(User.class);
+	User result = target("/v1/user").path("jodee").request().get(User.class);
 	assertEquals(user, result);
     }
 
@@ -106,7 +106,7 @@ public class UserTest extends JerseyTest {
      */
     @Test
     public void test_F_GetInexistantUser() {
-	int notFound = target("/users").path("tking").request().get().getStatus();
+	int notFound = target("/v1/user").path("tking").request().get().getStatus();
 	assertEquals(404, notFound);
     }
 
@@ -116,10 +116,10 @@ public class UserTest extends JerseyTest {
      */
     @Test
     public void test_G_DeleteOneUser() {
-	int code = target("/users").path("jsteed").request().delete().getStatus();
+	int code = target("/v1/user").path("jodee").request().delete().getStatus();
 	assertEquals(204, code);
 
-	int notFound = target("/users").path("jsteed").request().get().getStatus();
+	int notFound = target("/v1/users").path("jodee").request().get().getStatus();
 	assertEquals(404, notFound);    
     }
 
@@ -129,7 +129,7 @@ public class UserTest extends JerseyTest {
      */
     @Test
     public void test_H_DeleteIntexistantUser() {
-	int notFound = target("/users").path("tking").request().delete().getStatus();
+	int notFound = target("/v1/user").path("tking").request().delete().getStatus();
 	assertEquals(404, notFound);
     }
 
@@ -139,13 +139,13 @@ public class UserTest extends JerseyTest {
      */
     @Test
     public void test_I_ModifyUser() {
-	User modified = new User("epeel", "Peel", "epeel@cia.usa");
+        User modified = new User(1, "John", "Deer", "jodee");
 	Entity<User> userEntity = Entity.entity(modified, MediaType.APPLICATION_JSON);
 
-	int noContent = target("/users").path("epeel").request().put(userEntity).getStatus();
+	int noContent = target("/v1/user").path("jodee").request().put(userEntity).getStatus();
 	assertEquals(204, noContent);
 
-	User retrieved = target("/users").path("epeel").request().get(User.class);
+	User retrieved = target("/v1/user").path("jodee").request().get(User.class);
 	assertEquals(modified, retrieved);
     }
 
@@ -155,9 +155,9 @@ public class UserTest extends JerseyTest {
      */
     @Test
     public void test_J_ModifyInexistantUser() {
-	User inexistant = new User("jsteed", "Steed", "jsteed@mi5.uk");
+        User inexistant = new User(1, "John", "Deer", "jodee");
 	Entity<User> userEntity = Entity.entity(inexistant, MediaType.APPLICATION_JSON);
-	int notFound = target("/users").path("jsteed").request().put(userEntity).getStatus();
+	int notFound = target("/v1/users").path("jodee").request().put(userEntity).getStatus();
 	assertEquals(404, notFound);
     }
 
@@ -165,11 +165,11 @@ public class UserTest extends JerseyTest {
     public void test_K_CreateUserFromForm() {
         Form form = new Form();
         form.param("login", "tking");
-        form.param("name", "King");
-        form.param("mail", "tking@mi5.uk");
+        form.param("lastname", "King");
+        form.param("email", "tking@mi5.uk");
 
         Entity<Form> formEntity = Entity.entity(form, MediaType.APPLICATION_FORM_URLENCODED_TYPE);
-        int code = target("/users").request().post(formEntity).getStatus();
+        int code = target("/v1/users").request().post(formEntity).getStatus();
 
         assertEquals(201, code);
     }
@@ -179,7 +179,7 @@ public class UserTest extends JerseyTest {
      */
     @Test 
     public void test_L_GetUserAsXml() { 
-	int code = target("/users").path("tking").request(MediaType.APPLICATION_XML).get().getStatus();
+	int code = target("/v1/users").path("tking").request(MediaType.APPLICATION_XML).get().getStatus();
 	assertEquals(code, 200);
     }
 }

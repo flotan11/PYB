@@ -8,7 +8,7 @@ import org.glassfish.jersey.filter.LoggingFilter;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
 
-@ApplicationPath("/v1/")
+@ApplicationPath("/data/")
 public class Api extends ResourceConfig {
 
     public Api() {
