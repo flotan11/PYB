@@ -53,14 +53,58 @@
             <!-- artifactId>jersey-container-servlet</artifactId -->
         </dependency>
         <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.containers</groupId>
+            <artifactId>jersey-container-servlet</artifactId>
+            <version>${jersey.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.glassfish.jersey.media</groupId>
             <artifactId>jersey-media-moxy</artifactId>
         </dependency>
-	<dependency>
-	    <groupId>org.glassfish.jersey.test-framework.providers</groupId>
-	    <artifactId>jersey-test-framework-provider-jetty</artifactId>
-	    <version>2.22.2</version>
-	</dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.ext</groupId>
+            <artifactId>jersey-mvc-jsp</artifactId>
+            <version>${jersey.version}</version>
+        </dependency>
+		<dependency>
+	    	<groupId>org.glassfish.jersey.test-framework.providers</groupId>
+	   		<artifactId>jersey-test-framework-provider-jetty</artifactId>
+	    	<version>2.22.2</version>
+		</dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+		<!-- Activer les logs -->
+    	<dependency>
+    	    <groupId>ch.qos.logback</groupId>
+    	    <artifactId>logback-classic</artifactId>
+    	    <version>1.1.2</version>
+    	</dependency>
+    	<!-- connection BDD -->
+    	<dependency>
+    	    <groupId>org.jdbi</groupId>
+    	    <artifactId>jdbi</artifactId>
+    	    <version>2.56</version>
+    	</dependency>
+    	<dependency>
+            <groupId>org.xerial</groupId>
+            <artifactId>sqlite-jdbc</artifactId>
+            <version>3.8.7</version>
+        </dependency>
+        <!-- Guava la lib ultime -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>18.0</version>
+        </dependency>
     </dependencies>
     <properties>
         <jersey.version>2.22.2</jersey.version>

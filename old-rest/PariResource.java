@@ -37,12 +37,12 @@ public class PariResource {
      * Méthode de création d'un pari qui prend en charge les requêtes
      * HTTP POST
      *
-     * @param  user Instance d'utilisateur à créer
+     * @param  pari Instance du pari à créer
      * @return Pari le nouveau pari
      */
     @POST
     public Pari createPari(Pari pari) {
-        // Si l'utilisateur existe déjà, renvoyer 409
+        // Si l'utilisateur existe déjà, renvoyer null
         if ( paris.containsKey(pari.getIdPari()) ) {
             return null;
         }
