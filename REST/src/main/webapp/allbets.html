@@ -21,7 +21,7 @@
 						var tr ;	
 						for(i = 0;i<json.length;i++){
 						rep[i] = json[i];
-						tr += "<tr>" + "<td>" + json[i].titre + "</td>"+ "<td>" +  json[i].somme  + "</td>"+ "<td>" +  json[i].nbParieurs +"</td>"+ "<td>"+  json[i].cote +"</td>"+"<td>"+  json[i].datef +"</td>" + "</tr>" ;
+						tr += "<tr>" + "<td>" + json[i].titre + "</td>"+ "<td>" +  json[i].somme  + "</td>"+ "<td>" +  json[i].nbParieurs +"</td>"+ "<td>"+  json[i].cote +"</td>"+"<td>"+  json[i].datef +"</td>" + "<td>"+  json[i].equipe1 +"</td>" + "<td>"+  json[i].equipe2 +"</td>" +"</tr>" ;
 
 							
 						}
@@ -125,6 +125,8 @@
 			                <th>Réponse</th>
 			                <th>Côte du pari</th>
 			                <th>Date de fin du pari</th>
+							<th>Equipe1</th>
+							<th>Equipe2</th>
 			            </tr>
 			        </thead>
 			        <tbody id="tab2">
