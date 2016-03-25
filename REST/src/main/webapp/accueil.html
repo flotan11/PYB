@@ -19,6 +19,7 @@
 					success: function(json) {
 						if (json.mdp == inputMdp) {
 							alert("User ok");
+							$(".status").text("Bonjour "+ json.prenom);
 						} else {
 							alert("Login ou mot de passe faux");
 						}
