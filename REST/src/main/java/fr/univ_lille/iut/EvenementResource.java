@@ -129,13 +129,13 @@ public class EvenementResource {
      */
     @POST
     @Consumes("application/x-www-form-urlencoded")
-        public Evenement createEvenement(@FormParam("titre") String titre, @FormParam("idUser") int idUser, @FormParam("description") String description, @FormParam("nbParieurs") int nbParieurs, @FormParam("miseMin") int miseMin, @FormParam("nbParieursMin") int nbParieursMin, @FormParam("cote") int cote, @FormParam("datef") Date datef, @FormParam("prive") boolean prive,@FormParam("somme") int somme) {
+        public Evenement createEvenement(@FormParam("titre") String titre, @FormParam("idUser") int idUser, @FormParam("description") String description, @FormParam("nbParieurs") int nbParieurs, @FormParam("miseMin") int miseMin, @FormParam("nbParieursMin") int nbParieursMin, @FormParam("cote") int cote, @FormParam("datef") Date datef, @FormParam("prive") boolean prive,@FormParam("somme") int somme,@FormParam("equipe1") String equipe1,@FormParam("equipe2") String equipe2) {
         // Si l'utilisateur existe déjà, renvoyer 409
         if ( evenements.containsKey(titre) ) {
             return null;
         }
         else {
-        	Evenement nouveau = new Evenement(idUser, titre, description, nbParieurs, nbParieursMin, miseMin, cote, datef, prive,somme);
+        	Evenement nouveau = new Evenement(idUser, titre, description, nbParieurs, nbParieursMin, miseMin, cote, datef, prive,somme,equipe1,equipe2);
             evenements.put(titre, nouveau);
             return nouveau;
         }
