@@ -2,6 +2,7 @@ body {
   padding-top: 40px;
   padding-bottom: 40px;
   background-color: #eee;
+  color:#5CB85C;
 }
 
 .form-signin {
@@ -43,6 +44,10 @@ body {
   border-top-right-radius: 0;
 }
 
-.status{
+/*.status{
   margin-left: 455px;
+}*/
+
+.navbar-wrapper{
+  color:#5CB85C;
 }
