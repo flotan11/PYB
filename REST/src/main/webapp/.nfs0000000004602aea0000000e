@@ -1,42 +1,36 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Créer un pari</title>
-		<link rel="stylesheet" type ="text/css" href="css/styles.css"/>
+		<title>Accueil</title>
+		<!-- <script type="text/javascript"></script> -->
+		<script src='jquery-2.1.3.js'></script>
+		<link rel="stylesheet" type="text/css" href="css/styles.css"/>
 		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<link rel="stylesheet" type ="text/css" href="css/create_bet.css"/>
-		<script src="jquery-2.1.3.js"></script>
-
-		<script>
-			function validation() {
-				$.ajax({
-					url: "data/events",
-					type: "POST",
-					dataType: "json",
-					data: {
-						titre: $("#nomPari").val(),
-						description: $("#descriptionPari").val(),
-						nbParieursMin: $("#nbParieursMini").val(),
-						miseMin: $("#miseMini").val(),
-						datef:$("#dateFin").val(),
-						priver: $("#checkbox").val(),
-					},
+		<link rel="stylesheet" type="text/css" href="css/connexion.css"/>
+		
+		<script type="text/javascript">
+      	function envoyer_connexion(){
+      		var inputLog = $("#inputIdentifiant").val();
+      		var inputMdp = $("#inputPassword").val();
+      		$.ajax({
+					url:"data/users/" + inputLog,
+					type:"GET",
+					dataType :"json",				
 					success: function(json) {
-						//console.log("ça marche");
-						//alert("Votre pari est maintenant en attente de validation");
-						redirect();
+						if (json.mdp == inputMdp) {
+							alert("User ok");
+							$(".status").text("Bonjour "+ json.prenom);
+						} else {
+							alert("Login ou mot de passe faux");
+						}
 					}
 				});
-			};
+      	}
 
-		</script>
-		<script>
-			function redirect(){
-				document.location.href="betlist.html";
-			}
-		</script>
+      </script>
 	</head>
 	<header>
+		<!--<h1>Bienvenue sur Place Your Bets</h1> -->
 	</header>
 	<body>
 		<div class="navbar-wrapper">
@@ -54,7 +48,7 @@
 		              <a class="navbar-brand" href="accueil.html">Place Your Bets</a>
 		            </div>
 		            <div id="navbar" class="navbar-collapse collapse">
-		              <ul class="nav navbar-nav">
+		              <ul class="nav navbar-nav">		          
 		                <li><a href="inscription.html">Inscription</a></li>
 		                <li class="dropdown">
 		                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Jouer<span class="caret"></span></a>
@@ -84,47 +78,27 @@
 		     	 </div>
 		    	</div>
 
-		    	<div class="container">
+		<div class="container">
 
-		        <<h2 class="form-signin-heading" id="titleHTML">Créer votre propre pari !</h2>
-		        
-		      <form class="form-signin">
-		      	<table>
-		      	<div class="flottants">
-		      		<tr><td>
-			      	<div class="flottant" id="signin">
-			        <label for="nomPari" class="sr-only">Nom du pari</label>
-			        <input type="text" id="nomPari" class="form-control" placeholder="Nom du pari" required autofocus>
+      <form class="form-signin">
+        <h2 class="form-signin-heading">Connectez-vous</h2>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="text" id="inputIdentifiant" class="form-control" placeholder="Identifiant" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
+        <button id="submit-button" class="btn btn-lg btn-primary btn-block" onClick="envoyer_connexion()">Connexion</button>
+      </form>
+      
 
-			        <label for="nbParieursMinimum" class="sr-only">Nombre de parieurs minimums</label>
-			        <input type="number" id="nbParieursMini" class ="form-control" placeholder="Nombre minimums de participants (au moins 2)" required>
 
-			        <label for="miseMini" class="sr-only">Mise minimum par participant</label>
-			        <input type="number" id="miseMini" class ="form-control" placeholder="Mise minimum par participant" required>
-
-			        <label for="dateFin" class="sr-only">Date de fin du pari</label>
-			        <input type="date" id="dateFin" class="form-control" placeholder="Date de fin du pari" required>
-			    	</div>
-			    </td>
-			    <td id ="tdDescription">
-			       <div class="flottant" id="creerPari">
-			      	<label for="inputString" class="sr-only">Description</label>
-			        <input type="text" id="descriptionPari" class="form-control" placeholder="Description" required>
-			    	</div>
-				</div>
-			</td>
-			</tr>
-			</table>
-		    <div class="checkbox">
-		          <label>
-		            <input type="checkbox" value="remember-me" id="checkbox"> Pari privé
-		          </label>
-		    </div>
-		        <button class="btn btn-lg btn-primary btn-block" type="submit" id="boutonValider" onclick="validation()">Demander validation !</button>
-		      </form>
     </div>
-		 <!-- Bootstrap core JavaScript
-    ================================================== -->
+    <script>
+$(document).ready(function() {
+  $("#submit-button").on('click',function(event) {
+    event.preventDefault();
+  });
+});
+	</script>
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
