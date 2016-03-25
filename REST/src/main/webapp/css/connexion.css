@@ -44,16 +44,10 @@ body {
   border-top-right-radius: 0;
 }
 
-.status{
+/*.status{
   margin-left: 455px;
-}
-img.displayed{
-  display: block;
-  margin-right: auto;
-  margin-left: auto;
-  width:104px;
-  height:26px;
-}
+}*/
+
 .navbar-wrapper{
   color:#5CB85C;
 }
