@@ -17,6 +17,7 @@ public class UserDBResource {
 
     public UserDBResource() {
 		try {
+			dao.dropUserTable();
 			dao.createUserTable();
 			dao.insert(new User(0,"Margaret Thatcher", "la Dame de fer"));
 		} catch (Exception e) {
@@ -33,9 +34,9 @@ public class UserDBResource {
 	}
 
 	@GET
-	@Path("/{name}")
-	public User getUser(@PathParam("name") String name) {
-		User user = dao.findByName(name);
+	@Path("/{login}")
+	public User getUser(@PathParam("login") String login) {
+		User user = dao.findByLogin(login);
 		if (user == null) {
 			throw new WebApplicationException(404);
 		}

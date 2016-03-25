@@ -12,28 +12,76 @@ import java.security.SecureRandom;
 public class User implements Principal {
     final static Logger logger = LoggerFactory.getLogger(User.class);
 
-    private String name;
-    private String alias;
     private int id = 0;
+    private String firstName;
+    private String lastName;
+    private String login;
+    private String address;
+    private String postalCode;
+    private String location;
     private String email;
+    private int age;
+    private String mobile;
     private String password;
     private String passwdHash;
     private String salt;
 
     private static User anonymous = new User(-1, "Anonymous", "anonym");
 
-    public User(int id, String name) {
+    public User(int id, String firstName, String lastName) {
         this.id = id;
-        this.name = name;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
-    public User(int id, String name, String alias) {
+    public User(int id, String firstName, String lastName, String login) {
         this.id = id;
-        this.name = name;
-        this.alias = alias;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.login = login;
     }
 
     public User() {
+    }
+    
+    public String getMobile() {
+    	return mobile;
+    }
+    
+    public void setMobile(String mobile) {
+    	this.mobile = mobile;
+    }
+    
+    public int getAge() {
+    	return age;
+    }
+    
+    public void setAge(int age) {
+    	this.age = age;
+    }
+    
+    public String getLocation() {
+    	return location;
+    }
+    
+    public void setLocation(String location) {
+    	this.location = location;
+    }
+    
+    public String getPostalCode() {
+    	return postalCode;
+    }
+    
+    public void setPostalCode(String postalCode) {
+    	this.postalCode = postalCode;
+    }
+    
+    public String getAddress() {
+    	return address;
+    }
+    
+    public void setAddress(String address) {
+    	this.address = address;
     }
 
     public String getEmail() {
@@ -52,14 +100,21 @@ public class User implements Principal {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstname;
     }
-
+    
+    public String getLastName() {
+    	return lastName;
+    }
+    
+    public void setLastName(String lastName) {
+    	this.lastName = lastName;
+    }
 
     public void setPassword(String password) {
         passwdHash = buildHash(password, getSalt());
@@ -67,7 +122,7 @@ public class User implements Principal {
     }
 
     public String getPassword () {
-        return this.password;
+        return password;
     }
 
     private String buildHash(String password, String s) {
@@ -102,12 +157,12 @@ public class User implements Principal {
         return id + ": " + alias + ", " + name + " <" + email + ">";
     }
 
-    public String getAlias() {
-        return alias;
+    public String getLogin() {
+        return login;
     }
 
-    public void setAlias(String alias) {
-        this.alias = alias;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public String getSalt() {
