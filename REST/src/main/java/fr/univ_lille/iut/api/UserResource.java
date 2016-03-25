@@ -27,6 +27,31 @@ public class UserResource {
         return user;
     }
 
+   /**
+     * Méthode de création d'un utilisateur qui prend en charge les requêtes HTTP POST au format application/x-www-form-urlencoded
+     * La méthode renvoie l'URI de la nouvelle instance en cas de succès
+     *
+     * @param login login de l'utilisateur
+     * @param name nom de l'utilisateur
+     * @param mail le mail de l'utilisateur
+     * @return Response le corps de la réponse est vide, le code de retour HTTP est fixé à 201 si la création est faite
+     *         L'en-tête contient un champs Location avec l'URI de la nouvelle ressource
+     */
+    @POST
+    @Consumes("application/x-www-form-urlencoded")
+        public User createUser(@FormParam("firstname") String firstname, @FormParam("lastname") String lastname, @FormParam("login") String login) {
+        // Si l'utilisateur existe déjà, renvoyer NULL
+        int id = users.size() + 1;
+        if ( users.containsKey(login) ) {
+            return null;
+        }
+        else {
+        	User nouveau = new User(id, firstname, lastname, login);
+            users.put(id, nouveau);
+            return nouveau;
+        }
+    }
+
     @DELETE
     @Path("{id}")
     public Response deleteUser(@PathParam("id") Integer id) {

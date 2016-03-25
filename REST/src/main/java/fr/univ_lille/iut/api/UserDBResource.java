@@ -17,9 +17,8 @@ public class UserDBResource {
 
     public UserDBResource() {
 		try {
-			dao.dropUserTable();
 			dao.createUserTable();
-			dao.insert(new User(0,"Margaret Thatcher", "la Dame de fer"));
+			dao.insert(new User(0, "Margaret Thatcher", "la Dame de fer"));
 		} catch (Exception e) {
 			System.out.println("Table déjà là !");
 		}

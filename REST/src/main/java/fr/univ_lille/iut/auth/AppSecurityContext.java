@@ -28,8 +28,7 @@ public class AppSecurityContext implements SecurityContext {
         if ("user".equals(s)){
             return user.isInUserGroup();
         }
-            return true;
-
+        return true;
     }
 
     @Override

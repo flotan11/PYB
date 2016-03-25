@@ -9,7 +9,7 @@ import javax.ws.rs.ApplicationPath;
 public class WebApplication extends ResourceConfig {
 
     public WebApplication() {
-        packages("fr.iutinfo.skeleton.web");
+        packages("fr.univ_lille.iut.web");
         register(JspMvcFeature.class);
         // Tracing support.
         //property(ServerProperties.TRACING, TracingConfig.ON_DEMAND.name());

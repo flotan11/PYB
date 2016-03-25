@@ -36,7 +36,7 @@ public class AuthFilter implements ContainerRequestFilter {
             }
 
             UserDao dao = BDDFactory.getDbi().open(UserDao.class);
-            User user = dao.findByName(loginPassword[0]);
+            User user = dao.findByLogin(loginPassword[0]);
             if(user != null && !user.isGoodPassword(loginPassword[1]) || user == null) {
                 throw new WebApplicationException(Status.UNAUTHORIZED);
             }

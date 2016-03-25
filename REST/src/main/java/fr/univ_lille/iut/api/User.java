@@ -44,6 +44,10 @@ public class User implements Principal {
     public User() {
     }
     
+    public String getName() {
+    	return firstName + " " + lastName;
+    }
+    
     public String getMobile() {
     	return mobile;
     }
@@ -105,10 +109,10 @@ public class User implements Principal {
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstname;
+        this.firstName = firstName;
     }
     
-    public String getLastName() {
+    public String getLastName() {
     	return lastName;
     }
     
@@ -149,12 +153,12 @@ public class User implements Principal {
         if (getClass() != arg.getClass())
             return false;
         User user = (User) arg;
-        return name.equals(user.name) && alias.equals(user.alias) && email.equals(user.email) && passwdHash.equals(user.getPasswdHash()) && salt.equals((user.getSalt()));
+        return firstName.equals(user.firstName) && lastName.equals(user.lastName) && login.equals(user.login) && address.equals(user.address) && postalCode.equals(user.postalCode) && location.equals(user.location) && email.equals(user.email) && age == user.age && mobile.equals(user.mobile) && passwdHash.equals(user.getPasswdHash()) && salt.equals((user.getSalt()));
     }
 
     @Override
     public String toString() {
-        return id + ": " + alias + ", " + name + " <" + email + ">";
+        return id + ": " + login + ", " + firstName+ ", " + lastName + " <" + email + ">";
     }
 
     public String getLogin() {
