@@ -8,21 +8,26 @@
 		<script type="text/javascript">
 
 			function presentation() {
+				console.log("test");
 				$.ajax({
+
 					url: "data/events",
 					type: "GET",
 					dataType: "json",
 					success: function(json) {
 						var pari = $("<ul>");
-						$.each(json,function(id,events) {
-							events.
-							pari.append($("<li>" + events.titre + " / " +  events.nbParieursMin + " / " + events.cote + "</li>"));
+						for(var i = 0;i<json.length;i++){
+							pari.append($("<li>" + json[i].events.titre + " / " +  json[i].events.nbParieursMin + " / " + json[i].events.cote + "</li>"));
+						}
 
-						});
-						$("#tableau").html(pari);
+						//$("#tableau").html(pari);
+						document.getElementById("#tableau").innerHTML = pari;
+					},
+					success: function(json) {
+						console.log("ça marche");
 					}
 				});
-			};
+			}
 
 			</script>
 
@@ -79,7 +84,7 @@
 
 		</div>
 		<script>
-				window.onload = presentation();
+				window.onload = presentation;
 		</script>
 		 <!-- Bootstrap core JavaScript
     ================================================== -->
