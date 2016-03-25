@@ -21,8 +21,9 @@ public class Evenement {
      private int miseMin;
      private Date datef;
      private boolean prive;
+     private int somme;
 
-    public Evenement(int idUser, String titre, String description, int nbParieurs, int nbParieursMin, int miseMin, int cote, Date datef, boolean prive) {
+    public Evenement(int idUser, String titre, String description, int nbParieurs, int nbParieursMin, int miseMin, int cote, Date datef, boolean prive,int somme) {
         this();
         this.idUser = idUser;
         this.titre = titre;
@@ -33,14 +34,19 @@ public class Evenement {
         this.cote = cote;
         this.datef = datef;
         this.prive = prive;
+        this.somme = somme;
     }
 
     public Evenement() {
         this.id = ++nbEvenements;
     }
 
+
     public static int getNbEvenements() { return nbEvenements; }
     
+    public int getSomme() { return somme; }
+    public void setSomme(int somme) { this.somme = somme; }
+
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 
