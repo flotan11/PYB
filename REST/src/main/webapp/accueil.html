@@ -20,7 +20,7 @@
 						if (json.mdp == inputMdp) {
 							/*alert("User ok");*/
 							$(".status").text("Bonjour "+ json.prenom);
-							redirect();
+							redirect("betlist.html");
 						} else {
 							alert("Login ou mot de passe faux");
 						}
@@ -30,8 +30,8 @@
 
       	</script>
       	<script>
-		function redirect(){
-	  		document.location.href="betlist.html"; 
+		function redirect(direction){
+	  		document.location.href=direction; 
 		}
 		</script>
 	</head>
@@ -91,7 +91,7 @@
 			</td><td id="textP">
 				<h3>Place Your Bets est la première plateforme de paris personnalisés</h3>
 				<h2>EN LIGNE !!!</h2>
-				<h3>Venez pariez entre amis sur vos activités et loisirs dans la bonne entente et la convivialité</h3>
+				<h3>Venez parier entre amis sur vos activités et loisirs dans la bonne entente et la convivialité</h3>
 			</td></tr>
 			</table>
 		</div></div>
@@ -109,7 +109,7 @@
 			</td><td>
 				<h1> OU </h1>
 			</td><td>
-				<h2>Inscrivez vous Ici : </h2><button id="inscription-button" class="btn btn-lg btn-primary btn-block" onClick=document.location.hred="inscription.html">Inscription</button>
+				<h2>Inscrivez vous Ici : </h2><button id="inscription-button" class="btn btn-lg btn-primary btn-block" onClick=redirect("inscription.html")>Inscription</button>
 			</td></tr>
 			</table>
     </div>
