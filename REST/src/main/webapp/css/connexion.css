@@ -44,13 +44,6 @@ body {
   border-top-right-radius: 0;
 }
 
-/*.status{
-  margin-left: 455px;
-}*/
-
 .sr-only:focus{
   border-color:red;
-}
-.navbar-wrapper{
-  color:#5CB85C;
 }
