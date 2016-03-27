@@ -2,14 +2,15 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Mes paris</title>
+		<!-- <script type="text/javascript"></script> -->
+		<script src='jquery-2.1.3.js'></script>
 		<link rel="stylesheet" type ="text/css" href="css/styles.css"/>
 		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<link href="css/betlist.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/betlist.css">
 	</head>
 	<body>
 		<div class="navbar-wrapper">
 		      <div class="container">
-
 		        <nav class="navbar navbar-inverse navbar-static-top">
 		          <div class="container">
 		            <div class="navbar-header">
@@ -41,7 +42,7 @@
 		                    <li><a href="#">Deconnexion</a></li>
 		                  </ul>
 		                </li>
-		                <li id="status">
+		                <li class="status">
 		                	<a>Vous n'êtes pas connecté</a>
 		                </li>
 		              </ul>
@@ -53,7 +54,7 @@
 		    	</div>
 
 		    	<div class="col-md-6">
-			    <table class="table table-bordered">
+			    <table class="table-bordered">
 			        <thead>
 			            <tr>
 			                <th>Nom du pari</th>
@@ -94,8 +95,7 @@
 			            </tr>
 			        </tbody>
 			    </table>
-		 <!-- Bootstrap core JavaScript
-    ================================================== -->
+				</div>
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>

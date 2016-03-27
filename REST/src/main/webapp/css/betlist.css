@@ -1,3 +1,14 @@
+body {
+  background-color: #BBCBDD;
+  padding-top: 100px;
+  padding-bottom: 40px;
+  color:#5CB85C;
+}
+
+.table-bordered{
+	color: black;
+}
+
 .col-md-6{
     position: relative;
     min-height: 1px;
