@@ -28,8 +28,19 @@
 				});
       	}
 
-      	</script>
-      	<script>
+		function isLogged(){
+			/* Code verifiant la connexion 
+			var divs = document.getElementById("formCo");
+			if (**** est connecté){
+				divs.style.display="none";
+				*GET NOM*<a> : </a> *GET SOLDE* <a> €</a>
+			}else{
+				divs.style.display="";
+				<a>Vous n'êtes pas connecté</a>
+			}
+			*/
+		}
+		
 		function redirect(direction){
 	  		document.location.href=direction; 
 		}
@@ -72,7 +83,8 @@
 		                    <li><a href="#">Deconnexion</a></li>
 		                  </ul>
 		                </li>
-		                <li class="status">
+		                <li id="connexion" class="status">
+							<!--<script>isLogged()</script>-->
 		                	<a>Vous n'êtes pas connecté</a>
 		                </li>
 		              </ul>
@@ -95,7 +107,7 @@
 			</td></tr>
 			</table>
 		</div></div>
-		<div class="container">
+		<div id="formCo" class="container">
 			<table>
 			<tr><td>
       <form class="form-signin">
