@@ -7,32 +7,6 @@
 		<link rel="stylesheet" type ="text/css" href="css/create_bet.css"/>
 		<script src="jquery-2.1.3.js"></script>
 
-		<script>
-			function validation() {
-				$.ajax({
-					contentType: "application/json",
-					url: "data/paridb",
-					type: "POST",
-					dataType: "json",
-					data: JSON.stringify({
-						"password": $("#password").val(),
-						"name": $("#nomPari").val(),
-						"sideOne":  $("#choixTeam1").val(),
-						"sideTwo": $("#choixTeam2").val(),
-						"description": $("#descriptionPari").val(),
-						"miseMin": $("#miseMini").val(),
-						"privacy": $("#checkbox").prop("checked"),
-					}),
-					success: function(json) {
-						console.log("Ça marche");
-						alert("Bet creation success!");
-					},
-					error: function(json) {
-						console.log(json);
-					}
-				});
-			};
-		</script>
 	</head>
 	<header>
 	</header>
@@ -112,20 +86,60 @@
 			      	<label for="inputString" class="sr-only">Description</label>
 			        <input type="text" id="descriptionPari" class="form-control" placeholder="Description" required>
 			    	</div>
+				</td></tr>
 				</div>
-			</td>
-			</tr>
+
 			</table>
 		    <div class="checkbox">
 		          <label>
 		            <input type="checkbox" value="remember-me" id="checkbox"> Pari privé
 		          </label>
 				<label for="password" class="sr-only">Date de fin du pari</label>
-				<input type="password" id="password" class="form-control" placeholder="Password" required>
+				<input type="password" id="password" class="form-control" placeholder="Password" >
 		    </div>
 		        <button class="btn btn-lg btn-primary btn-block" type="submit" id="boutonValider" onclick="validation()">Demander validation !</button>
 		      </form>
     </div>
+		<script>
+
+			$(function(){
+				$("#password").hide();
+				
+				function validation() {
+					$.ajax({
+						contentType: "application/json",
+						url: "data/paridb",
+						type: "POST",
+						dataType: "json",
+						data: JSON.stringify({
+							"password": $("#password").val(),
+							"name": $("#nomPari").val(),
+							"sideOne":  $("#choixTeam1").val(),
+							"sideTwo": $("#choixTeam2").val(),
+							"description": $("#descriptionPari").val(),
+							"miseMin": $("#miseMini").val(),
+							"privacy": $("#checkbox").prop("checked"),
+						}),
+						success: function(json) {
+							console.log("Ça marche");
+							alert("Bet creation success!");
+						},
+						error: function(json) {
+							console.log(json);
+						}
+					});
+				}
+
+
+				$("#checkbox").change(function(){
+					$("#password").toggle();
+				});
+
+
+			});
+
+
+		</script>
 		 <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
