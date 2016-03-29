@@ -1,6 +1,7 @@
-package fr.univ_lille1.iut_info.murschet.placeyourbets;
+package com.example.murschet.android;
 
-
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,17 +17,13 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import java.util.HashMap;
-import java.util.Map;
-
-
 public class MainActivity extends AppCompatActivity {
-    String url ="http://10.0.2.2:8080/data/users";
-
+    String url ="http://localhost:8080/data/users";
+    Boolean verif = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.accueil);
+        setContentView(R.layout.activity_main);
     }
 
     @Override
@@ -75,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                         Log.d("toto5", ett.getText().toString());
 
                         if(response.substring(indexdebut + 7, indexfinal).equals(et.getText().toString())&& response.substring(indexdeb + 5, indexfin).equals(ett.getText().toString())){
-                            setContentView(R.layout.menu);
+
                         }
 
                     }
@@ -92,67 +89,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void doInscription(View view){
-        
-        setContentView(R.layout.inscription);
+
+
+    public void connectVerif(){
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+        startActivity(intent);
     }
 
-    public void doInscrire(View view){
-        RequestQueue queue = Volley.newRequestQueue(this);
-        final EditText id = (EditText) findViewById(R.id.Identifiant);
-        final EditText mdp = (EditText) findViewById(R.id.mdp);
-        StringRequest myReq = new StringRequest(Request.Method.POST,url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                Log.d("Response", response);
-                setContentView(R.layout.accueil);
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("login", "test2");
-                params.put("mdp","yolo");
-                return params;
-            }
-
-        };
-        queue.add(myReq);
-
-
-    }
-
-
-
-
-    public void doDisconnect(View view){
-        setContentView(R.layout.accueil);
-    }
-
-    public void goProfil(View view){
-        setContentView(R.layout.profil);
-    }
-
-    public void goListePari(View view){
-        setContentView(R.layout.listepari);
-    }
-
-    public void goPari(View view){
-        setContentView(R.layout.pari);
-    }
-
-    public void goMenu(View view){
-        setContentView(R.layout.menu);
-    }
-
-    public void goSuivant(View view){ setContentView(R.layout.infosperso);}
-
-    public void doRetour(View view){
-        setContentView(R.layout.inscription);
-    }
 }

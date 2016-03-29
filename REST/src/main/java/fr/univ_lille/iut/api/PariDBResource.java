@@ -10,12 +10,12 @@ import java.util.List;
 @Path("/paridb")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class UserDBResource {
-	private static PariDao dao = BDDFactory.getDbi().open(UserDao.class);
-    final static Logger logger = LoggerFactory.getLogger(UserDBResource.class);
+public class PariDBResource {
+	private static PariDao dao = BDDFactory.getDbi().open(PariDao.class);
+    final static Logger logger = LoggerFactory.getLogger(PariDBResource.class);
 
 
-    public UserDBResource() {
+    public PariDBResource() {
 		try {
 			dao.createParisTable();
 			dao.insert(new Pari("Paris-Lille", "Allez ! Allez, allez, allez !"));
@@ -25,7 +25,7 @@ public class UserDBResource {
 	}
 	
 	@POST
-	public User createPari(Pari pari) {
+	public Pari createPari(Pari pari) {
         int id = dao.insert(pari);
         pari.setId(id);
 		return pari;
