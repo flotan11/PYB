@@ -52,6 +52,12 @@
 					}
 				});
 			}
+			
+			$(document).keyup(function (e) {
+			if ($(".form-control").is(":focus") && (e.keyCode == 13)) {
+				$("#submit-button").submit();
+			}
+		});
 		</script>
 
 
@@ -148,7 +154,7 @@
 					</td></tr>
 					</table>
 
-			        <button class="btn btn-lg btn-primary btn-block" onclick="verifInscription()">Inscription</button>
+			        <button id="submit-button" class="btn btn-lg btn-primary btn-block" onclick="verifInscription()">Inscription</button>
 			     </form>
 
     </div> <!-- /container -->

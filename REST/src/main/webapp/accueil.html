@@ -33,7 +33,6 @@
 					}
 				});
       	}
-
 		function isLogged(){
 			/* Code verifiant la connexion 
 			
@@ -121,7 +120,7 @@
         <label for="inputEmail" class="sr-only">Email address</label>
         <input type="text" id="inputIdentifiant" class="form-control" placeholder="Identifiant" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Mot de passe" on		required>
         <button id="submit-button" class="btn btn-lg btn-primary btn-block" onClick="envoyer_connexion()">Connexion</button>
       </form>
 			</td><td>
@@ -135,13 +134,18 @@
         	<strong>Bien joué !</strong> Vous êtes connecté.
     	</div>
     <script>
-$(document).ready(function() {
-  $("#submit-button").on('click',function(event) {
-    event.preventDefault();
-  });
+		$(document).ready(function() {
+			$("#submit-button").on('click',function(event) {
+				event.preventDefault();
+			});
 
-  $("#divAlertSuccess").hide();
-});
+			$("#divAlertSuccess").hide();
+		});
+		$(document).keyup(function (e) {
+			if ($(".form-control").is(":focus") && (e.keyCode == 13)) {
+				$("#submit-button").submit();
+			}
+		});
 	</script>
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
