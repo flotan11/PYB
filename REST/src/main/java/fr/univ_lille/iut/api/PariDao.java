@@ -22,11 +22,11 @@ public interface PariDao {
 	
 	@SqlQuery("select * from paris order by id")
 	@RegisterMapperFactory(BeanMapperFactory.class)
-	List<User> all();
+	List<Pari> all();
 
 	@SqlQuery("select * from paris where id = :id")
 	@RegisterMapperFactory(BeanMapperFactory.class)
-	User findById(@Bind("id") int id);
+	Pari findById(@Bind("id") int id);
 
 	void close();
 }
