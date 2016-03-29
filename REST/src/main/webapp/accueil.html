@@ -20,7 +20,13 @@
 				        req.setRequestHeader("Authorization", "Basic " + btoa(inputLog + ":" + inputMdp));
 				    },				
 					success: function(json) {
-						redirect("betlist.html");
+						var divs = document.getElementById("formCo");
+						divs.style.display="none";
+						var c = $("#connexion");
+						c.html(json.login + " : ");
+						c.css("margin-top", "40%");
+						c.css("margin-bottom", "40%");
+						$("#divAlertSuccess").show();
 					},
 					error: function(json) {
 						console.log("Erreur !!! : " +json);
@@ -30,10 +36,9 @@
 
 		function isLogged(){
 			/* Code verifiant la connexion 
-			var divs = document.getElementById("formCo");
+			
 			if (**** est connecté){
-				divs.style.display="none";
-				*GET NOM*<a> : </a> *GET SOLDE* <a> Betz</a>
+				
 			}else{
 				divs.style.display="";
 				<a>Vous n'êtes pas connecté</a>
@@ -126,11 +131,16 @@
 			</td></tr>
 			</table>
     </div>
+    	<div class="alert alert-success" role="alert" id="divAlertSuccess">
+        	<strong>Bien joué !</strong> Vous êtes connecté.
+    	</div>
     <script>
 $(document).ready(function() {
   $("#submit-button").on('click',function(event) {
     event.preventDefault();
   });
+
+  $("#divAlertSuccess").hide();
 });
 	</script>
     <!-- Placed at the end of the document so the pages load faster -->
