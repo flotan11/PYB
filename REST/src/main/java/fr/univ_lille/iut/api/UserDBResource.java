@@ -32,6 +32,17 @@ public class UserDBResource {
         user.setId(id);
 		return user;
 	}
+	
+	@DELETE
+	@Path("/{login}")
+	public User removeUser(@PathParam("login") String login) {
+		User user = dao.findByLogin(login);
+		if (user == null) {
+			throw new WebApplicationException(404);
+		}
+		dao.delete(login);
+		return user;
+	}
 
 	@GET
 	@Path("/{login}")

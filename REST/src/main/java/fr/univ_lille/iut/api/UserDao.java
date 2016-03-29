@@ -19,7 +19,10 @@ public interface UserDao {
 	User findByLogin(@Bind("login") String login);
 
 	@SqlUpdate("drop table if exists users")
-	void dropUserTable(); 
+	void dropUserTable();
+	
+	@SqlUpdate("delete from users where login = :login")
+	void delete(@Bind("login") String login);
 
 	@SqlQuery("select * from users order by id")
 	@RegisterMapperFactory(BeanMapperFactory.class)
