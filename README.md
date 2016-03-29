@@ -6,3 +6,6 @@ Cette plateforme sera disponible sur un site web et sur une application Android 
 Youdelice --> Lambert Clément
 KC07 --> Kirscher Cyrille
 flotan11 --> Mardon Florian
+Hasarin --> Murschel Thomas
+CottonAlexandre --> Cotton Alexandre
+MaximeCatteau --> Maxime Catteau

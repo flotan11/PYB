@@ -15,15 +15,15 @@
       		$.ajax({
 					url:"data/userdb/" + inputLog,
 					type:"GET",
-					dataType :"json",				
+					dataType :"json",
+					beforeSend : function(req) {
+				        req.setRequestHeader("Authorization", "Basic " + btoa(inputLog + ":" + inputMdp));
+				    },				
 					success: function(json) {
-						if (json.password == inputMdp) {
-							/*alert("User ok");*/
-							$(".status").text("Bonjour "+ json.prenom);
-							redirect("betlist.html");
-						} else {
-							alert("Login et/ou mot de passe erroné(s) !");
-						}
+						redirect("betlist.html");
+					},
+					error: function(json) {
+						console.log("Erreur !!! : " +json);
 					}
 				});
       	}

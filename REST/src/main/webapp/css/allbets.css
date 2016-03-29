@@ -1,9 +1,12 @@
 #choix{
-    position: relative;
     min-height: 1px;
-    padding-right: 15px;
-    padding-left: 15px;
-    padding-top:100px;
+    margin-right: auto;
+    margin-left: auto;
     width: 50%;
-    float: right;
+}
+
+#tableau{
+	margin-right:auto;
+	margin-left: auto;
+	width:50%;
 }
