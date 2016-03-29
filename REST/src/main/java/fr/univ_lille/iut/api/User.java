@@ -21,7 +21,6 @@ public class User implements Principal {
     private String address;
     private String postalCode;
     private String location;
-    private String email;
     private int age;
     private String mobile;
     private String password;
@@ -31,7 +30,7 @@ public class User implements Principal {
     private static User anonymous = new User("Anne", "O'nyme");
 
     public User() {
-    	this.id = ++idInc;
+    	this.id = idInc++;
     }
     
     public User(String firstName, String lastName) {
@@ -47,7 +46,7 @@ public class User implements Principal {
         this.login = login;
     }
     
-    public User(String firstName, String lastName, String login, String address, String postalCode, String location, String email, int age, String mobile, String password) {
+    public User(String firstName, String lastName, String login, String address, String postalCode, String location, int age, String mobile, String password) {
     	this();
         this.firstName = firstName;
         this.lastName = lastName;
@@ -55,7 +54,6 @@ public class User implements Principal {
         this.address = address;
         this.postalCode = postalCode;
         this.location = location;
-        this.email = email;
         this.age = age;
         this.mobile = mobile;
         setPassword(password);
@@ -103,14 +101,6 @@ public class User implements Principal {
     
     public void setAddress(String address) {
     	this.address = address;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public int getId() {
@@ -170,12 +160,12 @@ public class User implements Principal {
         if (getClass() != arg.getClass())
             return false;
         User user = (User) arg;
-        return firstName.equals(user.firstName) && lastName.equals(user.lastName) && login.equals(user.login) && address.equals(user.address) && postalCode.equals(user.postalCode) && location.equals(user.location) && email.equals(user.email) && age == user.age && mobile.equals(user.mobile) && passwdHash.equals(user.getPasswdHash()) && salt.equals((user.getSalt()));
+        return firstName.equals(user.firstName) && lastName.equals(user.lastName) && login.equals(user.login) && address.equals(user.address) && postalCode.equals(user.postalCode) && location.equals(user.location) && age == user.age && mobile.equals(user.mobile) && passwdHash.equals(user.getPasswdHash()) && salt.equals((user.getSalt()));
     }
 
     @Override
     public String toString() {
-        return id + ": " + login + ", " + firstName+ ", " + lastName + " <" + email + ">";
+        return id + ": " + login + ", " + firstName+ ", " + lastName;
     }
 
     public String getLogin() {
