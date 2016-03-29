@@ -4,3 +4,16 @@ body {
   padding-bottom: 40px;
   color:#5CB85C;
 }
+
+h2{
+	margin-top:30px;
+}
+
+#profil{
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+#del{
+	margin-bottom: 20px;
+}

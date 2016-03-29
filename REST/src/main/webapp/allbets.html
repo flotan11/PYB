@@ -40,19 +40,18 @@
 			function mise() {
 
 				$.ajax({
-					url: "data/events" ,
+					url: "data/events/" + $("#titre").val(),
 					type: "PUT",
 					dataType: "json",
 					data: {
-						titre: $("#titre").val(),
-						somme: $("#mise").val(),
+						somme: $("#mise").val()
 					},
 					success: function(json) {
 						console.log("ça marche");
 
 					}
 				});
-			};
+			}
 			</script>
 
 
@@ -107,7 +106,7 @@
 
 		<div id="choix">
 			<label for="inputTitre" class="sr-only">titre</label>
-		 	<input type="text" id="titre" class="form-control" placeholder="Titre du pari"required>
+		 	<input type="text" id="titre" class="form-control" placeholder="titre du pari"required>
 
 		 	 <label for="mise" class="sr-only">Votre Mise </label>
 			 <input type="number" id="mise" class ="form-control" placeholder="Votre mise" required>
