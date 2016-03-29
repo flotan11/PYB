@@ -10,11 +10,9 @@ body {
 }
 
 .col-md-6{
-    position: relative;
     min-height: 1px;
-    padding-right: 15px;
-    padding-left: 15px;
-    padding-top:100px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-top:30px;
     width: 50%;
-    float: left;
 }
