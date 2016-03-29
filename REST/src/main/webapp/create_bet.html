@@ -14,17 +14,21 @@
 					url: "data/paridb",
 					type: "POST",
 					dataType: "json",
-					data: {
-						nom: $("#nomPari").val(),
-						description: $("#descriptionPari").val(),
-						miseMin: $("#miseMini").val(),
-						privacy: $("#checkbox").val(),
-						mdp: $("#pasword").val(),
-						sideOne:  $("#choixTeam1").val(),
-						sideTwo: $("#choixTeam2").val()
-					},
+					data: JSON.stringify({
+						"password": $("#password").val(),
+						"name": $("#nomPari").val(),
+						"sideOne":  $("#choixTeam1").val(),
+						"sideTwo": $("#choixTeam2").val(),
+						"description": $("#descriptionPari").val(),
+						"miseMin": $("#miseMini").val(),
+						"privacy": $("#checkbox").prop("checked"),
+					}),
 					success: function(json) {
-						console.log("ça marche");
+						console.log("Ça marche");
+						alert("Bet creation success!");
+					},
+					error: function(json) {
+						console.log(json);
 					}
 				});
 			};
@@ -85,7 +89,7 @@
 
 		        <<h2 class="form-signin-heading" id="titleHTML">Créer votre propre pari !</h2>
 		        
-		      <form class="form-signin">
+		      <form class="form-signin" onSubmit="return(false);">
 		      	<table>
 		      	<div class="flottants">
 		      		<tr><td>
@@ -116,8 +120,8 @@
 		          <label>
 		            <input type="checkbox" value="remember-me" id="checkbox"> Pari privé
 		          </label>
-				<label for="pasword" class="sr-only">Date de fin du pari</label>
-				<input type="pasword" id="pasword" class="form-control" placeholder="pasword" required>
+				<label for="password" class="sr-only">Date de fin du pari</label>
+				<input type="password" id="password" class="form-control" placeholder="Password" required>
 		    </div>
 		        <button class="btn btn-lg btn-primary btn-block" type="submit" id="boutonValider" onclick="validation()">Demander validation !</button>
 		      </form>
