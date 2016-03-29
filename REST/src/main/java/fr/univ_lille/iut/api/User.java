@@ -12,7 +12,9 @@ import java.security.SecureRandom;
 public class User implements Principal {
     final static Logger logger = LoggerFactory.getLogger(User.class);
 
-    private int id = 0;
+	private static int idInc;
+    private int id;
+
     private String firstName;
     private String lastName;
     private String login;
@@ -26,23 +28,27 @@ public class User implements Principal {
     private String passwdHash;
     private String salt;
 
-    private static User anonymous = new User(-1, "Anne", "O'nyme");
+    private static User anonymous = new User("Anne", "O'nyme");
 
-    public User(int id, String firstName, String lastName) {
-        this.id = id;
+    public User() {
+    	this.id = ++idInc;
+    }
+    
+    public User(String firstName, String lastName) {
+    	this();
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
-    public User(int id, String firstName, String lastName, String login) {
-        this.id = id;
+    public User(String firstName, String lastName, String login) {
+    	this();
         this.firstName = firstName;
         this.lastName = lastName;
         this.login = login;
     }
     
-    public User(int id, String firstName, String lastName, String login, String address, String postalCode, String location, String email, int age, String mobile, String password) {
-    	this.id = id;
+    public User(String firstName, String lastName, String login, String address, String postalCode, String location, String email, int age, String mobile, String password) {
+    	this();
         this.firstName = firstName;
         this.lastName = lastName;
         this.login = login;
@@ -53,9 +59,6 @@ public class User implements Principal {
         this.age = age;
         this.mobile = mobile;
         setPassword(password);
-    }
-
-    public User() {
     }
     
     public String getName() {

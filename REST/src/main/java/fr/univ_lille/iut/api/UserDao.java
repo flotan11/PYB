@@ -10,7 +10,7 @@ public interface UserDao {
 	@SqlUpdate("create table users (id integer primary key autoincrement, firstname varchar(100), lastname varchar(100), login varchar(100), address varchar(100), postalcode varchar(10), location varchar(100), email varchar(100), age integer, mobile varchar(20), passwdHash varchar(32), salt varchar(32))")
 	void createUserTable();
 
-	@SqlUpdate("insert into users (firstname, lastname, login, address, postalcode, location, email, age, mobile, passwdHash, salt) values (:firstname, :lastname, :login, :address, :postalcode, :location, :email, :age, :mobile, :passwdHash, :salt)")
+	@SqlUpdate("insert into users (firstname, lastname, login, address, postalcode, location, email, age, mobile, passwdHash, salt) values (:firstName, :lastName, :login, :address, :postalCode, :location, :email, :age, :mobile, :passwdHash, :salt)")
 	@GetGeneratedKeys
 	int insert(@BindBean() User user);
 

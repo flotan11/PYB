@@ -18,9 +18,10 @@ public class UserDBResource {
     public UserDBResource() {
 		try {
 			dao.createUserTable();
-			dao.insert(new User(0, "Margaret", "Thatcher"));
+			dao.insert(new User("Margaret", "Thatcher"));
 		} catch (Exception e) {
-			System.out.println("Table déjà là !");
+			//System.out.println("Table déjà là !");
+			logger.debug(e.getStackTrace().toString());
 		}
 	}
 	

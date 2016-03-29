@@ -46,7 +46,7 @@ public class UserTest extends JerseyTest {
      */
     @Test
     public void test_B_CreateUser() {
-        User user = new User(1, "John", "Deer", "jodee");
+        User user = new User("John", "Deer", "jodee");
         // Conversion de l'instance de User au format JSON pour l'envoi
         Entity<User> userEntity = Entity.entity(user, MediaType.APPLICATION_JSON);
 
@@ -69,7 +69,7 @@ public class UserTest extends JerseyTest {
      */
     @Test
     public void test_C_CreateSameUser() {
-        User user = new User(1, "John", "Deer", "jodee");
+        User user = new User("John", "Deer", "jodee");
         Entity<User> userEntity = Entity.entity(user, MediaType.APPLICATION_JSON);
 
         int same = target("/v1/users").request().post(userEntity).getStatus();
@@ -81,7 +81,7 @@ public class UserTest extends JerseyTest {
      */
     @Test
     public void test_D_GetTwoUsers() {
-        User user = new User(2 ,"Marilyn", "Peel", "mapee");
+        User user = new User("Marilyn", "Peel", "mapee");
         Entity<User> userEntity = Entity.entity(user, MediaType.APPLICATION_JSON);
 
         target("/v1/user").request().post(userEntity);
@@ -95,7 +95,7 @@ public class UserTest extends JerseyTest {
      */
     @Test
     public void test_E_GetOneUser() {
-        User user = new User(1, "John", "Deer", "jodee");
+        User user = new User("John", "Deer", "jodee");
 
 	User result = target("/v1/user").path("jodee").request().get(User.class);
 	assertEquals(user, result);
@@ -139,7 +139,7 @@ public class UserTest extends JerseyTest {
      */
     @Test
     public void test_I_ModifyUser() {
-        User modified = new User(1, "John", "Deer", "jodee");
+        User modified = new User("John", "Deer", "jodee");
 	Entity<User> userEntity = Entity.entity(modified, MediaType.APPLICATION_JSON);
 
 	int noContent = target("/v1/user").path("jodee").request().put(userEntity).getStatus();
@@ -155,7 +155,7 @@ public class UserTest extends JerseyTest {
      */
     @Test
     public void test_J_ModifyInexistantUser() {
-        User inexistant = new User(1, "John", "Deer", "jodee");
+        User inexistant = new User("John", "Deer", "jodee");
 	Entity<User> userEntity = Entity.entity(inexistant, MediaType.APPLICATION_JSON);
 	int notFound = target("/v1/users").path("jodee").request().put(userEntity).getStatus();
 	assertEquals(404, notFound);
