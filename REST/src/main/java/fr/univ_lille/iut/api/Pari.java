@@ -8,8 +8,8 @@ public class Pari {
     private static int idInc;
 
     private int id;
-    private String mdp;
-    private String nom;
+    private String password;
+    private String name;
     private String sideOne;
     private String sideTwo;
     private String description;
@@ -25,15 +25,15 @@ public class Pari {
     	this.id = ++idInc;
     }
     
-    public Pari(String nom, String description) {
+    public Pari(String name, String description) {
     	this();
-    	this.nom = nom;
+    	this.name = name;
     	this.description = description;
     }
     
-    public Pari(String nom, String sideOne, String sideTwo, String description, int miseMin, boolean privacy) {
+    public Pari(String name, String sideOne, String sideTwo, String description, int miseMin, boolean privacy) {
     	this();
-    	this.nom = nom;
+    	this.name = name;
     	this.sideOne = sideOne;
     	this.sideTwo = sideTwo;
     	this.description = description;
@@ -41,9 +41,9 @@ public class Pari {
     	this.privacy = privacy;
     }
 
-    public Pari(String mdp, String nom, String sideOne, String sideTwo, String description, int miseMin, boolean privacy) {
-        this(nom, sideOne, sideTwo, description, miseMin, privacy);
-    	this.mdp = mdp;
+    public Pari(String password, String name, String sideOne, String sideTwo, String description, int miseMin, boolean privacy) {
+        this(name, sideOne, sideTwo, description, miseMin, privacy);
+    	this.password = password;
     }
 
     public void setCoteSideOne(int coteSideOne) {
@@ -70,20 +70,20 @@ public class Pari {
         return id;
     }
 
-    public String getMdp() {
-        return mdp;
+    public String getPassword() {
+        return password;
     }
 
     public void setId(int id) {
         this.id = id;
     }
 
-    public void setMdp(String mdp) {
-        this.mdp = mdp;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setSideOne(String sideOne) {
@@ -118,8 +118,8 @@ public class Pari {
         this.privacy = privacy;
     }
 
-    public String getNom() {
-        return nom;
+    public String getName() {
+        return name;
     }
 
     public String getSideOne() {

@@ -10,7 +10,7 @@ public interface PariDao {
 	@SqlUpdate("create table paris (id integer primary key autoincrement, password varchar(100), name varchar(100), sideOne varchar(100), sideTwo varchar(100), description varchar(10), miseSideOne integer, miseSideTwo integer, miseMin integer, privacy boolean)")
 	void createParisTable();
 
-	@SqlUpdate("insert into paris (password, name, sideOne, sideTwo, description, miseMin) values (:password, :name, :sideOne, :sideTwo, :description, :miseMin, :privacy)")
+	@SqlUpdate("insert into paris (password, name, sideOne, sideTwo, description, miseMin, privacy) values (:password, :name, :sideOne, :sideTwo, :description, :miseMin, :privacy)")
 	@GetGeneratedKeys
 	int insert(@BindBean() Pari pari);
 
