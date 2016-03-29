@@ -4,3 +4,11 @@ body {
   padding-bottom: 40px;
   color:#5CB85C;
 }
+
+.container{
+  text-align: center;
+}
+
+.form-signin-heading{
+  margin: 100px;
+}
