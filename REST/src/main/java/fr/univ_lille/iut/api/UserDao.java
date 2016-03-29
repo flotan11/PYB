@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface UserDao {
 	@SqlUpdate("create table users (id integer primary key autoincrement, firstname varchar(100), lastname varchar(100), login varchar(100), address varchar(100), postalcode varchar(10), location varchar(100), age integer, mobile varchar(20), passwdHash varchar(32), salt varchar(32))")
-	void createUserTable();
+	void createUsersTable();
 
 	@SqlUpdate("insert into users (firstname, lastname, login, address, postalcode, location, age, mobile, passwdHash, salt) values (:firstName, :lastName, :login, :address, :postalCode, :location, :age, :mobile, :passwdHash, :salt)")
 	@GetGeneratedKeys
