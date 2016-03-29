@@ -26,7 +26,7 @@ public class User implements Principal {
     private String passwdHash;
     private String salt;
 
-    private static User anonymous = new User(-1, "Anonymous", "anonym");
+    private static User anonymous = new User(-1, "Anne", "O'nyme");
 
     public User(int id, String firstName, String lastName) {
         this.id = id;
