@@ -1,50 +1,12 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Accueil</title>
+		<title>Solde</title>
 		<!-- <script type="text/javascript"></script> -->
 		<script src='jquery-2.1.3.js'></script>
 		<link rel="stylesheet" type="text/css" href="css/styles.css"/>
-		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="css/connexion.css"/>
-		
-		<script type="text/javascript">
-      	function envoyer_connexion(){
-      		var inputLog = $("#inputIdentifiant").val();
-      		var inputMdp = $("#inputPassword").val();
-      		$.ajax({
-					url:"data/users/" + inputLog,
-					type:"GET",
-					dataType :"json",				
-					success: function(json) {
-						if (json.mdp == inputMdp) {
-							/*alert("User ok");*/
-							$(".status").text("Bonjour "+ json.prenom);
-							redirect("betlist.html");
-						} else {
-							alert("Login ou mot de passe faux");
-						}
-					}
-				});
-      	}
-
-		function isLogged(){
-			/* Code verifiant la connexion 
-			var divs = document.getElementById("formCo");
-			if (**** est connecté){
-				divs.style.display="none";
-				*GET NOM*<a> : </a> *GET SOLDE* <a> €</a>
-			}else{
-				divs.style.display="";
-				<a>Vous n'êtes pas connecté</a>
-			}
-			*/
-		}
-		
-		function redirect(direction){
-	  		document.location.href=direction; 
-		}
-		</script>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/solde.css"/>
 	</head>
 	<header>
 		<!--<h1>Bienvenue sur Place Your Bets</h1> -->
@@ -52,6 +14,7 @@
 	<body>
 		<div class="navbar-wrapper">
 		      <div class="container">
+
 		        <nav class="navbar navbar-inverse navbar-static-top">
 		          <div class="container">
 		            <div class="navbar-header">
@@ -60,11 +23,11 @@
 		                <span class="icon-bar"></span>
 		                <span class="icon-bar"></span>
 		                <span class="icon-bar"></span>
-		               </button>
-		            <a class="navbar-brand" href="accueil.html"><img class="displayed" src="img/index.png"></a>
-					  </div>
+		              </button>
+		              <a class="navbar-brand" href="accueil.html"><img class="displayed" src="img/index.png"></a>
+		            </div>
 		            <div id="navbar" class="navbar-collapse collapse">
-		              <ul class="nav navbar-nav">		          
+		              <ul class="nav navbar-nav">		           
 		                <li><a href="inscription.html">Inscription</a></li>
 		                <li class="dropdown">
 		                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Jouer<span class="caret"></span></a>
@@ -83,8 +46,7 @@
 		                    <li><a href="#">Deconnexion</a></li>
 		                  </ul>
 		                </li>
-		                <li id="connexion" class="status">
-							<!--<script>isLogged()</script>-->
+		                <li class="status">
 		                	<a>Vous n'êtes pas connecté</a>
 		                </li>
 		              </ul>
@@ -94,44 +56,20 @@
 
 		     	 </div>
 		    	</div>
-				
-		<div id="headerwrap">
-	    <div class="container">
-			<table>
-			<tr><td id="mainImg">
-				<img src="img/menu.jpg" id="image" class="img-responsive">
-			</td><td id="textP">
-				<h3>Place Your Bets est la première plateforme de paris personnalisés</h3>
-				<h2>EN LIGNE !!!</h2>
-				<h3>Venez parier entre amis sur vos activités et loisirs dans la bonne entente et la convivialité</h3>
-			</td></tr>
-			</table>
-		</div></div>
-		<div id="formCo" class="container">
-			<table>
-			<tr><td>
-      <form class="form-signin">
-        <h2 class="form-signin-heading">Connectez-vous</h2>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="text" id="inputIdentifiant" class="form-control" placeholder="Identifiant" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
-        <button id="submit-button" class="btn btn-lg btn-primary btn-block" onClick="envoyer_connexion()">Connexion</button>
-      </form>
-			</td><td>
-				<h1> OU </h1>
-			</td><td>
-				<h2>Inscrivez vous Ici : </h2><button id="inscription-button" class="btn btn-lg btn-primary btn-block" onClick=redirect("inscription.html")>Inscription</button>
-			</td></tr>
-			</table>
+
+		<div class="container">
+                <h2 class="form-signin-heading">Vous avez Betz sur votre compte. Recharger : </h2>
+				<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+					<input type="hidden" name="cmd" value="_s-xclick">
+					<input type="hidden" name="hosted_button_id" value="AKMBGGUVS6WU4">
+					<input type="image" src="https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal, le réflexe sécurité pour payer en ligne">
+					<img alt="" border="0" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" width="1" height="1">
+				</form>
+
+
     </div>
-    <script>
-$(document).ready(function() {
-  $("#submit-button").on('click',function(event) {
-    event.preventDefault();
-  });
-});
-	</script>
+		 <!-- Bootstrap core JavaScript
+    ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>

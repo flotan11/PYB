@@ -1,3 +1,9 @@
+body {
+  background-color: #BBCBDD;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  color: #5CB85C;
+}
 .form-signin {
   max-width: 80%;
   padding: 15px;
@@ -34,6 +40,6 @@
 
 
 #descriptionPari {
-  height:190px;
+  height:278px;
   width:326px;
 }

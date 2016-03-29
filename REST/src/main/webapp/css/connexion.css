@@ -1,13 +1,43 @@
 body {
-  padding-top: 40px;
+  background-color: #BBCBDD;
+  padding-top: 100px;
   padding-bottom: 40px;
-  background-color: #eee;
+  color:#5CB85C;
 }
 
 .form-signin {
   max-width: 330px;
   padding: 15px;
   margin: 0 auto;
+}
+
+table{
+	width:100%;
+}
+
+#image{
+	max-width:80%;
+	height:auto;
+}
+
+#mainImg{
+	max-width: 250px;
+	height:auto;
+}
+
+#textP{
+	padding-left:200px;
+	max-width: 500px;
+}
+
+#inscription-button{
+	width: 50%;
+}
+
+#headerwrap {
+	background-color: black;
+	min-height: 100px;
+	text-align: center;
 }
 
 #titleHTML {
@@ -43,6 +73,6 @@ body {
   border-top-right-radius: 0;
 }
 
-.status{
-  margin-left: 455px;
+.sr-only:focus{
+  border-color:red;
 }

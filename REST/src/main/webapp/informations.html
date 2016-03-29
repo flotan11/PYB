@@ -1,16 +1,20 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Informations</title>
+		<title>Statistiques</title>
+		<!-- <script type="text/javascript"></script> -->
 		<script src='jquery-2.1.3.js'></script>
-
+		<link rel="stylesheet" type="text/css" href="css/styles.css"/>
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/connexion.css"/>
+		
 	</head>
 	<header>
-		<h1>Bienvenue sur Place Your Bets</h1>
-		<link rel="stylesheet" type ="text/css" href="css/styles.css"/>
-		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<!--<h1>Bienvenue sur Place Your Bets</h1> -->
 	</header>
 	<body>
+
+
 		<div class="navbar-wrapper">
 		      <div class="container">
 
@@ -23,11 +27,10 @@
 		                <span class="icon-bar"></span>
 		                <span class="icon-bar"></span>
 		              </button>
-		              <a class="navbar-brand" href="accueil.html">Place Your Bets</a>
+		              <a class="navbar-brand" href="accueil.html"><img class="displayed" src="img/index.png"></a>
 		            </div>
 		            <div id="navbar" class="navbar-collapse collapse">
-		              <ul class="nav navbar-nav">
-		                <li class="active"><a href="accueil.html">Accueil</a></li>
+		              <ul class="nav navbar-nav">		          
 		                <li><a href="inscription.html">Inscription</a></li>
 		                <li class="dropdown">
 		                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Jouer<span class="caret"></span></a>
@@ -37,7 +40,7 @@
 		                    <li><a href="allbets.html">Tous les paris en cours</a></li>
 		                  </ul>
 		                </li>
-		                <li class="active" class="dropdown">
+		                <li class="dropdown">
 		                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mes informations<span class="caret"></span></a>
 		                  <ul class="dropdown-menu">
 		                    <li><a href="profil.html">Profil</a></li>
@@ -56,20 +59,14 @@
 
 		     	 </div>
 		    	</div>
-		<div id="stats">
-			<h3>Statistiques</h3>
-			<ul>
-				<li>Paris gagnés : 0</li>
-				<li>Paris perdus : 0</li>
-				<li>Argent gagné : 0€</li>
-				<li>Argent perdu : 0€</li>
-				<li>Balance : 0€</li>
-			</ul>
-		</div>
-		<input type="submit" id="disconnect" value="Se déconnecter"/>
-		<br><input type="submit" id="delete" value="Supprimer son compte"/></br>
-		 <!-- Bootstrap core JavaScript
-    ================================================== -->
+
+    <script>
+$(document).ready(function() {
+  $("#submit-button").on('click',function(event) {
+    event.preventDefault();
+  });
+});
+	</script>
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>

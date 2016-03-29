@@ -21,8 +21,10 @@ public class Evenement {
      private int miseMin;
      private Date datef;
      private boolean prive;
+     private int somme;
+     private String equipe1,equipe2;
 
-    public Evenement(int idUser, String titre, String description, int nbParieurs, int nbParieursMin, int miseMin, int cote, Date datef, boolean prive) {
+    public Evenement(int idUser, String titre, String description, int nbParieurs, int nbParieursMin, int miseMin, int cote, Date datef, boolean prive,int somme,String equipe1, String equipe2) {
         this();
         this.idUser = idUser;
         this.titre = titre;
@@ -33,14 +35,21 @@ public class Evenement {
         this.cote = cote;
         this.datef = datef;
         this.prive = prive;
+        this.somme = somme;
+        this.equipe1=equipe1;
+        this.equipe2=equipe2;
     }
 
     public Evenement() {
         this.id = ++nbEvenements;
     }
 
+
     public static int getNbEvenements() { return nbEvenements; }
     
+    public int getSomme() { return somme; }
+    public void setSomme(int somme) { this.somme = somme; }
+
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 
@@ -70,5 +79,11 @@ public class Evenement {
 	
 	public boolean getPrive() { return prive; }
     public void setPrive(boolean prive) { this.prive = prive; }
+
+    public String getEquipe1() { return equipe1; }
+    public void setEquipe1(String equipe) { this.equipe1 = equipe; }
+
+    public String getEquipe2() { return equipe2; }
+    public void setEquipe2(String equipe) { this.equipe2 = equipe; }
     
 }

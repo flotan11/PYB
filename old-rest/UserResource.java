@@ -120,7 +120,7 @@ public class UserResource {
      * @param name nom de l'utilisateur
      * @param mail le mail de l'utilisateur
      * @return Response le corps de la réponse est vide, le code de retour HTTP est fixé à 201 si la création est faite
-     *         L'en-tête contient un champs Location avec l'URI de la nouvelle ressource
+     *  L'en-tête contient un champ Location avec l'URI de la nouvelle ressource
      */
     @POST
     @Consumes("application/x-www-form-urlencoded")

@@ -3,28 +3,58 @@
 		<meta charset="UTF-8">
 		<title>Tous les paris</title>
 		<link rel="stylesheet" type ="text/css" href="css/styles.css"/>
+		<link rel="stylesheet" type ="text/css" href="css/allbets.css"/>
 		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<script src="jquery-2.1.3.js"></script>
+		<script src='jquery-2.1.3.js'></script>
+		<link href="css/betlist.css" rel="stylesheet">
 		<script type="text/javascript">
-
+			var i;
+			var rep = new Array;
 			function presentation() {
+				console.log("test");
 				$.ajax({
+
 					url: "data/events",
 					type: "GET",
 					dataType: "json",
 					success: function(json) {
-						var pari = $("<ul>");
-						$.each(json,function(id,events) {
-							events.
-							pari.append($("<li>" + events.titre + " / " +  events.nbParieursMin + " / " + events.cote + "</li>"));
+						var tr ;	
+						for(i = 0;i<json.length;i++){
+						rep[i] = json[i];
+						tr += "<tr>" + "<td>" + json[i].titre + "</td>"+ "<td>" +  json[i].somme  + "</td>"+ "<td>" +  json[i].nbParieurs +"</td>"+ "<td>"+  json[i].cote +"</td>"+"<td>"+  json[i].datef +"</td>" + "<td>"+  json[i].equipe1 +"</td>" + "<td>"+  json[i].equipe2 +"</td>" +"</tr>" ;
 
-						});
-						$("#tableau").html(pari);
+							
+						}
+						$("#tab2").html(tr) ;
+						
+					},
+				});
+			}
+
+			
+			</script>
+
+			<!-- ca marche pas pour l'instant le fait de parier, ERROR 415 ou 405-->
+
+			<script type="text/javascript">
+			function mise() {
+
+				$.ajax({
+					url: "data/events" ,
+					type: "PUT",
+					dataType: "json",
+					data: {
+						titre: $("#titre").val(),
+						somme: $("#mise").val(),
+					},
+					success: function(json) {
+						console.log("ça marche");
+
 					}
 				});
 			};
-
 			</script>
+
 
 	</head>
 	<header>
@@ -42,7 +72,7 @@
 		                <span class="icon-bar"></span>
 		                <span class="icon-bar"></span>
 		              </button>
-		              <a class="navbar-brand" href="accueil.html">Place Your Bets</a>
+		              <a class="navbar-brand" href="accueil.html"><img class="displayed" src="img/index.png"></a>
 		            </div>
 		            <div id="navbar" class="navbar-collapse collapse">
 		              <ul class="nav navbar-nav">
@@ -75,11 +105,39 @@
 		     	 </div>
 		    	</div>
 
-		<div id="tableau" >
+		<div id="choix">
+			<label for="inputTitre" class="sr-only">titre</label>
+		 	<input type="text" id="titre" class="form-control" placeholder="Titre du pari"required>
+
+		 	 <label for="mise" class="sr-only">Votre Mise </label>
+			 <input type="number" id="mise" class ="form-control" placeholder="Votre mise" required>
+
+		 	 <button class="btn-info" onclick="mise()" id="bouton">Miser</button>
 
 		</div>
+
+		<div  id="tableau" class="col-md-6">
+			   <table id="tab" class="table table-bordered">
+			   			<thead>
+			            <tr>
+			                <th>Nom du pari</th>
+			                <th>Valeur mise en jeu</th>
+			                <th>Réponse</th>
+			                <th>Côte du pari</th>
+			                <th>Date de fin du pari</th>
+							<th>Equipe1</th>
+							<th>Equipe2</th>
+			            </tr>
+			        </thead>
+			        <tbody id="tab2">
+
+						
+			        </tbody>
+			   </table>
+		</div>
+
 		<script>
-				window.onload = presentation();
+				window.onload = presentation;
 		</script>
 		 <!-- Bootstrap core JavaScript
     ================================================== -->
