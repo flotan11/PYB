@@ -13,16 +13,16 @@
       		var inputLog = $("#inputIdentifiant").val();
       		var inputMdp = $("#inputPassword").val();
       		$.ajax({
-					url:"data/users/" + inputLog,
+					url:"data/userdb/" + inputLog,
 					type:"GET",
 					dataType :"json",				
 					success: function(json) {
-						if (json.mdp == inputMdp) {
+						if (json.password == inputMdp) {
 							/*alert("User ok");*/
 							$(".status").text("Bonjour "+ json.prenom);
 							redirect("betlist.html");
 						} else {
-							alert("Login ou mot de passe faux");
+							alert("Login et/ou mot de passe erroné(s) !");
 						}
 					}
 				});
@@ -111,7 +111,7 @@
 		<div id="formCo" class="container">
 			<table>
 			<tr><td>
-      <form class="form-signin">
+      <form class="form-signin" onSumbit="return(false);">
         <h2 class="form-signin-heading">Connectez-vous</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
         <input type="text" id="inputIdentifiant" class="form-control" placeholder="Identifiant" required autofocus>

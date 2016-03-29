@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-/home/infoetu/kirschec/Cours/N4/Agile/REST/src/main/java/fr/univ_lille/iut/PariResource.java
-/home/infoetu/kirschec/Cours/N4/Agile/REST/src/main/java/fr/univ_lille/iut/User.java
-/home/infoetu/kirschec/Cours/N4/Agile/REST/src/main/java/fr/univ_lille/iut/EvenementResource.java
-/home/infoetu/kirschec/Cours/N4/Agile/REST/src/main/java/fr/univ_lille/iut/InfoUser.java
-/home/infoetu/kirschec/Cours/N4/Agile/REST/src/main/java/fr/univ_lille/iut/InfoUserResource.java
-/home/infoetu/kirschec/Cours/N4/Agile/REST/src/main/java/fr/univ_lille/iut/UserResource.java
-/home/infoetu/kirschec/Cours/N4/Agile/REST/src/main/java/fr/univ_lille/iut/Pari.java
-/home/infoetu/kirschec/Cours/N4/Agile/REST/src/main/java/fr/univ_lille/iut/Evenement.java
-=======
 /home/infoetu/kirschec/Cours/N4/Agile/REST/src/main/java/fr/univ_lille/iut/api/BDDFactory.java
 /home/infoetu/kirschec/Cours/N4/Agile/REST/src/main/java/fr/univ_lille/iut/api/UserDao.java
 /home/infoetu/kirschec/Cours/N4/Agile/REST/src/main/java/fr/univ_lille/iut/api/SecureResource.java
@@ -22,4 +12,3 @@
 /home/infoetu/kirschec/Cours/N4/Agile/REST/src/main/java/fr/univ_lille/iut/api/UserDBResource.java
 /home/infoetu/kirschec/Cours/N4/Agile/REST/src/main/java/fr/univ_lille/iut/api/User.java
 /home/infoetu/kirschec/Cours/N4/Agile/REST/src/main/java/fr/univ_lille/iut/auth/AppSecurityContext.java
->>>>>>> fusion

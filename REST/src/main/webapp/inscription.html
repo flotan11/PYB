@@ -44,7 +44,7 @@
 						"mobile": $("#numTel").val()
 					}),
 					success: function(json) {
-						console.log("Connecté");
+						console.log("Inscription validée !");
 						redirect();
 					},
 					error: function(json) {
@@ -111,7 +111,7 @@
 		    </div>
 		    <div class="container">
 
-      			<form class="form-signin">
+      			<form class="form-signin" onSubmit="return(false);">
        				<h2 class="form-signin-heading">Inscrivez vous</h2>
        				<table>
 					<tr><td>
