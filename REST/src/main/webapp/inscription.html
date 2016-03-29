@@ -13,10 +13,12 @@
 						envoyerInscription();
 					} else {
 						console.log("Etape 2 pas bon (vérif taille nom prenom et mdp");
+						alert("Veuillez entrer un nom et un prénom d'au moins 2 caractères.");
 						
 					}
 				} else {
 					console.log("Etape 1 pas bon (vérif mdp-mdpverif et mail-mailverif");
+					alert("Les mots de passe et/ou adresses e-mail ne correspondent pas. Veuillez réessayer.");
 						
 				}
 			}
@@ -24,21 +26,22 @@
 			function envoyerInscription() {
 				var ageCalculate = 20;
 				$.ajax({
-					url:"data/users",
+					contentType: "application/json",
+					url:"data/userdb",
 					type:"POST",
 					dataType :"json",
-					data: {
-						nom: $("#nom").val(),
-						prenom: $("#prenom").val(),
-						login: $("#login").val(),
-						mdp: $("#mdp").val(),
-						adresse: $("#adresse").val(),
-						codePostal: $("#codePostal").val(),
-						ville: $("#ville").val(),
-						mail: $("#mail").val(),
-						age: ageCalculate,
-						mobile: $("#numTel").val()
-					},
+					data: JSON.stringify({
+						"firstName": $("#nom").val(),
+						"lastName": $("#prenom").val(),
+						"login": $("#login").val(),
+						"password": $("#mdp").val(),
+						"address": $("#adresse").val(),
+						"postalCode": $("#codePostal").val(),
+						"location": $("#ville").val(),
+						"email": $("#mail").val(),
+						"age": ageCalculate,
+						"mobile": $("#numTel").val()
+					}),
 					success: function(json) {
 						console.log("ça marche");
 					}
