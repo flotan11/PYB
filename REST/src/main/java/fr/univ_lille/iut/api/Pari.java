@@ -12,9 +12,9 @@ public class Pari {
     private String nom;
     private String sideOne;
     private String sideTwo;
+    private String description;
     private int miseSideOne;
     private int miseSideTwo;
-    private String description;
     private int coteSideOne;
     private int coteSideTwo;
     private int miseMin;
@@ -23,6 +23,12 @@ public class Pari {
     
     public Pari() {
     	this.id = ++idInc;
+    }
+    
+    public Pari(String nom, String description) {
+    	this();
+    	this.nom = nom;
+    	this.description = description;
     }
     
     public Pari(String nom, String sideOne, String sideTwo, String description, int miseMin, boolean privacy) {
