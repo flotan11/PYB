@@ -9,14 +9,27 @@
 		<script type="text/javascript">
 
 			function afficherProfil(){
-				$('#ChampProfil').show();
+				var targetElement;
+				targetElement = document.getElementById("ChampProfil") ;
+				if (targetElement.style.display == "none")
+				{
+					targetElement.style.display = "" ;
+				} else {
+					targetElement.style.display = "none" ;
+				}
 			}
 
 			function afficherDes(){
 				$('#ChampProfil').hide();
 				alert("attention vous allez vous desinscrire");
 			}
-
+			
+			$(document).keyup(function (e) {
+			if ($(".form-control").is(":focus") && (e.keyCode == 13)) {
+				$("#ButtonCon").submit();
+			}
+			});
+			
 			function desincription(){
 				$.ajax({
 					url:"data/users",
@@ -98,6 +111,8 @@
 
 					  <label for="inputName" class="sr-only">Comfirmer le nouveau mot de passe</label>
 					  <input type="text" id="mpd2" class="form-control" placeholder="Comfirmer le nouveau mot de passe"required>
+					  
+					  <button class="btn btn-default" id="ButtonCon">Confirmer</button>
 				  </form>
 
 
