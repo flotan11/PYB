@@ -101,7 +101,7 @@ public class PariResource {
      */
     @PUT
     @Path("{idPari}")
-        public Response modifyUser(@PathParam("idPari") int idPari, Pari pari) {
+        public Response modifyPari(@PathParam("idPari") int idPari, Pari pari) {
         // Si l'utilisateur est inconnu, on renvoie 404
         if ( ! paris.containsKey(idPari) ) {
             throw new NotFoundException();

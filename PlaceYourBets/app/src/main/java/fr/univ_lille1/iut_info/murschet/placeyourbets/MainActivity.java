@@ -7,12 +7,15 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
-import com.frenchcomputerguy.rest.GetRequest;
-import com.frenchcomputerguy.rest.PostRequest;
-import com.frenchcomputerguy.rest.Request;
-import com.frenchcomputerguy.utils.JSONElement;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -53,12 +56,30 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void doConnect(View view){
-        Map<String,String> map = new HashMap<>();
-        TextView Login = (TextView) findViewById(R.id.LoginAccueil) ;
-        TextView Mdp = (TextView) findViewById(R.id.MdpAccueil) ;
-        map.put(Login.toString(),Mdp.toString());
-        TextView tv = (TextView) findViewById(R.id.Presentation) ;
-        setContentView(R.layout.menu);
+        RequestQueue queue = Volley.newRequestQueue(this);
+        EditText et = (EditText) findViewById(R.id.LoginAccueil);
+        String url ="http://172.18.49.104:8080/data/users"+"/"+et.getText();
+        Log.d("toto3",url);
+
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        Log.d("toto",response);
+                        setContentView(R.layout.menu);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("toto2", String.valueOf(error));
+            }
+        });
+        // Add the request to the RequestQueue.
+        queue.add(stringRequest);
+
+
 
     }
 

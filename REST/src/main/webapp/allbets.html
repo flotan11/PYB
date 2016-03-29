@@ -18,20 +18,20 @@
 					type: "GET",
 					dataType: "json",
 					success: function(json) {
-						var tr ;	
+						var tr ;
 						for(i = 0;i<json.length;i++){
 						rep[i] = json[i];
 						tr += "<tr>" + "<td>" + json[i].titre + "</td>"+ "<td>" +  json[i].somme  + "</td>"+ "<td>" +  json[i].nbParieurs +"</td>"+ "<td>"+  json[i].cote +"</td>"+"<td>"+  json[i].datef +"</td>" + "<td>"+  json[i].equipe1 +"</td>" + "<td>"+  json[i].equipe2 +"</td>" +"</tr>" ;
 
-							
+
 						}
 						$("#tab2").html(tr) ;
-						
+
 					},
 				});
 			}
 
-			
+
 			</script>
 
 			<!-- ca marche pas pour l'instant le fait de parier, ERROR 415 ou 405-->
@@ -40,19 +40,18 @@
 			function mise() {
 
 				$.ajax({
-					url: "data/events" ,
+					url: "data/events/" + $("#titre").val(),
 					type: "PUT",
 					dataType: "json",
 					data: {
-						titre: $("#titre").val(),
-						somme: $("#mise").val(),
+						somme: $("#mise").val()
 					},
 					success: function(json) {
 						console.log("ça marche");
 
 					}
 				});
-			};
+			}
 			</script>
 
 
@@ -94,10 +93,13 @@
 		                    <li><a href="#">Deconnexion</a></li>
 		                  </ul>
 		                </li>
-		                <li class="status">
+		              </ul>
+					  <ul class="nav navbar-nav navbar-right">
+						<li id="connexion" class="status">
+							<!--<script>isLogged()</script>-->
 		                	<a>Vous n'êtes pas connecté</a>
 		                </li>
-		              </ul>
+					</ul>
 		            </div>
 		          </div>
 		        </nav>
@@ -107,11 +109,14 @@
 
 		<div id="choix">
 			<label for="inputTitre" class="sr-only">titre</label>
-		 	<input type="text" id="titre" class="form-control" placeholder="Titre du pari"required>
+		 	<input type="text" id="titre" class="form-control" placeholder="titre du pari"required>
 
 		 	 <label for="mise" class="sr-only">Votre Mise </label>
 			 <input type="number" id="mise" class ="form-control" placeholder="Votre mise" required>
-
+			 <form action="">
+				<input type="radio" name="equipe" value="equipe1">Equipe 1<br>
+				<input type="radio" name="equipe" value="equipe2">Equipe 2<br>
+</form>
 		 	 <button class="btn-info" onclick="mise()" id="bouton">Miser</button>
 
 		</div>
