@@ -93,10 +93,13 @@
 		                    <li><a href="#">Deconnexion</a></li>
 		                  </ul>
 		                </li>
-		                <li class="status">
+		              </ul>
+					  <ul class="nav navbar-nav navbar-right">
+						<li id="connexion" class="status">
+							<!--<script>isLogged()</script>-->
 		                	<a>Vous n'êtes pas connecté</a>
 		                </li>
-		              </ul>
+					</ul>
 		            </div>
 		          </div>
 		        </nav>
@@ -110,7 +113,10 @@
 
 		 	 <label for="mise" class="sr-only">Votre Mise </label>
 			 <input type="number" id="mise" class ="form-control" placeholder="Votre mise" required>
-
+			 <form action="">
+				<input type="radio" name="equipe" value="equipe1">Equipe 1<br>
+				<input type="radio" name="equipe" value="equipe2">Equipe 2<br>
+</form>
 		 	 <button class="btn-info" onclick="mise()" id="bouton">Miser</button>
 
 		</div>
