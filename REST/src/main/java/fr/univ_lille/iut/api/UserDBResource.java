@@ -20,8 +20,7 @@ public class UserDBResource {
 			dao.createUserTable();
 			dao.insert(new User("Margaret", "Thatcher"));
 		} catch (Exception e) {
-			//System.out.println("Table déjà là !");
-			logger.debug(e.getStackTrace().toString());
+			System.out.println("Table déjà là !");
 		}
 	}
 	
