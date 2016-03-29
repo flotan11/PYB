@@ -6,7 +6,7 @@
 		<script src='jquery-2.1.3.js'></script>
 		<link rel="stylesheet" type="text/css" href="css/styles.css"/>
 		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="css/connexion.css"/>
+		<link rel="stylesheet" type="text/css" href="css/statistique.css"/>
 		
 	</head>
 	<header>
@@ -56,17 +56,24 @@
 		            </div>
 		          </div>
 		        </nav>
-
+	<div id="twrap">
+	 	<div class="container-centered">
+	 		<div class="row">
+	 			<div class="col-lg-8 col-lg-offset-2">
+	 			<i class="fa fa-comment-o"></i>
+	 			<h1>Statistiques :</h1>
+				<ul id="list">
+					<li>Paris gagnés : *NbParisGagné*</li>
+					<br><li>Paris perdus : *NbParisPerdus*</li>
+					<br><li>Betz gagnés : *NbBetzG* Betz</li>
+					<br><li>Betz perdu : *NbBetzP* Betz</li>
+					<br><li>Balance : *Balance* Betz</li>
+	 			</div>
+	 		</div>
+	 	</div>
+	 </div>
 		     	 </div>
 		    	</div>
-
-    <script>
-$(document).ready(function() {
-  $("#submit-button").on('click',function(event) {
-    event.preventDefault();
-  });
-});
-	</script>
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
