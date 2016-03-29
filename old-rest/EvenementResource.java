@@ -38,7 +38,7 @@ public class EvenementResource {
      * Méthode de création d'un événement qui prend en charge les requêtes
      * HTTP POST
      *
-     * @param  user Instance d'utilisateur à créer
+     * @param  evenement Instance d'evenement à créer
      * @return Evenement le nouvel evenement
      */
     @POST
@@ -129,8 +129,8 @@ public class EvenementResource {
      */
     @POST
     @Consumes("application/x-www-form-urlencoded")
-        public Evenement createEvenement(@FormParam("titre") String titre, @FormParam("idUser") int idUser, @FormParam("description") String description, @FormParam("nbParieurs") int nbParieurs, @FormParam("miseMin") int miseMin, @FormParam("nbParieursMin") int nbParieursMin, @FormParam("cote") int cote, @FormParam("datef") Date datef, @FormParam("prive") boolean prive,@FormParam("somme") int somme,@FormParam("equipe1") String equipe1,@FormParam("equipe2") String equipe2) {
-        // Si l'utilisateur existe déjà, renvoyer 409
+    public Evenement createEvenement(@FormParam("titre") String titre, @FormParam("idUser") int idUser, @FormParam("description") String description, @FormParam("nbParieurs") int nbParieurs, @FormParam("miseMin") int miseMin, @FormParam("nbParieursMin") int nbParieursMin, @FormParam("cote") int cote, @FormParam("datef") Date datef, @FormParam("prive") boolean prive) {
+        // Si l'utilisateur existe déjà, renvoyer null
         if ( evenements.containsKey(titre) ) {
             return null;
         }

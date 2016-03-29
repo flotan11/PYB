@@ -10,15 +10,17 @@
 		
 		<script type="text/javascript">
 			function verifInscription() {
-				if (mdpVerif.value == mdp.value && mailVerif.value== mail.value) {
+				if (mdpVerif.value == mdp.value) {
 					if (nom.value.length >= 2 && prenom.value.length >= 2 && mdp.value.length >= 6) {
 						envoyerInscription();
 					} else {
 						console.log("Etape 2 pas bon (vérif taille nom prenom et mdp");
+						alert("Veuillez entrer un nom et un prénom d'au moins 2 caractères, ainsi qu'un mot de passe d'au moins 6 caratères.");
 						
 					}
 				} else {
 					console.log("Etape 1 pas bon (vérif mdp-mdpverif et mail-mailverif");
+					alert("Les mots de passe ne correspondent pas. Veuillez réessayer.");
 						
 				}
 			}
@@ -26,25 +28,27 @@
 			function envoyerInscription() {
 				var ageCalculate = 20;
 				$.ajax({
-					url:"data/users",
+					contentType: "application/json",
+					url:"data/userdb",
 					type:"POST",
 					dataType :"json",
-					data: {
-						nom: $("#nom").val(),
-						prenom: $("#prenom").val(),
-						login: $("#login").val(),
-						mdp: $("#mdp").val(),
-						adresse: $("#adresse").val(),
-						codePostal: $("#codePostal").val(),
-						ville: $("#ville").val(),
-						mail: $("#mail").val(),
-						age: ageCalculate,
-						mobile: $("#numTel").val()
-					},
+					data: JSON.stringify({
+						"firstName": $("#nom").val(),
+						"lastName": $("#prenom").val(),
+						"login": $("#login").val(),
+						"password": $("#mdp").val(),
+						"address": $("#adresse").val(),
+						"postalCode": $("#codePostal").val(),
+						"location": $("#ville").val(),
+						"age": ageCalculate,
+						"mobile": $("#numTel").val()
+					}),
 					success: function(json) {
-						console.log("ça marche");
+						console.log("Connecté");
 						redirect();
-
+					},
+					error: function(json) {
+						console.log(json);
 					}
 				});
 			}
@@ -53,7 +57,7 @@
 
 		<script>
 		function redirect(){
-	  		document.location.href="accueil.html";
+	  		document.location.href="accueil.html"; 
 		}
 		</script>
 
@@ -132,12 +136,6 @@
 					<td>
        				<label for="inputCP" class="sr-only">Code postal</label>
        				<input type="text" id="codePostal" class="form-control" placeholder="Code postal"required>
-
-        			<label for="inputEmail" class="sr-only">Adresse e-mail</label>
-        			<input type="email" id="mail" class="form-control" placeholder="Adresse e-mail"required>
-
-        			<label for="inputEmail" class="sr-only">Vérification e-mail</label>
-        			<input type="email" id="mailVerif" class="form-control" placeholder="Confirmation du mail"required>
 
 			        <label for="inputPassword" class="sr-only">Mot de passe</label>
 			        <input type="password" id="mdp" class="form-control" placeholder="Mot de passe"required>
