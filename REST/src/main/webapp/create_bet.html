@@ -10,18 +10,18 @@
 		<script>
 			function validation() {
 				$.ajax({
-					url: "data/events",
+					contentType: "application/json",
+					url: "data/paridb",
 					type: "POST",
 					dataType: "json",
 					data: {
-						titre: $("#nomPari").val(),
+						nom: $("#nomPari").val(),
 						description: $("#descriptionPari").val(),
-						nbParieursMin: $("#nbParieursMini").val(),
 						miseMin: $("#miseMini").val(),
-						datef:$("#dateFin").val(),
-						priver: $("#checkbox").val(),
-						equipe1:  $("#choixTeam1").val(),
-						equipe2: $("#choixTeam2").val(),
+						privacy: $("#checkbox").val(),
+						mdp: $("#pasword").val(),
+						sideOne:  $("#choixTeam1").val(),
+						sideTwo: $("#choixTeam2").val()
 					},
 					success: function(json) {
 						console.log("ça marche");
@@ -93,14 +93,8 @@
 			        <label for="nomPari" class="sr-only">Nom du pari</label>
 			        <input type="text" id="nomPari" class="form-control" placeholder="Nom du pari" required autofocus>
 
-			        <label for="nbParieursMinimum" class="sr-only">Nombre de parieurs minimums</label>
-			        <input type="number" id="nbParieursMini" class ="form-control" placeholder="Nombre minimums de participants (au moins 2)" required>
-
 			        <label for="miseMini" class="sr-only">Mise minimum par participant</label>
 			        <input type="number" id="miseMini" class ="form-control" placeholder="Mise minimum par participant" required>
-
-			        <label for="dateFin" class="sr-only">Date de fin du pari</label>
-			        <input type="date" id="dateFin" class="form-control" placeholder="Date de fin du pari" required>
 
 			        <label for="choixTeam1" class="sr-only">Choix equipe 1</label>
 			        <input type="text" id="choixTeam1" class="form-control" placeholder="Equipe 1" required>
@@ -122,6 +116,8 @@
 		          <label>
 		            <input type="checkbox" value="remember-me" id="checkbox"> Pari privé
 		          </label>
+				<label for="pasword" class="sr-only">Date de fin du pari</label>
+				<input type="pasword" id="pasword" class="form-control" placeholder="pasword" required>
 		    </div>
 		        <button class="btn btn-lg btn-primary btn-block" type="submit" id="boutonValider" onclick="validation()">Demander validation !</button>
 		      </form>
