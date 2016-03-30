@@ -37,6 +37,21 @@
 				}
 			});
       	}
+		function isLogged(){
+			/* Code verifiant la connexion 
+			
+			if (**** est connecté){
+				
+			}else{
+				divs.style.display="";
+				<a>Vous n'êtes pas connecté</a>
+			}
+			*/
+		}
+		
+		function redirect(page){
+	  		document.location.href = page; 
+		}
 		</script>
 	</head>
 	<body>
@@ -102,21 +117,35 @@
       <form class="form-signin" onSumbit="return(false);">
         <h2 class="form-signin-heading">Connectez-vous</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="text" id="inputIdentifiant" class="form-control" placeholder="Identifiant" autofocus />
+        <input type="text" id="inputIdentifiant" class="form-control" placeholder="Identifiant" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Mot de passe" />
-        <button class="btn btn-lg btn-primary btn-block" onClick="envoyer_connexion()">Connexion</button>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Mot de passe" on		required>
+        <button id="submit-button" class="btn btn-lg btn-primary btn-block" onClick="envoyer_connexion()">Connexion</button>
       </form>
 			</td><td>
 				<h1> OU </h1>
 			</td><td>
-				<h2>Inscrivez-vous Ici : </h2><button id="inscription-button" class="btn btn-lg btn-primary btn-block" onClick=redirect("inscription.html")>Inscription</button>
+				<h2>Inscrivez vous Ici : </h2><button id="inscription-button" class="btn btn-lg btn-primary btn-block" onClick=redirect("inscription.html")>Inscription</button>
 			</td></tr>
 			</table>
     </div>
     	<div class="alert alert-success" role="alert" id="output">
         	<strong>Bien joué !</strong> Vous êtes connecté.
     	</div>
+    <script>
+		$(document).ready(function() {
+			$("#submit-button").on('click',function(event) {
+				event.preventDefault();
+			});
+
+			$("#divAlertSuccess").hide();
+		});
+		$(document).keyup(function (e) {
+			if ($(".form-control").is(":focus") && (e.keyCode == 13)) {
+				$("#submit-button").submit();
+			}
+		});
+	</script>
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
