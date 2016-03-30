@@ -20,7 +20,7 @@
 						var tr ;
 						for(i = 0;i<json.length;i++){
 						rep[i] = json[i];
-						tr += "<tr>" + "<td>" + json[i]['name'] + "</td>"+ "<td>" +  json[i]['total']  + "</td>"+ "<td>" +  json[i]['privacy'] +"</td>"+ "<td>"+  json[i]['coteSideOne'] +"</td>"+"<td>"+  json[i]['coteSideTwo'] +"</td>" + "<td>"+  json[i]['sideOne'] +"<input type = \"radio\" name=\"side\"</td>" + "<td>"+  json[i]['sideTwo'] +"<input type = \"radio\" name=\"side\"</td><td><button class=\"btn btn-lg btn-primary btn-block\" onclick=\"mise()\">Miser</button></td>" +"<td id=\"mise\">input type=\"number\" placeholder=\"Votre mise ...\"</td>"+"</tr>" ;
+						tr += "<tr>" + "<td>" + json[i]['name'] + "</td>"+ "<td>" +  json[i]['total']  + "</td>"+ "<td>" +  json[i]['privacy'] +"</td>"+ "<td>"+  json[i]['coteSideOne'] +"</td>"+"<td>"+  json[i]['coteSideTwo'] +"</td>" + "<td>"+  json[i]['sideOne'] +"<input type = \"radio\" name=\"side\"</td>" + "<td>"+  json[i]['sideTwo'] +"<input type = \"radio\" name=\"side\"</td><td><button class=\"btn btn-lg btn-primary btn-block\" onclick=\"mise()\">Miser</button></td>" +"<td id=\"mise\"><input type=\"number\" placeholder=\"Votre mise ...\"></td>"+"</tr>" ;
 						}
 						$("#tab2").html(tr) ;
 
