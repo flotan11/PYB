@@ -1,6 +1,0 @@
-java:
-  image: flotan11/PYB
-  ports:
-  - ip: 178.33.41.228
-    container_port: 8080
-    host_port: 80
