@@ -51,15 +51,24 @@
 					}),
 					success: function(json) {
 						console.log("Inscription validée !");
-						redirect("accueil.html");
+						redirect();
 					},
 					error: function(json) {
 						console.log(json);
 					}
 				});
 			}
+			
+			$(document).keyup(function (e) {
+				if ($(".form-control").is(":focus") && (e.keyCode == 13)) {
+					$("#submit-button").submit();
+				}
+			});
+			
+			function redirect(){
+	  			document.location.href="accueil.html"; 
+			}
 		</script>
-
 	</head>
 		<body>
 		<div class="navbar-wrapper">
@@ -109,43 +118,43 @@
 		    <div class="container">
 
       			<form class="form-signin" onSubmit="return(false);">
-       				<h2 class="form-signin-heading">Inscrivez-vous</h2>
+       				<h2 class="form-signin-heading">Inscrivez vous</h2>
        				<table>
 					<tr><td>
        				<label for="inputName" class="sr-only">Nom</label>
-       				<input type="text" id="nom" class="form-control" placeholder="Nom" />
+       				<input type="text" id="nom" class="form-control" placeholder="Nom" required>
 
        				<label for="inputName" class="sr-only">Prénom</label>
-       				<input type="text" id="prenom" class="form-control" placeholder="Prénom" />
+       				<input type="text" id="prenom" class="form-control" placeholder="Prénom"required>
 
        				<label for="inputName" class="sr-only">Pseudo</label>
-       				<input type="text" id="login" class="form-control" placeholder="Login" />
+       				<input type="text" id="login" class="form-control" placeholder="Pseudonyme"required>
 
-			        <label for="inputPassword" class="sr-only">Mot de passe</label>
-			        <input type="password" id="mdp" class="form-control" placeholder="Mot de passe" />
-			      	
-			      	<label for="inputPassword" class="sr-only">Vérification</label>
-			        <input type="password" id="mdpVerif" class="form-control" placeholder="Confirmation mot de passe" />
-					</td>
-					<td>
        				<label for="inputDate" class="sr-only">Date de naissance</label>
-       				<input type="date" id="birthday" class="form-control" placeholder="Date de naissance" />
+       				<input type="date" id="birthday" class="form-control" placeholder="Date de naissance"required>
 
        				<label for="inputAdresse" class="sr-only">Adresse</label>
-       				<input type="text" id="adresse" class="form-control" placeholder="Adresse" />
-
+       				<input type="text" id="adresse" class="form-control" placeholder="Adresse"required>
+					</td>
+					<td>
        				<label for="inputVille" class="sr-only">Ville</label>
-       				<input type="text" id="ville" class="form-control" placeholder="Ville" />
+       				<input type="text" id="ville" class="form-control" placeholder="Ville"required>
 
        				<label for="inputCP" class="sr-only">Code postal</label>
-       				<input type="text" id="codePostal" class="form-control" placeholder="Code postal" />
+       				<input type="text" id="codePostal" class="form-control" placeholder="Code postal"required>
+
+			        <label for="inputPassword" class="sr-only">Mot de passe</label>
+			        <input type="password" id="mdp" class="form-control" placeholder="Mot de passe"required>
+			      	
+			      	<label for="inputPassword" class="sr-only">Vérification</label>
+			        <input type="password" id="mdpVerif" class="form-control" placeholder="Confirmation mot de passe"required>
 
 			        <label for="inputTel" class="sr-only">Téléphone</label>
-			        <input type="tel" id="numTel" class="form-control" placeholder="Téléphone" />
+			        <input type="tel" id="numTel" class="form-control" placeholder="Téléphone (optionnel)">
 					</td></tr>
 					</table>
 
-			        <button class="btn btn-lg btn-primary btn-block" onclick="verifInscription()">Inscription</button>
+			        <button id="submit-button" class="btn btn-lg btn-primary btn-block" onclick="verifInscription()">Inscription</button>
 			     </form>
 
     </div> <!-- /container -->
