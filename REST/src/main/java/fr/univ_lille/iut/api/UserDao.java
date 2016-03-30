@@ -19,7 +19,7 @@ public interface UserDao {
 	User findByLogin(@Bind("login") String login);
 
 	@SqlUpdate("drop table if exists users")
-	void dropUserTable();
+	void dropUsersTable();
 	
 	@SqlUpdate("delete from users where id = :id")
 	void delete(@Bind("id") int id);

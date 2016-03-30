@@ -7,7 +7,7 @@ import org.skife.jdbi.v2.tweak.BeanMapperFactory;
 import java.util.List;
 
 public interface PariDao {
-	@SqlUpdate("create table paris (id integer primary key autoincrement, password varchar(100), name varchar(100), sideOne varchar(100), sideTwo varchar(100), description varchar(10), miseSideOne integer, miseSideTwo integer, miseMin integer, privacy boolean)")
+	@SqlUpdate("create table paris (id integer primary key autoincrement, password varchar(100), name varchar(100), sideOne varchar(100), sideTwo varchar(100), description varchar(100), miseSideOne integer, miseSideTwo integer, miseMin integer, privacy boolean)")
 	void createParisTable();
 
 	@SqlUpdate("insert into paris (password, name, sideOne, sideTwo, description, miseMin, privacy) values (:password, :name, :sideOne, :sideTwo, :description, :miseMin, :privacy)")
@@ -29,7 +29,7 @@ public interface PariDao {
 	Pari findById(@Bind("id") int id);
 	
 	@SqlUpdate("update paris set miseSideOne = :miseSideOne, miseSideTwo = :miseSideTwo where id = :id")
-	void updateValues(@BindBean("id") Pari pari);
+	void updateValues(@BindBean() Pari pari);
 
 	void close();
 }
