@@ -15,8 +15,8 @@ public class Pari {
     private String description;
     private int miseSideOne;
     private int miseSideTwo;
-    private int coteSideOne;
-    private int coteSideTwo;
+    private double coteSideOne;
+    private double coteSideTwo;
     private int miseMin;
     private int total;
     private boolean privacy;
@@ -46,19 +46,19 @@ public class Pari {
     	this.password = password;
     }
 
-    public void setCoteSideOne(int coteSideOne) {
+    public void setCoteSideOne(double coteSideOne) {
         this.coteSideOne = coteSideOne;
     }
 
-    public void setCoteSideTwo(int coteSideTwo) {
+    public void setCoteSideTwo(double coteSideTwo) {
         this.coteSideTwo = coteSideTwo;
     }
 
-    public int getCoteSideOne() {
+    public double getCoteSideOne() {
         return coteSideOne;
     }
 
-    public int getCoteSideTwo() {
+    public double getCoteSideTwo() {
         return coteSideTwo;
     }
 

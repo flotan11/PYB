@@ -31,6 +31,28 @@ public class PariDBResource {
 		return pari;
 	}
 	
+	@PUT
+	@Path("/{id}")
+	public void updateMises(@PathParam("id") int id, @PathParam("side") String side, @PathParam("mise") int mise) {
+		Pari pari = dao.findById(id);
+		logger.debug("pari-content: " + pari);
+		if (pari == null) {
+			throw new WebApplicationException(404);
+		}
+		
+		if (side == null) {
+			throw new IllegalArgumentException("No side has been specified");
+		} else if (side.equals(pari.getSideOne())) {
+			pari.addMiseSideOne(mise);
+		} else if (side.equals(pari.getSideTwo())) {
+			pari.addMiseSideTwo(mise);
+		} else {
+			throw new IllegalArgumentException("No such team");
+		}
+		
+		dao.updateValues(pari);
+	}
+	
 	@DELETE
 	@Path("/{id}")
 	public Pari removePariById(@PathParam("id") int id) {

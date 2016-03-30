@@ -27,6 +27,9 @@ public interface PariDao {
 	@SqlQuery("select * from paris where id = :id")
 	@RegisterMapperFactory(BeanMapperFactory.class)
 	Pari findById(@Bind("id") int id);
+	
+	@SqlUpdate("update paris set miseSideOne = :miseSideOne, miseSideTwo = :miseSideTwo where id = :id")
+	void updateValues(@BindBean("id") Pari pari);
 
 	void close();
 }
