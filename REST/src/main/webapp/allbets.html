@@ -20,7 +20,7 @@
 						var tr ;
 						for(i = 0;i<json.length;i++){
 						rep[i] = json[i];
-						tr += "<tr>" + "<td>" + json[i]['name'] + "</td>"+ "<td>" +  json[i]['total']  + "</td>"+ "<td>" +  json[i]['privacy'] +"</td>"+ "<td>"+  json[i]['coteSideOne'] +"</td>"+"<td>"+  json[i]['coteSideTwo'] +"</td>" + "<td>"+  json[i]['sideOne'] +"<input type = \"radio\" name=\"side\"</td>" + "<td>"+  json[i]['sideTwo'] +"<input type = \"radio\" name=\"side\"</td><td><button class=\"btn btn-lg btn-primary btn-block\">Miser</button></td>" +"</tr>" ;
+						tr += "<tr>" + "<td>" + json[i]['name'] + "</td>"+ "<td>" +  json[i]['total']  + "</td>"+ "<td>" +  json[i]['privacy'] +"</td>"+ "<td>"+  json[i]['coteSideOne'] +"</td>"+"<td>"+  json[i]['coteSideTwo'] +"</td>" + "<td>"+  json[i]['sideOne'] +"<input type = \"radio\" name=\"side\"</td>" + "<td>"+  json[i]['sideTwo'] +"<input type = \"radio\" name=\"side\"</td><td><button class=\"btn btn-lg btn-primary btn-block\" onclick=\"mise()\">Miser</button></td>" +"</tr>" ;
 						}
 						$("#tab2").html(tr) ;
 
@@ -29,8 +29,18 @@
 			}
 
 			function selected(){
-				$($("input[name='side']:checked").val()){
+				if($("input[name='side']:checked").val()){
+					return true;
+				} else {
+					return false;
+				}
+			}
+
+			function mise(){
+				if(selected()){
 					alert("Un bouton a été sélectionné !");
+				} else {
+					alert("Rien n'a été sélectionné");
 				}
 			}
 
@@ -40,7 +50,7 @@
 			<!-- ca marche pas pour l'instant le fait de parier, ERROR 415 ou 405-->
 
 			<script type="text/javascript">
-			function mise() {
+			/*function mise() {
 
 				$.ajax({
 					url: "data/events/" + $("#titre").val(),
@@ -54,7 +64,7 @@
 
 					}
 				});
-			}
+			}*/
 			</script>
 
 
