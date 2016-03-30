@@ -33,4 +33,8 @@ public interface UserDao {
 	User findById(@Bind("id") int id);
 
 	void close();
+	
+	/*@SqlUpdate("UPDATE users set firstname = ':firstname', lastname =':lastname', login =':login', address=':address', postalcode =':postalcode', location=':location', age =':age', mobile =':mobile', passwdHash=':passwdHash', salt=':salt', betz ='betz, WHERE id =':id'")
+	@GetGeneratedKeys
+	void update(@BindBean() User u); */
 }

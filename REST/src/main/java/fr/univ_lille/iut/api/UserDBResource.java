@@ -3,6 +3,8 @@ package fr.univ_lille.iut.api;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import fr.univ_lille.iut.web.WebApplication;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
@@ -42,6 +44,19 @@ public class UserDBResource {
 		dao.delete(id);
 		return user;
 	}
+	
+	/*@PUT
+	@Path("/{id}")
+	public User updateUser(@PathParam("id") int id, User user) {
+		logger.debug("id : " + id);
+		User u = dao.findById(id);
+		if (u == null) {
+			throw new WebApplicationException(404);
+		}
+		//dao.update(id, user);
+		return user;
+	}
+	*/
 	
 	@GET
 	@Path("/{login}")
