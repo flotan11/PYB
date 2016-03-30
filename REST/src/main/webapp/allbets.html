@@ -20,7 +20,7 @@
 						var tr ;
 						for(i = 0;i<json.length;i++){
 						rep[i] = json[i];
-						tr += "<tr>" + "<td>" + json[i]['name'] + "</td>"+ "<td>" +  json[i]['total']  + "</td>"+ "<td>" +  json[i]['privacy'] +"</td>"+ "<td>"+  json[i]['coteSideOne'] +"</td>"+"<td>"+  json[i]['coteSideTwo'] +"</td>" + "<td>"+  json[i]['sideOne'] +"</td>" + "<td>"+  json[i]['sideTwo'] +"</td><td><button class=\"btn btn-lg btn-primary btn-block\">Miser</button></td>" +"</tr>" ;
+						tr += "<tr>" + "<td>" + json[i]['name'] + "</td>"+ "<td>" +  json[i]['total']  + "</td>"+ "<td>" +  json[i]['privacy'] +"</td>"+ "<td>"+  json[i]['coteSideOne'] +"input type = \"radio\" name=\"side\"</td>"+"<td>"+  json[i]['coteSideTwo'] +"input type = \"radio\" name=\"side\"</td>" + "<td>"+  json[i]['sideOne'] +"</td>" + "<td>"+  json[i]['sideTwo'] +"</td><td><button class=\"btn btn-lg btn-primary btn-block\">Miser</button></td>" +"</tr>" ;
 						}
 						$("#tab2").html(tr) ;
 
