@@ -5,6 +5,6 @@ run apt-get update && \
 add REST/pom.xml /srv/jersey-skeleton/
 workdir /srv/jersey-skeleton/
 run mvn install
-add src /srv/jersey-skeleton/src/
+add REST/src /srv/jersey-skeleton/src/
 expose 8080
 cmd mvn jetty:run
