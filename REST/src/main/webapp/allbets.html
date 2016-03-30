@@ -10,6 +10,7 @@
 		<script type="text/javascript">
 			var i;
 			var rep = new Array;
+			var longueur;
 			function presentation() {
 				console.log("test");
 				$.ajax({
@@ -18,15 +19,23 @@
 					dataType: "json",
 					success: function(json) {
 						var tr ;
+						var mise = "";
+						longueur = json.length;
 						for(i = 0;i<json.length;i++){
 						rep[i] = json[i];
-						tr += "<tr>" + "<td>" + json[i]['name'] + "</td>"+ "<td>" +  json[i]['total']  + "</td>"+ "<td>" +  json[i]['privacy'] +"</td>"+ "<td>"+  json[i]['coteSideOne'] +"</td>"+"<td>"+  json[i]['coteSideTwo'] +"</td>" + "<td>"+  json[i]['sideOne'] +"<input type = \"radio\" name=\"side\"</td>" + "<td>"+  json[i]['sideTwo'] +"<input type = \"radio\" name=\"side\"</td><td><button class=\"btn btn-lg btn-primary btn-block\" onclick=\"mise()\">Miser</button></td>" +"<td id=\"mise\""+i+"><input type=\"number\" placeholder=\"Votre mise ...\"></td>"+"</tr>" ;
-							$("#mise"+i+"").hide();
+						tr += "<tr>" + "<td>" + json[i]['name'] + "</td>"+ "<td>" +  json[i]['total']  + "</td>"+ "<td>" +  json[i]['privacy'] +"</td>"+ "<td>"+  json[i]['coteSideOne'] +"</td>"+"<td>"+  json[i]['coteSideTwo'] +"</td>" + "<td>"+  json[i]['sideOne'] +"<input type = \"radio\" name=\"side\"</td>" + "<td>"+  json[i]['sideTwo'] +"<input type = \"radio\" name=\"side\"</td><td><button class=\"btn btn-lg btn-primary btn-block\" onclick=\"mise("+i+","+ json+")\">Miser</button></td>" +"<td id=\"mise"+i+"\"><input type=\"number\" id=\"valueInput"+i+"\"placeholder=\"Votre mise ...\"></td>"+"</tr>" ;
 						}
 						$("#tab2").html(tr) ;
+						cacherTd(longueur);
 
 					},
 				});
+			}
+
+			function cacherTd(longueur) {
+				for(i = 0;i<longueur;i++){
+					$("#mise"+i).hide();
+				}
 			}
 
 			function selected(){
@@ -37,10 +46,15 @@
 				}
 			}
 
-			function mise(){
+			function mise(i){
 				if(selected()){
-					$("#mise").show();
+					$("#mise"+i).show();
+					console.log("Passé par le show");
+
+				} else {
+					console.log("Non sélectionné"); 		
 				}
+				
 			}
 
 
@@ -49,21 +63,21 @@
 			<!-- ca marche pas pour l'instant le fait de parier, ERROR 415 ou 405-->
 
 			<script type="text/javascript">
-			/*function mise() {
+			function miseJouee(i) {
 
 				$.ajax({
 					url: "data/events/" + $("#titre").val(),
 					type: "PUT",
-					dataType: "json",
+					dataType: "default",
 					data: {
-						somme: $("#mise").val()
+						somme: $("#valueInput"+i).val()
 					},
 					success: function(json) {
 						console.log("Ça marche");
 
 					}
 				});
-			}*/
+			}
 			</script>
 
 
