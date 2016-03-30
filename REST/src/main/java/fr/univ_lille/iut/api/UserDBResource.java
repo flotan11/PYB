@@ -20,7 +20,7 @@ public class UserDBResource {
     public UserDBResource() {
 		try {
 			dao.createUsersTable();
-			dao.insert(new User("Margaret", "Thatcher"));
+			dao.insert(new User("Margaret", "Thatcher", "maggy", "maggy"));
 		} catch (Exception e) {
 			System.out.println("Table déjà là !");
 		}
@@ -45,18 +45,51 @@ public class UserDBResource {
 		return user;
 	}
 	
-	/*@PUT
+	@PUT
 	@Path("/{id}")
-	public User updateUser(@PathParam("id") int id, User user) {
-		logger.debug("id : " + id);
-		User u = dao.findById(id);
-		if (u == null) {
+	public void updateUserInfos(@PathParam("id") int id, User userUpdate) {
+		logger.debug("info-user-update : " + userUpdate);
+		User user = dao.findById(id);
+		if (user == null) {
 			throw new WebApplicationException(404);
 		}
-		//dao.update(id, user);
-		return user;
+		
+		// Getting changed values
+    	String firstName = userUpdate.getFirstName();
+    	String lastName = userUpdate.getLastName();
+    	String login = userUpdate.getLogin();
+    	String address = userUpdate.getAddress();
+    	String postalCode = userUpdate.getPostalCode();
+    	String location = userUpdate.getLocation();
+    	String mobile = userUpdate.getMobile();
+    	String password = userUpdate.getPassword();
+    	int betz = userUpdate.getBetz();
+    	
+    	// Checking changes
+    	if (firstName != null) user.setFirstName(firstName);
+    	if (lastName != null) user.setLastName(lastName);
+    	if (login != null) user.setLogin(login);
+    	if (address != null) user.setAddress(address);
+    	if (postalCode != null) user.setPostalCode(postalCode);
+    	if (location != null) user.setLocation(location);
+    	if (mobile != null) user.setMobile(mobile);
+    	if (password != null) user.setPassword(password);
+    	if (betz != 0) user.setBetz(betz);
+		
+		dao.updateInfos(user);
 	}
-	*/
+	
+	@PUT
+	@Path("/{id}/{betz}")
+	public void updateUserBetz(@PathParam("id") int id, @PathParam("betz") int betz) {
+		logger.debug("betz-user-update : id=" + id + "/betz=" + betz);
+		User user = dao.findById(id);
+		if (user == null) {
+			throw new WebApplicationException(404);
+		}
+		
+		dao.updateSolde(id, betz);
+	}
 	
 	@GET
 	@Path("/{login}")

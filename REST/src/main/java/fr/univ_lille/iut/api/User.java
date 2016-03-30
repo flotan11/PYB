@@ -28,24 +28,23 @@ public class User implements Principal {
     private String salt;
     private int betz;
 
-    private static User anonymous = new User("Anne", "O'nyme");
-
     public User() {
     	this.id = idInc++;
-    	this.betz = 0;
     }
     
-    public User(String firstName, String lastName) {
+    public User(String firstName, String lastName, String login) {
     	this();
-        this.firstName = firstName;
-        this.lastName = lastName;
+    	this.firstName = firstName;
+    	this.lastName = lastName;
+    	this.login = login;
     }
 
-    public User(String firstName, String lastName, String login) {
+    public User(String firstName, String lastName, String login, String password) {
     	this();
         this.firstName = firstName;
         this.lastName = lastName;
         this.login = login;
+        setPassword(password);
     }
     
     public User(String firstName, String lastName, String login, String address, String postalCode, String location, int age, String mobile, String password) {
@@ -193,8 +192,8 @@ public class User implements Principal {
     	return betz;
     }
     
-    public void setBetz(int b) {
-    	this.betz = b;
+    public void setBetz(int betz) {
+    	this.betz = betz;
     }
 
     private String generateSalt() {
@@ -208,17 +207,5 @@ public class User implements Principal {
         if (password != null && ! password.isEmpty()) {
             setPassword(getPassword());
         }
-    }
-
-    public boolean isInUserGroup(){
-        return ! (id == anonymous.getId());
-    }
-
-    public static User getAnonymousUser() {
-        return anonymous ;
-    }
-
-    public static boolean isAnonymous(User currentUser) {
-        return currentUser.getId() == getAnonymousUser().getId();
     }
 }

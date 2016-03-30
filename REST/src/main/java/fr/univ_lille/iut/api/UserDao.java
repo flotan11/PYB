@@ -31,10 +31,12 @@ public interface UserDao {
 	@SqlQuery("select * from users where id = :id")
 	@RegisterMapperFactory(BeanMapperFactory.class)
 	User findById(@Bind("id") int id);
+	
+	@SqlUpdate("update users set firstname = :firstName, lastname = :lastName, login = :login, address = :address, postalcode = :postalCode, location= :location, age = :age, mobile = :mobile, betz = :betz where id = :id")
+	void updateInfos(@BindBean() User userUpdate);
+	
+	@SqlUpdate("update users set betz = :betz where id = :id")
+	void updateSolde(@Bind("id") int id, @Bind("betz") int betz);
 
 	void close();
-	
-	/*@SqlUpdate("UPDATE users set firstname = ':firstname', lastname =':lastname', login =':login', address=':address', postalcode =':postalcode', location=':location', age =':age', mobile =':mobile', passwdHash=':passwdHash', salt=':salt', betz ='betz, WHERE id =':id'")
-	@GetGeneratedKeys
-	void update(@BindBean() User u); */
 }

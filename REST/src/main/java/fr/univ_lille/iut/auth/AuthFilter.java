@@ -42,8 +42,6 @@ public class AuthFilter implements ContainerRequestFilter {
             }
 
             containerRequest.setSecurityContext(new AppSecurityContext(user, scheme));
-        } else {
-            containerRequest.setSecurityContext(new AppSecurityContext(User.getAnonymousUser(), scheme));
         }
     }
 }

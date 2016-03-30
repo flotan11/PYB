@@ -21,16 +21,18 @@ public class AppSecurityContext implements SecurityContext {
     public Principal getUserPrincipal() {
         return this.user;
     }
-
+	
     @Override
     public boolean isUserInRole(String s) {
         logger.debug("isUserInRole called for : "+ s);
+        /*
         if ("user".equals(s)){
             return user.isInUserGroup();
         }
+        */
         return true;
     }
-
+	
     @Override
     public boolean isSecure() {
         return "https".equals(this.scheme);
