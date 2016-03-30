@@ -26,11 +26,13 @@ public class User implements Principal {
     private String password;
     private String passwdHash;
     private String salt;
+    private int betz;
 
     private static User anonymous = new User("Anne", "O'nyme");
 
     public User() {
     	this.id = idInc++;
+    	this.betz = 0;
     }
     
     public User(String firstName, String lastName) {
@@ -165,7 +167,7 @@ public class User implements Principal {
 
     @Override
     public String toString() {
-        return id + ": " + login + ", " + firstName+ ", " + lastName;
+        return id + ": " + login + ", " + firstName+ ", " + lastName + " avec " + betz;
     }
 
     public String getLogin() {
@@ -185,6 +187,14 @@ public class User implements Principal {
 
     public void setSalt(String salt) {
         this.salt = salt;
+    }
+    
+    public int getBetz() {
+    	return betz;
+    }
+    
+    public void setBetz(int b) {
+    	this.betz = b;
     }
 
     private String generateSalt() {
