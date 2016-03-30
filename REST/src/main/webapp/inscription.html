@@ -9,6 +9,10 @@
 		<link rel="stylesheet" type ="text/css" href="css/inscription.css">
 		
 		<script type="text/javascript">
+			function redirect(page) {
+				document.location.href = page;
+			}
+	
 			function verifInscription() {
 				var nom = $('#nom').val();
 				var prenom = $('#prenom').val();
@@ -25,19 +29,6 @@
 				} else {
 					envoyerInscription();
 				}
-				/*
-				if (mdpVerif.value == mdp.value) {
-					if (nom.value.length >= 2 && prenom.value.length >= 2 && mdp.value.length >= 6) {
-						envoyerInscription();
-					} else {
-						console.log("Etape 2 pas bon (vérif taille nom prenom et mdp");
-						alert("Veuillez entrer un nom et un prénom d'au moins 2 caractères, ainsi qu'un mot de passe d'au moins 6 caratères.");
-					}
-				} else {
-					console.log("Etape 1 pas bon (vérif mdp-mdpverif et mail-mailverif");
-					alert("Les mots de passe ne correspondent pas. Veuillez réessayer.");
-				}
-				*/
 			}
 			
 			function envoyerInscription() {
@@ -107,8 +98,6 @@
 		              </ul>
 					  <ul class="nav navbar-nav navbar-right">
 						<li id="connexion" class="status">
-							<!--<script>isLogged()</script>-->
-		                	<a>Vous n'êtes pas connecté</a>
 		                </li>
 					</ul>
 		            </div>
@@ -172,6 +161,6 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="js/ie10-viewport-bug-workaround.js"></script>
 	<!-- Document ready script -->
-	<script src="js.ready.js"></script>
+	<script src="js/ready.js"></script>
 	</body>
 </html>

@@ -9,46 +9,36 @@
 		<link rel="stylesheet" type="text/css" href="css/connexion.css"/>
 		
 		<script type="text/javascript">
+		function redirect(page) {
+			document.location.href = page;
+		}
+
       	function envoyer_connexion(){
       		var inputLog = $("#inputIdentifiant").val();
       		var inputMdp = $("#inputPassword").val();
       		$.ajax({
-					url:"data/userdb/" + inputLog,
-					type:"GET",
-					dataType :"json",
-					beforeSend : function(req) {
-				        req.setRequestHeader("Authorization", "Basic " + btoa(inputLog + ":" + inputMdp));
-				    },				
-					success: function(json) {
-						var divs = document.getElementById("formCo");
-						divs.style.display="none";
-						var c = $("#connexion");
-						c.html(json.login + " : ");
-						c.css("margin-top", "40%");
-						c.css("margin-bottom", "40%");
-						$("#divAlertSuccess").show();
-					},
-					error: function(json) {
-						console.log("Erreur !!! : " +json);
-					}
-				});
+				url:"data/userdb/" + inputLog,
+				type:"GET",
+				dataType :"json",
+				beforeSend : function(req) {
+				       req.setRequestHeader("Authorization", "Basic " + btoa(inputLog + ":" + inputMdp));
+				   },				
+				success: function(json) {
+					var divs = document.getElementById("formCo");
+					divs.style.display="none";
+					var c = $("#connexion");
+					c.html(json.login + " : ");
+					c.css("margin-top", "40%");
+					c.css("margin-bottom", "40%");
+					$("#output").show();
+				},
+				error: function(json) {
+					console.log("error : " +json);
+				}
+			});
       	}
-		function isLogged(){
-			/* Code verifiant la connexion 
-			
-			if (**** est connecté){
-				
-			}else{
-				divs.style.display="";
-				<a>Vous n'êtes pas connecté</a>
-			}
-			*/
-		}
 		</script>
 	</head>
-	<header>
-		<!--<h1>Bienvenue sur Place Your Bets</h1> -->
-	</header>
 	<body>
 		<div class="navbar-wrapper">
 		      <div class="container">
@@ -86,8 +76,6 @@
 		              </ul>
 					  <ul class="nav navbar-nav navbar-right">
 						<li id="connexion" class="status">
-							<!--<script>isLogged()</script>-->
-		                	<a>Vous n'êtes pas connecté</a>
 		                </li>
 					</ul>
 		            </div>
@@ -126,14 +114,9 @@
 			</td></tr>
 			</table>
     </div>
-    	<div class="alert alert-success" role="alert" id="divAlertSuccess">
+    	<div class="alert alert-success" role="alert" id="output">
         	<strong>Bien joué !</strong> Vous êtes connecté.
     	</div>
-    <script>
-		$(document).ready(function() {
-			$("#divAlertSuccess").hide();
-		});
-	</script>
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
@@ -143,6 +126,6 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="js/ie10-viewport-bug-workaround.js"></script>
 	<!-- Document ready script -->
-	<script src="js.ready.js"></script>
+	<script src="js/ready.js"></script>
 	</body>
 </html>
