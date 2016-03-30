@@ -10,19 +10,34 @@
 		
 		<script type="text/javascript">
 			function verifInscription() {
+				var nom = $('#nom').val();
+				var prenom = $('#prenom').val();
+				var login = $('#login').val();
+				var mdp = $('#mdp').val();
+				var mdpVerif = $('#mdpVerif').val();
+
+				if (nom.length < 2 || prenom.length < 2) {
+					alert("Veuillez saisir un nom et un prénom d'au moins 2 caractères.");
+				} else if (login.length < 2) {
+					alert("Veuillez saisir un identifiant (login) d'au moins 2 caractères.");
+				} else if (mdp != mdpVerif) {
+					alert("Les mots de passe ne correspondent pas. Veuillez réessayer.");
+				} else {
+					envoyerInscription();
+				}
+				/*
 				if (mdpVerif.value == mdp.value) {
 					if (nom.value.length >= 2 && prenom.value.length >= 2 && mdp.value.length >= 6) {
 						envoyerInscription();
 					} else {
 						console.log("Etape 2 pas bon (vérif taille nom prenom et mdp");
 						alert("Veuillez entrer un nom et un prénom d'au moins 2 caractères, ainsi qu'un mot de passe d'au moins 6 caratères.");
-						
 					}
 				} else {
 					console.log("Etape 1 pas bon (vérif mdp-mdpverif et mail-mailverif");
 					alert("Les mots de passe ne correspondent pas. Veuillez réessayer.");
-						
 				}
+				*/
 			}
 			
 			function envoyerInscription() {
@@ -45,26 +60,13 @@
 					}),
 					success: function(json) {
 						console.log("Inscription validée !");
-						redirect();
+						redirect("accueil.html");
 					},
 					error: function(json) {
 						console.log(json);
 					}
 				});
 			}
-			
-			$(document).keyup(function (e) {
-			if ($(".form-control").is(":focus") && (e.keyCode == 13)) {
-				$("#submit-button").submit();
-			}
-		});
-		</script>
-
-
-		<script>
-		function redirect(){
-	  		document.location.href="accueil.html"; 
-		}
 		</script>
 
 	</head>
@@ -118,43 +120,43 @@
 		    <div class="container">
 
       			<form class="form-signin" onSubmit="return(false);">
-       				<h2 class="form-signin-heading">Inscrivez vous</h2>
+       				<h2 class="form-signin-heading">Inscrivez-vous</h2>
        				<table>
 					<tr><td>
        				<label for="inputName" class="sr-only">Nom</label>
-       				<input type="text" id="nom" class="form-control" placeholder="Nom" required>
+       				<input type="text" id="nom" class="form-control" placeholder="Nom" />
 
        				<label for="inputName" class="sr-only">Prénom</label>
-       				<input type="text" id="prenom" class="form-control" placeholder="Prénom"required>
+       				<input type="text" id="prenom" class="form-control" placeholder="Prénom" />
 
        				<label for="inputName" class="sr-only">Pseudo</label>
-       				<input type="text" id="login" class="form-control" placeholder="Pseudonyme"required>
-
-       				<label for="inputDate" class="sr-only">Date de naissance</label>
-       				<input type="date" id="birthday" class="form-control" placeholder="Date de naissance"required>
-
-       				<label for="inputAdresse" class="sr-only">Adresse</label>
-       				<input type="text" id="adresse" class="form-control" placeholder="Adresse"required>
-					</td>
-					<td>
-       				<label for="inputVille" class="sr-only">Ville</label>
-       				<input type="text" id="ville" class="form-control" placeholder="Ville"required>
-
-       				<label for="inputCP" class="sr-only">Code postal</label>
-       				<input type="text" id="codePostal" class="form-control" placeholder="Code postal"required>
+       				<input type="text" id="login" class="form-control" placeholder="Login" />
 
 			        <label for="inputPassword" class="sr-only">Mot de passe</label>
-			        <input type="password" id="mdp" class="form-control" placeholder="Mot de passe"required>
+			        <input type="password" id="mdp" class="form-control" placeholder="Mot de passe" />
 			      	
 			      	<label for="inputPassword" class="sr-only">Vérification</label>
-			        <input type="password" id="mdpVerif" class="form-control" placeholder="Confirmation mot de passe"required>
+			        <input type="password" id="mdpVerif" class="form-control" placeholder="Confirmation mot de passe" />
+					</td>
+					<td>
+       				<label for="inputDate" class="sr-only">Date de naissance</label>
+       				<input type="date" id="birthday" class="form-control" placeholder="Date de naissance" />
+
+       				<label for="inputAdresse" class="sr-only">Adresse</label>
+       				<input type="text" id="adresse" class="form-control" placeholder="Adresse" />
+
+       				<label for="inputVille" class="sr-only">Ville</label>
+       				<input type="text" id="ville" class="form-control" placeholder="Ville" />
+
+       				<label for="inputCP" class="sr-only">Code postal</label>
+       				<input type="text" id="codePostal" class="form-control" placeholder="Code postal" />
 
 			        <label for="inputTel" class="sr-only">Téléphone</label>
-			        <input type="tel" id="numTel" class="form-control" placeholder="Téléphone (optionnel)">
+			        <input type="tel" id="numTel" class="form-control" placeholder="Téléphone" />
 					</td></tr>
 					</table>
 
-			        <button id="submit-button" class="btn btn-lg btn-primary btn-block" onclick="verifInscription()">Inscription</button>
+			        <button class="btn btn-lg btn-primary btn-block" onclick="verifInscription()">Inscription</button>
 			     </form>
 
     </div> <!-- /container -->
@@ -169,5 +171,7 @@
     <script src="js/holder.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="js/ie10-viewport-bug-workaround.js"></script>
+	<!-- Document ready script -->
+	<script src="js.ready.js"></script>
 	</body>
 </html>
