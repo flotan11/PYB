@@ -11,6 +11,7 @@
 			var i;
 			var rep = new Array;
 			var longueur;
+			var numeroEquipe;
 			function presentation() {
 				console.log("test");
 				$.ajax({
@@ -23,7 +24,7 @@
 						longueur = json.length;
 						for(i = 0;i<json.length;i++){
 						rep[i] = json[i];
-						tr += "<tr>" + "<td>" + json[i]['name'] + "</td>"+ "<td>" +  json[i]['total']  + "</td>"+ "<td>" +  json[i]['privacy'] +"</td>"+ "<td>"+  json[i]['coteSideOne'] +"</td>"+"<td>"+  json[i]['coteSideTwo'] +"</td>" + "<td>"+  json[i]['sideOne'] +"<input type = \"radio\" name=\"side\"</td>" + "<td>"+  json[i]['sideTwo'] +"<input type = \"radio\" name=\"side\"</td><td><button class=\"btn btn-lg btn-primary btn-block\" onclick=\"mise("+i+","+ json+")\">Miser</button></td>" +"<td id=\"mise"+i+"\"><input type=\"number\" id=\"valueInput"+i+"\"placeholder=\"Votre mise ...\"></td>"+"</tr>" ;
+						tr += "<tr id=\"lig"+i+"\">"+"<td id=\"idPari"+i+"\">"+json[i]['id']+"</td>" + "<td>" + json[i]['name'] + "</td>"+ "<td>" +  json[i]['total']  + "</td>"+ "<td>" +  json[i]['privacy'] +"</td>"+ "<td>"+  json[i]['coteSideOne'] +"</td>"+"<td>"+  json[i]['coteSideTwo'] +"</td>" + "<td id=\"sideOne"+i+"\">"+  json[i]['sideOne'] +"<input type = \"radio\" name=\"side1\"</td>" + "<td id=\"sideTwo"+i+"\">"+  json[i]['sideTwo'] +"<input type = \"radio\" name=\"side2\"</td><td><button class=\"btn btn-lg btn-primary btn-block\" onclick=\"mise("+i+")\">Miser</button></td>" +"<td class=\"mises\"id=\"mise"+i+"\"><input type=\"number\" id=\"valueInput"+i+"\"placeholder=\"Votre mise ...\"></td>"+"</tr>" ;
 						}
 						$("#tab2").html(tr) ;
 						cacherTd(longueur);
@@ -39,17 +40,26 @@
 			}
 
 			function selected(){
-				if($("input[name='side']:checked").val()){
-					return true;
-				} else {
+				if($("input[name='side1']:checked").val()){
+						numeroEquipe = sideOne;
+						return true;
+				} else if ($("input[name='side2']:checked").val()) {
+						numeroEquipe = sideTwo;
+						return true;
+				}else {
 					return false;
 				}
 			}
 
 			function mise(i){
 				if(selected()){
+					$(".mises").hide();
 					$("#mise"+i).show();
-					console.log("Passé par le show");
+					if ($("#valueInput"+i).val() != null && $("#valueInput"+i).val() != 0) {
+						miseJouee(i, $("#idPari"+i).val());
+					} else {
+						console.log("Insérez une valeur");
+					}
 
 				} else {
 					console.log("Non sélectionné"); 		
@@ -57,24 +67,16 @@
 				
 			}
 
-
-			</script>
-
-			<!-- ca marche pas pour l'instant le fait de parier, ERROR 415 ou 405-->
-
-			<script type="text/javascript">
-			function miseJouee(i) {
-
+			function miseJouee(i, idPari) {
 				$.ajax({
-					url: "data/events/" + $("#titre").val(),
+					url: "data/paridb/" + idPari,
 					type: "PUT",
-					dataType: "default",
 					data: {
-						somme: $("#valueInput"+i).val()
+						side:numeroEquipe;
+						mise:i;
 					},
 					success: function(json) {
 						console.log("Ça marche");
-
 					}
 				});
 			}
@@ -148,6 +150,7 @@
 			   <table id="tab" class="table table-bordered">
 			   			<thead>
 			            <tr>
+			            	<th>ID</th>
 			                <th>Nom du pari</th>
 			                <th>Valeur mise en jeu</th>
 			                <th>Réponse</th>
