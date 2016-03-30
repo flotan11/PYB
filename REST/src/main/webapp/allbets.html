@@ -20,7 +20,7 @@
 						var tr ;
 						for(i = 0;i<json.length;i++){
 						rep[i] = json[i];
-						tr += "<tr>" + "<td>" + json[i]['name'] + "</td>"+ "<td>" +  json[i]['total']  + "</td>"+ "<td>" +  json[i]['privacy'] +"</td>"+ "<td>"+  json[i]['coteSideOne'] +"</td>"+"<td>"+  json[i]['coteSideTwo'] +"</td>" + "<td>"+  json[i]['sideOne'] +"</td>" + "<td>"+  json[i]['sideTwo'] +"</td>" +"</tr>" ;
+						tr += "<tr>" + "<td>" + json[i]['name'] + "</td>"+ "<td>" +  json[i]['total']  + "</td>"+ "<td>" +  json[i]['privacy'] +"</td>"+ "<td>"+  json[i]['coteSideOne'] +"</td>"+"<td>"+  json[i]['coteSideTwo'] +"</td>" + "<td>"+  json[i]['sideOne'] +"</td>" + "<td>"+  json[i]['sideTwo'] +"</td><td><input type=\"checkbox\" id=\"cbox\"</td>" +"</tr>" ;
 						}
 						$("#tab2").html(tr) ;
 
@@ -125,7 +125,8 @@
 			                <th>Côte du pari</th>
 			                <th>Date de fin du pari</th>
 							<th>Equipe1</th>
-							<th>Equipe2</th>
+							<th>Equipe2</th>							
+							<th>Sélection</th>
 			            </tr>
 			        </thead>
 			        <tbody id="tab2">
